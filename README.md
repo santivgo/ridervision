@@ -7,6 +7,7 @@
     - [ ] *Vai ter os henshin sounds na página?*
     - [ ] *O modelo pode comportar outras séries futuramente?*
     - [ ] *Selecionar as características relevantes para a API*
+    - [ ] *Considerar riders com mais de uma identidade (Ixa, Birth)*
 - [ ] **Object-relational mapping** (Modelo Lógico, Modelo Entidade-Relacionamento)
 - [ ] **Web-Scraping dos Dados** ([RiderWiki](https://kamenrider.fandom.com/pt/wiki/Wiki_Kamen_Rider), [RiderApi](https://riderapi.netlify.app/))
 ---
