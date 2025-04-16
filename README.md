@@ -8,6 +8,7 @@
     - [ ] *O modelo pode comportar outras séries futuramente?*
     - [ ] *Selecionar as características relevantes para a API*
     - [ ] *Considerar riders com mais de uma identidade (Ixa, Birth)*
+    - [ ] *Padronização do SASS (ex. BEM)*
 - [ ] **Object-relational mapping** (Modelo Lógico, Modelo Entidade-Relacionamento)
 - [ ] **Web-Scraping dos Dados** ([RiderWiki](https://kamenrider.fandom.com/pt/wiki/Wiki_Kamen_Rider), [RiderApi](https://riderapi.netlify.app/))
 ---
