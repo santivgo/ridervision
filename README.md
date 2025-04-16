@@ -1,7 +1,7 @@
 # RIDERVISION: Kamen Rider API
-##### 🎨 Front-end (Angular)
-##### :computer: Back-end (Django)
-by [@santivgo](github.com/santivgo) && [@AlyssonHenri](github.com/AlyssonHenri)
+### 🎨 Front-end (Angular)
+### :computer: Back-end (Django)
+##### by [@santivgo](github.com/santivgo) && [@AlyssonHenri](github.com/AlyssonHenri)
 ---
 ### :pencil: Pré-projeto 
 - [ ] **Definições:**
