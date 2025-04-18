@@ -18,7 +18,7 @@
 
 ## Fontes:
   -  **h1**: Special Gothic Expanded One
-  -  **h2 específicos**: Syncope
+  -  **h2 específicos**: Syncopate
   -  **Parágrafos**: Inter Light 
 ## Ideias
 - [ ] **Animação de quando scrolar sumir com a cor da barra da logo**
