@@ -1,5 +1,6 @@
-![rider-vision-logo](pre-projeto/ref-images/assets/ridervision-logo-colored.svg.png)
-
+<p align="center" width="100%">
+    <img width="33%" src="https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/ref-images/assets/ridervision-logo-colored.png"> 
+</p>
 
 ### 🎨 Front-end (Angular)
 ### :computer: Back-end (Django)
