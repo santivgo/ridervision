@@ -1,9 +1,26 @@
-# RIDERVISION: Kamen Rider API
+![rider-vision-logo](http://url/to/img.png)
+
+
 ### 🎨 Front-end (Angular)
 ### :computer: Back-end (Django)
 ##### by [@santivgo](github.com/santivgo) && [@AlyssonHenri](github.com/AlyssonHenri)
 ---
-### :pencil: Pré-projeto 
+## :pencil: Pré-projeto 
+#  Front-End
+## Paleta:
+    - #F2F2F2 White Smoke
+    - #D9042B Fire Engine Red
+    - #A61731 Madder
+    - #610F1E Chocolate Cosmos
+    - #1E1E1E Eerie Black
+![palette](http://url/to/img.png)
+
+## Fontes:
+  -  **h1**: Special Gothic Expanded One
+  -  **h2 específicos**: Syncope
+  -  **Parágrafos**: Inter Light 
+## Ideias
+- [ ] **Animação de quando scrolar sumir com a cor da barra da logo**
 - [ ] **Definições:**
     - [ ] *Vai ter os henshin sounds na página?*
     - [ ] *O modelo pode comportar outras séries futuramente?*
