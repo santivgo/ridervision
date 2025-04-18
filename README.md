@@ -1,4 +1,4 @@
-![rider-vision-logo](http://url/to/img.png)
+![rider-vision-logo](pre-projeto/ref-images/assets/ridervision-logo-colored.svg.png)
 
 
 ### 🎨 Front-end (Angular)
@@ -13,7 +13,8 @@
     - #A61731 Madder
     - #610F1E Chocolate Cosmos
     - #1E1E1E Eerie Black
-![palette](http://url/to/img.png)
+
+![palette](https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/ref-images/palette.png)
 
 ## Fontes:
   -  **h1**: Special Gothic Expanded One
