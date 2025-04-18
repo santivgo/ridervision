@@ -1,8 +1,31 @@
-<div class="header__content">
-    <img class="header__content-logo" src="assets/ridervision-logo.svg" alt="">
-    <div class="header__content-menu">
-        <app-header-menu-button></app-header-menu-button>
-        <app-header-menu-button></app-header-menu-button>
-        <app-header-menu-button></app-header-menu-button>
+<div class="header">
+    <img class="header__logo" src="assets/ridervision-logo.svg" alt="">
+    <div class="header__menu">
+        <div class="m-top-10 m-bot-2">
+            <app-header-menu-button [ativo]="true">
+                <p>Rider do Dia</p>
+            </app-header-menu-button>
+            <app-header-menu-button>
+                <p>Riders</p>
+            </app-header-menu-button>
+            <app-header-menu-button>
+                <p>API</p>
+            </app-header-menu-button>
+        </div>
+
+        <app-horizontal-sep></app-horizontal-sep>
+
+        <div class="m-bot-5">
+            <app-header-menu-button [ativo]="true">
+                <p>Conta</p>
+            </app-header-menu-button>
+            <app-header-menu-button>
+                <p>Logout</p>
+            </app-header-menu-button>
+        </div>
+
+
+
     </div>
+
 </div>
