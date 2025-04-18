@@ -7,7 +7,6 @@
 ##### by [@santivgo](github.com/santivgo) && [@AlyssonHenri](github.com/AlyssonHenri)
 ---
 ## :pencil: Pré-projeto 
-#  Front-End
 ## Paleta:
     - #F2F2F2 White Smoke
     - #D9042B Fire Engine Red
