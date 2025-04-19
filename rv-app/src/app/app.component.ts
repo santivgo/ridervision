@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { CardRiderComponent } from './shared/components/main-cards/card-rider/card-rider.component';
+import { CommentComponent } from './shared/components/comment/comment.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, CardRiderComponent],
+  imports: [HeaderComponent, CommentComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
