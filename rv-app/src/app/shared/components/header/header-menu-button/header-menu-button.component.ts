@@ -10,4 +10,9 @@ import { Component, Input } from '@angular/core';
 export class HeaderMenuButtonComponent {
   @Input({alias: 'ativo'})
   ativo: boolean = false
+
+  onButtonClicked(mev: MouseEvent){
+    
+  }
 }
+
