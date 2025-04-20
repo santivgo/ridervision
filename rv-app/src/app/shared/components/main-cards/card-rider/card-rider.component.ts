@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { DividerHorizontalComponent } from '../../divider-horizontal/divider-horizontal.component';
 
 @Component({
   selector: 'app-card-rider',
-  imports: [],
+  imports: [DividerHorizontalComponent],
   templateUrl: './card-rider.component.html',
   styleUrl: './card-rider.component.sass'
 })
