@@ -1,7 +1,19 @@
 <div class="rv-container">
     <div class="rv-container__card">
-        <div class="rv-container__card__imagem">test</div>
+        <div class="rv-container__card__imagem">
+            <div class="rv-container__card__imagem__rider">
+                <img [src]="imgSrc" alt="{{riderName}}"/>
+            </div>
+            <div class="rv-container__card__imagem__text">
+                <h1>{{riderName}}</h1>
+                <p>{{riderDescription}}</p>
+            </div>
+        </div>
         <div class="rv-container__card__divider"></div>
-        <div class="rv-container__card__text-area">mensagem do dia- salmos 15</div>
+        <div class="rv-container__card__text-area">
+            <div class="rv-container__card__text-area__text-1">{{textAreaTitle}}</div>
+            <div class="rv-container__card__text-area__divider"></div>
+            <div class="rv-container__card__text-area__text-2">{{textAreaContent}}</div>
+        </div>
     </div>
 </div>

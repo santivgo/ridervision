@@ -3,6 +3,17 @@
         <app-header></app-header>
     </div>
     <div class="rv-container__content">
-        <app-card-rider></app-card-rider>
+        <div class="rv-container__content__components">
+            <app-card-rider></app-card-rider>
+
+            <div class="rv-container__comments">
+                <app-comment [comment]="{ username: 'Teste', comment: 'Este é um comentário de teste.' }"></app-comment>
+                <app-comment [comment]="{ username: 'User2', comment: 'Outro comentário.' }"></app-comment>
+                <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
+                <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
+                <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
+                <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
+            </div>
+        </div>
     </div>
 </div>
