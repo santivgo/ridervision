@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './header.component.sass'
 })
 export class HeaderComponent {
-  selectedButton: string = ''
+  btnList: string[] = ['Rider do Dia', 'Riders', 'API']
+  selectedButton: string = this.btnList[0]
   onButtonClicked(event: MouseEvent){
     this.selectedButton = (event.target as HTMLDivElement).innerText 
   } 
