@@ -36,5 +36,6 @@
 - [ ] Conteinerizar a aplicação para rodar somente um container, com **adminer, nginx, ridervision-api, ridervision-app**  
 ### :question: Ideias
 - [Fundamental NGX](https://sap.github.io/fundamental-ngx/#/core/home): Uma alternativa para o Angular Material
+- [Motion](https://motion.dev)
 
 ---

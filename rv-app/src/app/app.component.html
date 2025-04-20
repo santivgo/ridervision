@@ -3,13 +3,11 @@
 </div>
 <div class="rv-container">
 
-
-
     <div class="rv-container__content">
         <div class="rv-container__card">
             <div class="rv-container__card__components">
                 <app-card-rider></app-card-rider>
-                <div class="rv-container__comments">
+                <div class="rv-container__comment-area">
                     <app-comment
                         [comment]="{ username: 'Teste', comment: 'Este é um comentário de teste.' }"></app-comment>
                     <app-comment [comment]="{ username: 'User2', comment: 'Outro comentário.' }"></app-comment>
@@ -19,10 +17,11 @@
                     <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
                 </div>
             </div>
-        </div>
 
+        </div>
         <div class="rv-container__showcase">
             <app-showcase></app-showcase>
         </div>
+
     </div>
 </div>
