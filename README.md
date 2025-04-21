@@ -17,17 +17,15 @@
 ![palette](https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/ref-images/palette.png)
 
 ## Fontes:
-  -  **h1**: Special Gothic Expanded One
+  -  **h1**: Special Gothic Expanded One, Montserrat
   -  **h2 específicos**: Syncopate, Nunito Sans
   -  **Parágrafos**: Inter Light 
 ## Ideias
-- [ ] **Animação de quando scrolar sumir com a cor da barra da logo**
 - [ ] **Definições:**
-    - [ ] *Vai ter os henshin sounds na página?*
-    - [ ] *O modelo pode comportar outras séries futuramente?*
-    - [ ] *Selecionar as características relevantes para a API*
-    - [ ] *Considerar riders com mais de uma identidade (Ixa, Birth)*
-    - [ ] *Padronização do SASS (ex. BEM)*
+    - [x] ~~*Vai ter os henshin sounds na página?*~~
+    - [x] *O modelo pode comportar outras séries futuramente?*
+    - [x] *Selecionar as características relevantes para a API*
+    - [x] ~~*Considerar riders com mais de uma identidade (Ixa, Birth)*~~
 - [ ] **Object-relational mapping** (Modelo Lógico, Modelo Entidade-Relacionamento)
 - [ ] **Web-Scraping dos Dados** ([RiderWiki](https://kamenrider.fandom.com/pt/wiki/Wiki_Kamen_Rider), [RiderApi](https://riderapi.netlify.app/))
 ---
