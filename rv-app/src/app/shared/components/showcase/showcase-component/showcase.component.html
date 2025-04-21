@@ -3,12 +3,9 @@
         <h1 class="syncopate title">meet the <span class="f-bold">rider</span></h1>
     </div>
 
-    <div class="showcase-container">
-        <app-button-icon></app-button-icon>
-        <app-button-icon></app-button-icon>
-        <app-button-icon></app-button-icon>
-        <app-button-icon></app-button-icon>
-        <app-button-icon></app-button-icon>
+    <div class="showcase-btn-list">
+        <app-button-icon [rider]="rider" *ngFor="let rider of riderList.reverse()">
+        </app-button-icon>
 
     </div>
 </div>
