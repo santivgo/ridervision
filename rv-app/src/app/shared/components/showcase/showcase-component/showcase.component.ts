@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { HorizontalSepComponent } from '../horizontal-sep/horizontal-sep.component';
+import { ButtonIconComponent } from '../button-icon/button-icon.component';
 
 @Component({
   selector: 'app-showcase',
-  imports: [HorizontalSepComponent],
+  imports: [ButtonIconComponent],
   templateUrl: './showcase.component.html',
   styleUrl: './showcase.component.sass'
 })
