@@ -6,7 +6,26 @@
     <div class="rv-container__content">
         <div class="rv-container__card">
             <div class="rv-container__card__components">
-                <app-card-rider></app-card-rider>
+                <app-card-rider>
+                    <app-card-header>
+                        <div class="rv-c-card__header__rider">
+                            <img [src]="imgSrc" alt="{{riderName}}" />
+                        </div>
+                        <div class="rv-c-card__header__rider__text">
+                            <h1>{{riderName}}</h1>
+                            <p>{{riderDescription}}</p>
+                        </div>
+                    </app-card-header>
+                    <app-divider-horizontal></app-divider-horizontal>
+
+                    <app-card-content>
+                        <div class="rv-c-card__content__text-area">
+                            <div class="rv-c-card__content__text-area__text-1">{{textAreaTitle}}</div>
+                            <app-divider-horizontal-gradient></app-divider-horizontal-gradient>
+                            <div class="rv-c-card__content__text-area__text-2">{{textAreaContent}}</div>
+                        </div>
+                    </app-card-content>
+                </app-card-rider>
                 <div class="rv-container__comment-area">
                     <app-comment
                         [comment]="{ username: 'Teste', comment: 'Este é um comentário de teste.' }"></app-comment>

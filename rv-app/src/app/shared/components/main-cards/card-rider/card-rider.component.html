@@ -1,19 +1,9 @@
-<div class="rv-container">
-    <div class="rv-container__card">
-        <div class="rv-container__card__imagem">
-            <div class="rv-container__card__imagem__rider">
-                <img [src]="imgSrc" alt="{{riderName}}"/>
-            </div>
-            <div class="rv-container__card__imagem__text">
-                <h1>{{riderName}}</h1>
-                <p>{{riderDescription}}</p>
-            </div>
-        </div>
-        <app-divider-horizontal></app-divider-horizontal>
-        <div class="rv-container__card__text-area">
-            <div class="rv-container__card__text-area__text-1">{{textAreaTitle}}</div>
-            <div class="rv-container__card__text-area__divider"></div>
-            <div class="rv-container__card__text-area__text-2">{{textAreaContent}}</div>
-        </div>
-    </div>
+<div class="rv-c-card">
+
+    <ng-content select="app-card-header"></ng-content>
+    <ng-content select="app-divider-horizontal"></ng-content>
+
+    <ng-content select="app-card-content"></ng-content>
+
+
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DividerHorizontalComponent } from '../../divider-horizontal/divider-horizontal.component';
+import { DividerHorizontalComponent } from '../../dividers/divider-horizontal/divider-horizontal.component';
 
 @Component({
   selector: 'app-card-rider',
