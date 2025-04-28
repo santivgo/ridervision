@@ -8,11 +8,12 @@ import { DividerHorizontalComponent } from './shared/components/dividers/divider
 import { CardHeaderDirective } from './core/card-header.directive';
 import { CardContentDirective } from './core/card-content.directive';
 import { DividerHorizontalGradientComponent } from './shared/components/dividers/divider-horizontal-gradient/divider-horizontal-gradient.component';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, CommentComponent, CardRiderComponent, ShowcaseComponent, HorizontalSepComponent, DividerHorizontalComponent, CardHeaderDirective, CardContentDirective, DividerHorizontalGradientComponent],
+  imports: [RouterOutlet, HeaderComponent, CommentComponent, CardRiderComponent, ShowcaseComponent, HorizontalSepComponent, DividerHorizontalComponent, CardHeaderDirective, CardContentDirective, DividerHorizontalGradientComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
