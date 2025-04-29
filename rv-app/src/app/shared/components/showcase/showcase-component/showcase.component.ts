@@ -37,6 +37,6 @@ export class ShowcaseComponent {
   { name: 'Geats', imgs: { rider_img_sm: 'assets/mock/geats-sm.png' } },
   { name: 'Gotchard', imgs: { rider_img_sm: 'assets/mock/gotchard-sm.png' }},
   {name: 'Gavv', imgs: {'rider_img_sm': 'assets/mock/gavv-sm.png'}}, 
-  ]
+  ].reverse()
   
 }
