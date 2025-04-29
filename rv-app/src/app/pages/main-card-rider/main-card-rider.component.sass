@@ -1,0 +1,38 @@
+
+.rv-container
+
+    &__card
+        display: flex
+        align-items: center
+        flex-direction: row
+        width: 98%
+
+        &__components
+            display: flex
+            flex-direction: row
+            justify-content: flex-start
+            align-items: center
+            height: 100%
+            width: 100%
+            margin: 10 10 0 10
+            gap: 2%
+
+    &__comment-area
+        display: flex
+        flex-direction: column
+        justify-content: center
+        overflow-x: auto
+        scroll-behavior: smooth
+        gap: 15px
+        width: 80%
+        height: 100%
+
+        &::-webkit-scrollbar
+            height: 5px
+            width: 3px
+        &::-webkit-scrollbar-thumb
+            background: #312527
+            border-radius: 10px
+        &::-webkit-scrollbar-track
+            background: transparent
+            //adicionar depois o comportamentdo de carrosel
