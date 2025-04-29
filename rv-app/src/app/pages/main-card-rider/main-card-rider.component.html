@@ -21,12 +21,12 @@
             </app-card-content>
         </app-card-rider>
         <div class="rv-container__comment-area">
-            <app-comment [comment]="{ username: 'Teste', comment: 'Este é um comentário de teste.' }"></app-comment>
-            <app-comment [comment]="{ username: 'User2', comment: 'Outro comentário.' }"></app-comment>
-            <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
-            <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
-            <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
-            <app-comment [comment]="{ username: 'User3', comment: 'Mais um comentário.' }"></app-comment>
+            <ng-container *ngFor="let c of comments" class="rv-container__comment-area__display">
+                <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
+            </ng-container>
+            <div class="rv-container__comment-area__input">
+                <app-comment-input></app-comment-input>
+            </div>
         </div>
     </div>
 
