@@ -2,10 +2,9 @@
     <img class="header__logo" src="assets/ridervision-logo.svg" alt="">
     <div class="header__menu">
         <div class="m-top-10 m-bot-2">
-
-            <app-header-menu-button (click)="onButtonClicked($event)" *ngFor="let btn of btnList"
-                [ativo]="selectedButton === btn">
-                {{btn}}
+            <app-header-menu-button (click)="onButtonClicked($event)" *ngFor="let btn of btnList" routerLink="btn.route"
+                routerLinkActive="selectedButton === btn.title" [ativo]="selectedButton===btn.title">
+                {{btn.title}}
             </app-header-menu-button>
         </div>
 

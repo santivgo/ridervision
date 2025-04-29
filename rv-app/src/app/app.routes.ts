@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { MainCardRiderComponent } from './pages/main-card-rider/main-card-rider.component';
 import { ShowcaseRiderComponent } from './pages/showcase-rider/showcase-rider.component';
 

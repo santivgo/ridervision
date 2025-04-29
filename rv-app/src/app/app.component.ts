@@ -5,8 +5,8 @@ import { CardRiderComponent } from './shared/components/main-cards/card-rider/ca
 import { ShowcaseComponent } from './shared/components/showcase/showcase-component/showcase.component';
 import { HorizontalSepComponent } from './shared/components/dividers/horizontal-sep/horizontal-sep.component';
 import { DividerHorizontalComponent } from './shared/components/dividers/divider-horizontal/divider-horizontal.component';
-import { CardHeaderDirective } from './core/card-header.directive';
-import { CardContentDirective } from './core/card-content.directive';
+import { CardHeaderDirective } from './core/directives/card-header.directive';
+import { CardContentDirective } from './core/directives/card-content.directive';
 import { DividerHorizontalGradientComponent } from './shared/components/dividers/divider-horizontal-gradient/divider-horizontal-gradient.component';
 import { RouterOutlet } from '@angular/router';
 
