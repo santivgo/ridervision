@@ -13,7 +13,7 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, CommentComponent, CardRiderComponent, ShowcaseComponent, HorizontalSepComponent, DividerHorizontalComponent, CardHeaderDirective, CardContentDirective, DividerHorizontalGradientComponent],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
