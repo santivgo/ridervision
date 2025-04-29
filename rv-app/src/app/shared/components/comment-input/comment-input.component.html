@@ -3,6 +3,10 @@
         <p>Mande sua opinião do rider de hoje!</p>
     </div>
     <div class="comment-input__content">
-        <textarea placeholder="Escreva seu comentário aqui..."></textarea>
+        <textarea 
+            [(ngModel)]="commentString" 
+            placeholder="Escreva seu comentário aqui..."
+            (keydown.enter)="postComment()"
+        ></textarea>
     </div>
 </div>

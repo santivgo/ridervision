@@ -23,13 +23,21 @@ export class MainCardRiderComponent implements OnInit {
   textAreaTitle: string = 'BASE FORM';
   textAreaContent: string = `Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.`;
   comments: any[] = [];
+  intervalId: any;
 
   constructor(private commentsService: CommentService) {}
 
   ngOnInit(): void {
+    this.getComments();
+
+    this.intervalId = setInterval(() => {
+      this.getComments();
+    }, 5000); // 5000ms = 5 segundos
+  }
+
+  getComments(): void{
     this.commentsService.getComments().subscribe((data) => {
       this.comments = data;
-      console.log(this.comments)
     });
   }
 }

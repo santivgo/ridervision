@@ -15,4 +15,8 @@ export class CommentService {
   getComments(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  postComment(comment: {username: string; comment: string}): Observable<any> {
+    return this.http.post<any>(this.apiUrl, comment);
+  }
 }
