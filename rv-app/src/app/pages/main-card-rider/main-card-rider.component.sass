@@ -22,20 +22,22 @@
         flex-direction: column
         justify-content: end
         overflow: hidden
-        gap: 15px
+        gap: 10px
         width: 80%
-        height: 93vh
+        max-height: 90vh
         margin-left: 50px
         margin-right: 20px
-
+    
         &__display
             display: flex
             flex-direction: column-reverse
             justify-content: end
-            overflow-x: auto
+            overflow-y: auto
+            overflow-x: hidden
             scroll-behavior: smooth
-            gap: 15px
-
+            gap: 10px
+            height: 100% 
+    
             &::-webkit-scrollbar
                 height: 5px
                 width: 5px
