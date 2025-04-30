@@ -1,15 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonIconComponent } from '../button-icon/button-icon.component';
 import { IRider } from '../../../../core/interfaces/rider';
 import { CommonModule } from '@angular/common';
-
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-showcase',
-  imports: [ButtonIconComponent, CommonModule],
+  imports: [ButtonIconComponent, CommonModule, NgbCollapseModule],
   templateUrl: './showcase.component.html',
   styleUrl: './showcase.component.sass'
 })
-export class ShowcaseComponent {
+export class ShowcaseComponent implements OnInit{
+  isCollapsedList: boolean[] = [];
+
+  ngOnInit(): void {
+    this.isCollapsedList.map(()=> true
+    )
+    
+  }
+
   riderList: IRider[] = [
     { name: 'Kuuga', imgs: { rider_img_sm: 'assets/mock/kuuga-sm.png' } },
   { name: 'Agito', imgs: { rider_img_sm: 'assets/mock/agito-sm.png' } },
