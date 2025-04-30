@@ -32,8 +32,8 @@
 
 ### :airplane: Futuro
 - [ ] Conteinerizar a aplicação para rodar somente um container, com **adminer, nginx, ridervision-api, ridervision-app**  
-### :question: Ideias
+### :question: Frameworks
 - [Fundamental NGX](https://sap.github.io/fundamental-ngx/#/core/home): Uma alternativa para o Angular Material
-- [Motion](https://motion.dev)
+- [Angular powered Bootstrap](https://ng-bootstrap.github.io/): Usada para o collapse
 
 ---
