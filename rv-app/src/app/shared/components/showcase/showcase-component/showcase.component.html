@@ -3,22 +3,9 @@
         <h1 class="syncopate title">meet the <span class="f-bold">rider</span></h1>
     </div>
 
-    <div class="showcase-btn-list">
-        <div class="showcase-btn-line" *ngFor="let rider of riderList; let i = index">
-            <app-button-icon [isCollapsed]="isCollapsedList[i]" [collapseRef]="i%4 ==0 ? collapse1 : collapse2"
-                [rider]="rider">
-            </app-button-icon>
-            <div #collapse1="ngbCollapse" [(ngbCollapse)]="isCollapsedList[i]">
-                <div class="card">
-                    <div class="card-body">You can collapse this card by clicking one Toggle button</div>
-                </div>
-            </div>
-            <div #collapse2="ngbCollapse" [(ngbCollapse)]="isCollapsedList[i]">
-                <div class="card">
-                    <div class="card-body">You can collapse this card by clicking one Toggle button</div>
-                </div>
-            </div>
-        </div>
+    <div class="showcase-container">
+        <app-showcase-line *ngFor="let localRiderList of lineRidersList" [riders]="localRiderList"></app-showcase-line>
 
     </div>
+
 </div>

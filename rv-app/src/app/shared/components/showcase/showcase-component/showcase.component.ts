@@ -1,25 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ButtonIconComponent } from '../button-icon/button-icon.component';
 import { IRider } from '../../../../core/interfaces/rider';
 import { CommonModule } from '@angular/common';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowcaseLineComponent } from '../showcase-line/showcase-line.component';
 @Component({
   selector: 'app-showcase',
-  imports: [ButtonIconComponent, CommonModule, NgbCollapseModule],
+  imports: [ShowcaseLineComponent, CommonModule],
   templateUrl: './showcase.component.html',
   styleUrl: './showcase.component.sass'
 })
 export class ShowcaseComponent implements OnInit{
-  isCollapsedList: boolean[] = [];
-
-  ngOnInit(): void {
-    this.isCollapsedList.map(()=> true
-    )
-    
-  }
-
   riderList: IRider[] = [
-    { name: 'Kuuga', imgs: { rider_img_sm: 'assets/mock/kuuga-sm.png' } },
+  { name: 'Kuuga', imgs: { rider_img_sm: 'assets/mock/kuuga-sm.png' } },
   { name: 'Agito', imgs: { rider_img_sm: 'assets/mock/agito-sm.png' } },
   { name: 'Ryuki', imgs: { rider_img_sm: 'assets/mock/ryuki-sm.png' } },
   { name: 'Faiz', imgs: { rider_img_sm: 'assets/mock/faiz-sm.png' } },
@@ -46,5 +37,15 @@ export class ShowcaseComponent implements OnInit{
   { name: 'Gotchard', imgs: { rider_img_sm: 'assets/mock/gotchard-sm.png' }},
   {name: 'Gavv', imgs: {'rider_img_sm': 'assets/mock/gavv-sm.png'}}, 
   ].reverse()
-  
+
+  lineRidersList: IRider[][] = []
+
+  ngOnInit(): void {
+    const lineSize = 5;
+
+    for (let index = 0; index < this.riderList.length; index+=lineSize) {
+      this.lineRidersList.push(this.riderList.slice(index, index+lineSize))
+    }
+
+  }
 }

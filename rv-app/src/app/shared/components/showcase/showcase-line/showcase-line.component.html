@@ -1,0 +1,14 @@
+<div class="showcase-line">
+    <div class="showcase-line__list">
+        <app-button-icon *ngFor="let rider of riders" [isCollapsed]="isCollapsed" [collapseRef]="collapse"
+            [rider]="rider" (em)="changeRiderCollapse($event)">
+        </app-button-icon>
+    </div>
+
+    <div class="showcase-line__collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="card">
+            <div class="card-body">{{riderCollapse.name}}</div>
+
+        </div>
+    </div>
+</div>
