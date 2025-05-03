@@ -1,0 +1,191 @@
+[
+    {
+        "id": 0,
+        "name": "Kamen Rider Kuuga (TV Show)",
+        "year": 2001,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/7a/Kuuga_Poster.jpg/revision/latest?cb=20240826125508",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 1,
+        "name": "Kamen Rider Agito (TV Show)",
+        "year": 2002,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/d/d0/Agito_Poster.jpg/revision/latest?cb=20240826125643",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 2,
+        "name": "Kamen Rider Ryuki (TV Show)",
+        "year": 2003,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/5/54/Kamen_Rider_Ryuki_Logo.png/revision/latest?cb=20180807133526",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 3,
+        "name": "Kamen Rider 555 (TV Show)",
+        "year": 2004,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/6/64/555_Poster.jpg/revision/latest?cb=20240826125950",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 4,
+        "name": "Kamen Rider Blade (TV Show)",
+        "year": 2005,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/76/Blade_Poster.jpg/revision/latest?cb=20240826130147",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 5,
+        "name": "Kamen Rider Hibiki (TV Show)",
+        "year": 2006,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/7b/Hibiki_Poster.jpg/revision/latest?cb=20240826130246",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 6,
+        "name": "Kamen Rider Kabuto (TV Show)",
+        "year": 2007,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/b1/Kabuto_Poster.jpg/revision/latest?cb=20240826130323",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 7,
+        "name": "Kamen Rider Den-O (TV Show)",
+        "year": 2008,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/a/af/Den-O_Poster.jpg/revision/latest?cb=20240826130345",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 8,
+        "name": "Kamen Rider Kiva (TV Show)",
+        "year": 2009,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/4/4b/Kiva_Poster.jpg/revision/latest?cb=20240826130413",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 9,
+        "name": "Kamen Rider Decade (TV Show)",
+        "year": 2009,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/c/cc/Decade_Poster.jpg/revision/latest?cb=20240826130539",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 10,
+        "name": "Kamen Rider W (TV Show)",
+        "year": 2010,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/f/fa/W_Poster.jpg/revision/latest?cb=20220504183722",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 11,
+        "name": "Kamen Rider OOO (TV Show)",
+        "year": 2011,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/d/d2/OOO_Poster.jpg/revision/latest?cb=20240826131110",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 12,
+        "name": "Kamen Rider Fourze (TV Show)",
+        "year": 2012,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/1/11/Fourze_Poster.jpg/revision/latest?cb=20240826131311",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 13,
+        "name": "Kamen Rider Wizard (TV Show)",
+        "year": 2013,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/d/dc/Wizard_Poster.jpg/revision/latest?cb=20240826131504",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 14,
+        "name": "Kamen Rider Gaim (TV Show)",
+        "year": 2014,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/ba/Gaim_Poster.jpg/revision/latest?cb=20240826131627",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 15,
+        "name": "Kamen Rider Drive (TV Show)",
+        "year": 2015,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/e/e3/Drive_Poster.jpg/revision/latest?cb=20240826132201",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 16,
+        "name": "Kamen Rider Ghost (TV Show)",
+        "year": 2016,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/5/58/Ghost_Poster.jpg/revision/latest?cb=20240826131801",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 17,
+        "name": "Kamen Rider Amazons (TV Show)",
+        "year": 2017,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/1/1f/Kamen_Rider_Amazons_Logo.png/revision/latest?cb=20221021061928",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 18,
+        "name": "Kamen Rider Ex-Aid (TV Show)",
+        "year": 2017,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/2/2f/Ex-Aid_Poster.jpg/revision/latest?cb=20240826132310",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 19,
+        "name": "Kamen Rider Build (TV Show)",
+        "year": 2018,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/b6/Build_Poster.jpg/revision/latest?cb=20240826132355",
+            "rider_img_bg": ""
+        }
+    },
+    {
+        "id": 20,
+        "name": "Kamen Rider Zi-O (TV Show)",
+        "year": 2019,
+        "imgs": {
+            "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/e/e6/Zi-O_Poster.jpg/revision/latest?cb=20240826132847",
+            "rider_img_bg": ""
+        }
+    }
+]
