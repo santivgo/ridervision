@@ -6,17 +6,27 @@ from time import sleep
 
 
 prefix = "https://kamenrider.fandom.com"
-soup = BeautifulSoup(requests.get(f'{prefix}/wiki/Kamen_Rider_Series/Heisei_Series').content, 'html.parser')
 
-def getAllLinks():
-    table = soup.find("div", {"class":'wds-tab__content'})
-    return [ f"{prefix}{link['href']}" for link in table.find_all("a")]
+def getAllLinks(soup):
+    table = soup.find_all("div", class_='wds-tab__content')[-3]
+    return [ f"{prefix}{link.a['href']}" for link in table.find_all("li")]
+
 def getYearFromAirDate(airdate):
+    if ("present" in airdate):
+        return 2024
     try: 
         return int(airdate.split(",")[2].split("-")[0])
     except:
         return int(airdate.split(",")[2].split("-")[0].split("(")[0])
-
+    
+def getAllRiders(soup):
+    table = soup.find_all("table", {'class':"mw-collapsible mw-collapsed"})
+    for h in table: 
+        link_list =  h.find_all("a")
+        for link in link_list:
+            title = link.get('title')
+            print(f'Título: {title}' if title else 'Sem título')
+    
 
 def getAllTVShow(links):
 
@@ -28,19 +38,22 @@ def getAllTVShow(links):
     synopsis = ""
     for i, link in enumerate(links):
         local_soup = BeautifulSoup(requests.get(link).content, 'html.parser')
-
+                
         tv_show = local_soup.find("h2", {'data-source':'name'}).text + " (TV Show)"
+        if(tv_show == "Kamen Rider Zeztz (TV Show)"):
+            continue
 
-        airdate = getYearFromAirDate(local_soup.find("div", {'data-source':'airdate'}).text) 
+        #getAllRiders(local_soup)
+
+        airdate = getYearFromAirDate(local_soup.find("div", {'data-source':'airdate'}).text)
+
         try:
             poster = local_soup.find("figure", {'data-source':'poster'}).find("a", {'class': 'image'})['href']
         except:
             poster = local_soup.find("figure", {'class':'pi-image'}).find("a", {'class': 'image'})['href']
         
         try: 
-            print(tv_show)
             synopsis_el = local_soup.find("span", {'id':'Story'}).find_next("p")
-            print(local_soup.find("span", {'id':'Story'}).find_next("p"))
         except:
             pass
         try:
@@ -62,18 +75,22 @@ def getAllTVShow(links):
             synopsis = (synopsis_el.text + synopsis_el.find_next_sibling('p').text)
         else:
             synopsis = (synopsis_el.text)
-
-            
-
             
         tv_shows.append(kamenRiderSeries(i, tv_show, airdate, poster,synopsis))
     return tv_shows        
 
-
-def main():
-    links = getAllLinks()
-    tv_shows = getAllTVShow(links)
-    print([tv.__dict__ for tv in tv_shows])
+def writeJson(tv_shows):
     with open("data.json", "w") as file:
         json.dump( [tv.__dict__ for tv in tv_shows], file, indent=4)
+
+def main():
+    urls = ['Heisei_Series', 'Reiwa_Series']
+    tv_shows_all = []
+    urls.reverse()
+    for url in urls: 
+        soup = BeautifulSoup(requests.get(f'{prefix}/wiki/Kamen_Rider_Series/{url}').content, 'html.parser')
+        links = getAllLinks(soup)
+        tv_shows_all += getAllTVShow(links)
+    #writeJson(tv_shows_all)
+
 main()
