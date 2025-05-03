@@ -8,10 +8,13 @@ import { ShowcaseCardHeaderDirective } from '../showcase-card/directives/showcas
 import { ShowcaseCardImgDirective } from '../showcase-card/directives/showcase-card-img.directive';
 import { ShowcaseCardContentDirective } from '../showcase-card/directives/showcase-card-content.directive';
 import { IShow } from '../../../../core/interfaces/show';
+import { ShortNamePipe } from '../../../../core/pipes/short-name.pipe';
+import { AgePipe } from '../../../../core/pipes/age.pipe';
+import { EraPipe } from '../../../../core/pipes/era.pipe';
 
 @Component({
   selector: 'app-showcase-line',
-  imports: [ButtonIconComponent, ShowcaseCardComponent, ShowcaseCardContentDirective, ShowcaseCardHeaderDirective, ShowcaseCardImgDirective, NgbCollapseModule, CommonModule],
+  imports: [ButtonIconComponent, ShortNamePipe, AgePipe, ShowcaseCardComponent, ShowcaseCardContentDirective, ShowcaseCardHeaderDirective, ShowcaseCardImgDirective, NgbCollapseModule, CommonModule, EraPipe],
   templateUrl: './showcase-line.component.html',
   styleUrl: './showcase-line.component.sass'
 })

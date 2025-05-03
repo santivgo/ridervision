@@ -1,10 +1,11 @@
 import { Component, ElementRef, EventEmitter, input, Input, Output, ViewChild } from '@angular/core';
 import { NgbCollapse, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { IShow } from '../../../../../core/interfaces/show';
+import { ShortNamePipe } from '../../../../../core/pipes/short-name.pipe';
 
 @Component({
   selector: 'app-button-icon',
-  imports: [NgbCollapseModule],
+  imports: [NgbCollapseModule, ShortNamePipe],
   templateUrl: './button-icon.component.html',
   styleUrl: './button-icon.component.sass'
 })
