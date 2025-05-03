@@ -10,7 +10,7 @@ export interface IRider{
        //     }
     // },
     name: string,
-    forms: string[],
+    //forms: string[],
     imgs: {
         rider_img_sm: string, // icone
         // rider_img_bd: string, // full-body img
