@@ -7,7 +7,7 @@ import { DividerHorizontalGradientComponent } from '../../shared/components/divi
 import { CommentComponent } from '../../shared/components/comment/comment.component';
 import { HorizontalSepComponent } from '../../shared/components/dividers/horizontal-sep/horizontal-sep.component';
 import { CommentInputComponent } from '../../shared/components/comment-input/comment-input.component';
-import { CommentService } from '../../shared/components/comment/comment.service';
+import { CommentService } from '../../core/services/comment.service';
 import { CommonModule } from '@angular/common'
 
 @Component({

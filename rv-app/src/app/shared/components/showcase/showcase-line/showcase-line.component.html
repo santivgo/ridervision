@@ -7,7 +7,37 @@
 
     <div class="showcase-line__collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
         <div class="card">
-            <div class="card-body">{{riderCollapse.name}}</div>
+            <app-showcase-card>
+                <app-showcase-card-header>
+                    <div class="rv-c-showcase-card__header__brand" era="reiwa">
+                        <h1 class=" rv-c-showcase-card__header__brand-title montserrat f-black f-1d5rem">REIWA
+                        </h1>
+                    </div>
+                    <img appShowcaseImg src="/assets/posters/Gavv_Q1_Poster.webp" alt="">
+
+                    <div class="rv-c-showcase-card__header__bot">
+                        <h1 class="rv-c-showcase-card__header__bot__title">GAVV</h1>
+                        <h2 class="rv-c-showcase-card__header__bot__subtitle">kamen rider gavv (2024)</h2>
+                    </div>
+
+                </app-showcase-card-header>
+                <app-showcase-card-content>
+                    <p class="f-1rem">Chemies, formas de vida artificiais criadas a partir da alquimia são libertadas de
+                        seus selos, e
+                        o poder para evitar a destruição do mundo é concedido a Hotaro Ichinose, um jovem que acaba
+                        sendo transferido para a escola de alquimistas onde conhece jovens que almejam se tornar os
+                        tais, realizando avanços em suas pesquisas em prol da harmonia e prosperidade. Assumindo o nome
+                        de <strong>Kamen Rider Gotchard</strong>, Ichinose seguirá seu grandioso percurso para recuperar
+                        todos os Chemies
+                        e se tornar amigo deles</p>
+
+                    <img class="rv-c-showcase-card__content__img"
+                        src="https://media1.tenor.com/m/5hl3A89bP2UAAAAd/kamen-rider-gavv-kamen-rider.gif" alt="">
+                    <h5 class="f-bold">RIDER KICK!!</h5>
+
+                </app-showcase-card-content>
+            </app-showcase-card>
+            <!-- <div class="card-body">{{riderCollapse.name}}</div> -->
 
         </div>
     </div>

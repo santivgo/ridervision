@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, input, Input, Output, ViewChild } from '@angular/core';
 import { NgbCollapse, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { IRider } from '../../../../../core/interfaces/rider';
+import { IShow } from '../../../../../core/interfaces/show';
 
 @Component({
   selector: 'app-button-icon',
@@ -12,9 +12,9 @@ export class ButtonIconComponent {
 
   @Input({required: true}) isCollapsed: boolean = false;
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse
-  @Output() em = new EventEmitter<IRider>();
+  @Output() em = new EventEmitter<IShow>();
   @ViewChild('textButton') textBtnEl!: ElementRef<HTMLParagraphElement>;
-  @Input({'required':true}) rider: IRider = {} as IRider
+  @Input({'required':true}) rider: IShow = {} as IShow
   textShow = (()=> this.textBtnEl.nativeElement.classList.add("active"))
   textHide = (() => this.textBtnEl.nativeElement.classList.remove("active"))
 
