@@ -8,16 +8,14 @@
 
     <div class="showcase-line__collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
         <div class="card">
-            <app-showcase-card *ngIf="!isCollapsed">
+            <app-showcase-card *ngIf="!isCollapsed && riderCollapse">
                 <app-showcase-card-header>
                     <div class="rv-c-showcase-card__header__brand" [attr.era]="riderCollapse.year | era">
                         <h1 class=" rv-c-showcase-card__header__brand-title montserrat f-black f-1d5rem">
                             {{riderCollapse.year | era | uppercase}}
                         </h1>
                     </div>
-
-
-                    <img appShowcaseImg *ngIf="riderCollapse" [src]="riderCollapse.imgs.rider_img_xl" alt="">
+                    <img appShowcaseImg [src]="riderCollapse.imgs.rider_img_xl" alt="">
 
                     <div class="rv-c-showcase-card__header__bot" *ngIf="riderCollapse">
                         <h1 class="rv-c-showcase-card__header__bot__title">

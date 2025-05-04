@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ShowcaseLineComponent } from '../showcase-line/showcase-line.component';
 import { IShow } from '../../../../core/interfaces/show';
 import { SeriesService } from '../../../../core/services/series.service';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-showcase',
   imports: [ShowcaseLineComponent, CommonModule],
@@ -10,29 +11,30 @@ import { SeriesService } from '../../../../core/services/series.service';
   styleUrl: './showcase.component.sass'
 })
 export class ShowcaseComponent implements OnInit{
-  riderList: IShow[] = [ 
-  ]
 
   constructor(private series: SeriesService) {}
-  
 
-  lineRidersList: IShow[][] = []
+  riderList$: Observable<IShow[]> = new Observable<IShow[]>
+  lineRidersList$: Observable<IShow[][]> = new Observable<IShow[][]>
 
   ngOnInit(): void {
     this.getSeries()
-
 
   }
 
   getSeries(): void{
     this.series.getShows().subscribe((data) => {
 
-      this.riderList = data.reverse();
-      const lineSize = 5;
 
-      for (let index = 0; index < this.riderList.length; index+=lineSize) {
-        this.lineRidersList.push(this.riderList.slice(index, index+lineSize))
+      const riderList: IShow[] = data.reverse();
+      const lineRidersList: IShow[][] = []
+
+      const lineSize = 5;
+      for (let index = 0; index < riderList.length; index+=lineSize) {
+        lineRidersList.push(riderList.slice(index, index+lineSize))
       }
+      this.lineRidersList$ = of(lineRidersList)
+      this.riderList$ = of(riderList)
 
     });
   }
