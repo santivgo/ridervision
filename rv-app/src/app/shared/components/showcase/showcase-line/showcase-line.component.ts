@@ -22,7 +22,7 @@ export class ShowcaseLineComponent {
   @Input({'required': true}) riders: IShow[] = [];
   riderCollapse: IShow = {} as IShow;
   isCollapsed: boolean = true;
-
+  
 
   changeRiderCollapse(rider: IShow){
     this.riderCollapse = rider;
