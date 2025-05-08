@@ -1,0 +1,37 @@
+[project]
+name = "rv-api"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "santivgo",email = "requiemsantiago@gmail.com"}
+    {name = "alyssonhenri",email = ""}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "poetry", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+pylint = "^3.3.7"
+pylint-django = "^2.6.1"
+taskipy = "^1.14.1"
+pre-commit = "^4.2.0"
+
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+qos = { cmd ="black src & isort src & pylint src", help="Executa todas as ferramentas de qualidade de código"}
+
+[FORMAT]
+max-line-length=88
+disable=C0330

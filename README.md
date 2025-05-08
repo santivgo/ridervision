@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-    <img width="33%" src="https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/ref-images/assets/ridervision-logo-colored.png"> 
+    <img width="33%" src="https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/assets/ridervision-logo-colored.png"> 
 </p>
 
 ### 🎨 Front-end (Angular)
@@ -14,7 +14,7 @@
     - #610F1E Chocolate Cosmos
     - #1E1E1E Eerie Black
 
-![palette](https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/ref-images/palette.png)
+![palette](https://raw.githubusercontent.com/santivgo/ridervision/refs/heads/main/pre-projeto/palette.png)
 
 ## Fontes:
   -  **h1**: Special Gothic Expanded One, Montserrat
