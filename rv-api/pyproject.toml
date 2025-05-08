@@ -3,12 +3,13 @@ name = "rv-api"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "santivgo",email = "requiemsantiago@gmail.com"}
-    {name = "alyssonhenri",email = ""}
+    {name = "santivgo",email = "requiemsantiago@gmail.com"},
+    {name = "alyssonhenri"}
 ]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
+    "django (>=5.2.1,<6.0.0)"
 ]
 
 [tool.poetry]
@@ -34,4 +35,3 @@ qos = { cmd ="black src & isort src & pylint src", help="Executa todas as ferram
 
 [FORMAT]
 max-line-length=88
-disable=C0330
