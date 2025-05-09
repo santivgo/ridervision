@@ -39,8 +39,8 @@
           left: 20px
 
           &__icon
-            width: 180px
-            height: 180px
+            width: 16vh
+            height: 16vh
             border: 8px solid rgb(37,16,16)
             border-radius: 50%
             object-fit: cover
@@ -48,8 +48,8 @@
 
           p
             margin-top: 50px
-            margin-left: 20px
-            font-size: 18px
+            margin-left: 10px
+            font-size: 0.7vw
             font-weight: bold
             color: white
             font-family: "Special Gothic Expanded One"
@@ -62,19 +62,38 @@
             margin-right: 30px
     
         &__comments
-            height: 600px
-            background-color: blue
+          flex: 1
+          display: flex
+          flex-direction: column
+          margin-left: 5%
+          margin-right: 2%
+          padding-right: 10px
+          overflow-y: auto
+          max-height: 70vh
+
+          &::-webkit-scrollbar
+              height: 5px
+              width: 5px
+          &::-webkit-scrollbar-thumb
+              background: #312527
+              border-radius: 10px
+          &::-webkit-scrollbar-track
+              background: transparent
+
+          .rv-container__comment-area__display
             display: flex
             flex-direction: column
-            margin-left: 5%
-            margin-right: 5%  
             gap: 20px
-            width: full
-            justify-content: center
-            justify-items: center
+
 
     &__rider
-      width: 45%
+      width: 55%
 
     &__favoritos
-      width: 25%
+      width: 15%
+      height: 100%
+      margin-top: 2%
+      display: flex
+      flex-direction: column
+      justify-items: center
+      justify-content: center 

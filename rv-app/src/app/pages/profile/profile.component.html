@@ -19,13 +19,27 @@
                 </div>
             </div>
         </div>
+
         <app-divider-horizontal></app-divider-horizontal>
+
         <div class="rv-container__card__rider">
-            display do river selecionado
+            <app-card-header>
+                <div class="rv-c-card__header__rider">
+                    <img [src]="imgSrc" alt="{{riderName}}" />
+                </div>
+                <div class="rv-c-card__header__rider__text">
+                    <h1>{{riderName}}</h1>
+                    <p>{{riderDescription}}</p>
+                </div>
+            </app-card-header>
         </div>
+
         <app-divider-horizontal></app-divider-horizontal>
+        
         <div class="rv-container__card__favoritos">
-            display riders favoritos
+            <app-button-icon *ngFor="let rider of riders" [isCollapsed]="isCollapsed" [collapseRef]="collapse"
+                [rider]="rider" (em)="changeRiderCollapse($event)">
+            </app-button-icon>
         </div>
     </div>
 </div>
