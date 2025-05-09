@@ -1,0 +1,31 @@
+<div class="rv-container">
+    <div class="rv-container__card">
+        <div class="rv-container__card__perfil">
+            <div class="rv-container__card__perfil__content">
+                <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
+                <div class="rv-container__card__perfil__content__dados">
+                    <img class="rv-container__card__perfil__content__dados__icon" src="/assets/foto-perfil-mock.jpg">
+                    <p>NOME_MUITO_BASSA</p>
+                </div>
+                <div class="rv-container__card__perfil__content__bio">
+                    <p>BIO_DA_CONTA</p>
+                </div>
+                <div class="rv-container__card__perfil__content__comments">
+                    <div class="rv-container__comment-area__display">
+                        <ng-container *ngFor="let c of comments">
+                            <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-divider-horizontal></app-divider-horizontal>
+        <div class="rv-container__card__rider">
+            display do river selecionado
+        </div>
+        <app-divider-horizontal></app-divider-horizontal>
+        <div class="rv-container__card__favoritos">
+            display riders favoritos
+        </div>
+    </div>
+</div>

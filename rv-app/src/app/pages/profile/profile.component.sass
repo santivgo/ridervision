@@ -1,0 +1,80 @@
+.rv-container
+  display: flex
+  align-items: center
+  flex-direction: row
+  width: 100%
+  height: 100vh
+
+  &__card
+    display: flex
+    flex-direction: row
+    width: 100%
+    height: 94vh
+    background-color: rgba(27, 27, 27, 0.6)
+    overflow: hidden
+    margin: 2%
+    border-radius: 1vh
+
+    &__perfil
+      width: 30%
+
+      &__content
+        display: flex
+        flex-direction: column
+        width: 100%
+        position: relative
+
+        &__banner
+          width: 100%
+          height: 200px
+          object-fit: cover
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3)
+
+        &__dados
+          display: flex
+          flex-direction: row
+          align-items: center
+          position: absolute
+          top: 130px
+          left: 20px
+
+          &__icon
+            width: 180px
+            height: 180px
+            border: 8px solid rgb(37,16,16)
+            border-radius: 50%
+            object-fit: cover
+            background-color: white
+
+          p
+            margin-top: 50px
+            margin-left: 20px
+            font-size: 18px
+            font-weight: bold
+            color: white
+            font-family: "Special Gothic Expanded One"
+       
+        &__bio
+            max-height: 80px
+            overflow: auto
+            margin-top: 130px
+            margin-left: 30px
+            margin-right: 30px
+    
+        &__comments
+            height: 600px
+            background-color: blue
+            display: flex
+            flex-direction: column
+            margin-left: 5%
+            margin-right: 5%  
+            gap: 20px
+            width: full
+            justify-content: center
+            justify-items: center
+
+    &__rider
+      width: 45%
+
+    &__favoritos
+      width: 25%
