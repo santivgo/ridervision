@@ -33,7 +33,6 @@ export class HeaderComponent{
     return undefined
   }
   onButtonClicked(event: MouseEvent){
-    console.log(this.btnListBot)
 
     this.selectedButton = (event.target as HTMLDivElement).innerText 
     const btn = this.getButton(this.selectedButton)
