@@ -7,9 +7,7 @@
                     <img class="rv-container__card__perfil__content__dados__icon" src="/assets/foto-perfil-mock.jpg">
                     <p>NOME_MUITO_BASSA</p>
                 </div>
-                <div class="rv-container__card__perfil__content__bio">
-                    <p>BIO_DA_CONTA</p>
-                </div>
+
                 <div class="rv-container__card__perfil__content__comments">
                     <div class="rv-container__comment-area__display">
                         <ng-container *ngFor="let c of comments">
@@ -25,11 +23,10 @@
         <div class="rv-container__card__rider">
             <app-card-header>
                 <div class="rv-c-card__header__rider">
-                    <img [src]="imgSrc" alt="{{riderName}}" />
+                    <img [src]="riders[0].imgs.rider_img_xl" alt="{{riders[0].name}}" />
                 </div>
                 <div class="rv-c-card__header__rider__text">
-                    <h1>{{riderName}}</h1>
-                    <p>{{riderDescription}}</p>
+                    <h1>{{ riders[0].name.replace('Kamen Rider ', '').replace(' (TV Show)', '') }}</h1>
                 </div>
             </app-card-header>
         </div>
