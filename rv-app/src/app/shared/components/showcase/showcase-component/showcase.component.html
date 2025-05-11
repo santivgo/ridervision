@@ -4,8 +4,8 @@
     </div>
 
     <div class="showcase-container">
-        <app-showcase-line *ngFor="let localRiderList of lineRidersList$ | async"
-            [riders]="localRiderList"></app-showcase-line>
+        <div *ngIf="lineRidersList"></div>
+        <app-showcase-line *ngFor="let localRiderList of lineRidersList" [riders]="localRiderList"></app-showcase-line>
 
     </div>
 
