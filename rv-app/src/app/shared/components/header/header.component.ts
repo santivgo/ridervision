@@ -15,7 +15,12 @@ import { Router, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class HeaderComponent{
 
   constructor(private router: Router){}
-  btnList: ILinkMenu[] = [{title: 'Rider do Dia', route: "" }, {title: 'Riders', route: "riders" }, {title: 'API', route: "" }]
+  btnList: ILinkMenu[] = [{title: 'Rider do Dia', route: "" }, {title: 'Riders', route: "riders" }, {title: 'API', route: "" }, {title: 'Conta', route: "login" }, {title: 'Logout', route: "riders" }]
+
+  btnListUpper: ILinkMenu[] = this.btnList.slice(0, 2)
+  btnListBot: ILinkMenu[] = this.btnList.slice(2)
+
+  
 
   selectedButton: string = this.btnList[0].title
   getButton(title: string): ILinkMenu | undefined{
@@ -28,6 +33,7 @@ export class HeaderComponent{
     return undefined
   }
   onButtonClicked(event: MouseEvent){
+
     this.selectedButton = (event.target as HTMLDivElement).innerText 
     const btn = this.getButton(this.selectedButton)
     if (btn){
