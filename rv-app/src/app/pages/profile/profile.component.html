@@ -35,7 +35,7 @@
         
         <div class="rv-container__card__favoritos" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" [animation]="false">
             <app-button-icon *ngFor="let rider of riders" [isCollapsed]="isCollapsed" [collapseRef]="collapse"
-                [rider]="rider" (em)="changeRiderCollapse($event)">
+                [rider]="rider" (em)="selectRider($event)">
             </app-button-icon>
         </div>
     </div>
