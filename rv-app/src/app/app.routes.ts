@@ -4,6 +4,7 @@ import { ShowcaseRiderComponent } from './pages/showcase-rider/showcase-rider.co
 import { LoginComponent } from './pages/forms/login/login.component';
 import { CadastroComponent } from './pages/forms/cadastro/cadastro.component';
 import { ApiPageComponent } from './pages/api-page/api-page.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     {path: '', component: MainCardRiderComponent},
@@ -11,6 +12,6 @@ export const routes: Routes = [
     {path: 'api', component: ApiPageComponent},
     {path: 'login', component: LoginComponent},
     {path: 'cadastro', component: CadastroComponent},
-
+    {path: 'perfil', component: ProfileComponent},
 
 ];

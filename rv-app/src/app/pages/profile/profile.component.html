@@ -1,0 +1,42 @@
+<div class="rv-container">
+    <div class="rv-container__card">
+        <div class="rv-container__card__perfil">
+            <div class="rv-container__card__perfil__content">
+                <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
+                <div class="rv-container__card__perfil__content__dados">
+                    <img class="rv-container__card__perfil__content__dados__icon" src="/assets/foto-perfil-mock.jpg">
+                    <p>NOME_MUITO_BASSA</p>
+                </div>
+
+                <div class="rv-container__card__perfil__content__comments">
+                    <div class="rv-container__comment-area__display">
+                        <ng-container *ngFor="let c of comments">
+                            <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-divider-horizontal></app-divider-horizontal>
+
+        <div class="rv-container__card__rider">
+            <app-card-header>
+                <div class="rv-c-card__header__rider">
+                    <img [src]="imgSrc" [alt]="seriesName" />
+                </div>
+                <div class="rv-c-card__header__rider__text">
+                    <h1>{{ seriesName }}</h1>
+                </div>
+            </app-card-header>
+        </div>
+
+        <app-divider-horizontal></app-divider-horizontal>
+        
+        <div class="rv-container__card__favoritos" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed" [animation]="false">
+            <app-button-icon *ngFor="let rider of riders" [isCollapsed]="isCollapsed" [collapseRef]="collapse"
+                [rider]="rider" (em)="selectRider($event)">
+            </app-button-icon>
+        </div>
+    </div>
+</div>
