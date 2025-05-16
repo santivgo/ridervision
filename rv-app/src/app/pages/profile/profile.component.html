@@ -4,8 +4,18 @@
             <div class="rv-container__card__perfil__content">
                 <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
                 <div class="rv-container__card__perfil__content__dados">
+<<<<<<< Updated upstream
                     <img class="rv-container__card__perfil__content__dados__icon" [src]="profileImg">
                     <p>{{username}}</p>
+=======
+<<<<<<< Updated upstream
+                    <img class="rv-container__card__perfil__content__dados__icon" src="/assets/foto-perfil-mock.jpg">
+                    <p>NOME_MUITO_BASSA</p>
+=======
+                    <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img">
+                    <p>{{user.username}}</p>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 </div>
 
                 <div class="rv-container__card__perfil__content__comments">
@@ -23,10 +33,10 @@
         <div class="rv-container__card__rider">
             <app-card-header>
                 <div class="rv-c-card__header__rider">
-                    <img [src]="imgSrc" [alt]="seriesName" />
+                    <img [src]="riderCollapse.imgs.rider_img_xl" [alt]="seriesName" />
                 </div>
                 <div class="rv-c-card__header__rider__text">
-                    <h1>{{ seriesName }}</h1>
+                    <h1>{{ riderCollapse.name | shortName | uppercase }}</h1>
                 </div>
             </app-card-header>
         </div>
