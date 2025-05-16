@@ -12,6 +12,7 @@ import { CardHeaderDirective } from '../../core/directives/card-header.directive
 import { ButtonIconComponent } from '../../shared/components/showcase/showcase-line/button-icon/button-icon.component';
 import { IUser } from '../../core/interfaces/user';
 import { ShortNamePipe } from '../../core/pipes/short-name.pipe';
+import { UsersService } from '../../core/services/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -76,8 +77,6 @@ export class ProfileComponent {
     this.riderCollapse = rider;
   }
 
-<<<<<<< Updated upstream
-=======
   getUser(): void {
     const userId = 1;
     this.usersService.getUser(userId).subscribe((data) => {
@@ -86,6 +85,5 @@ export class ProfileComponent {
     });
   }
 
->>>>>>> Stashed changes
 
 }
