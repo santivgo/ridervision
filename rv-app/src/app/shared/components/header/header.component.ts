@@ -15,7 +15,7 @@ import { Router, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class HeaderComponent{
 
   constructor(private router: Router){}
-  btnList: ILinkMenu[] = [{title: 'Rider do Dia', route: "" }, {title: 'Riders', route: "riders" }, {title: 'API', route: "" }, {title: 'Conta', route: "login" }, {title: 'Logout', route: "riders" }]
+  btnList: ILinkMenu[] = [{title: 'Rider do Dia', route: "" }, {title: 'Riders', route: "riders" }, {title: 'API', route: "api" }, {title: 'Conta', route: "login" }, {title: 'Logout', route: "#" }]
 
   btnListUpper: ILinkMenu[] = this.btnList.slice(0, 2)
   btnListBot: ILinkMenu[] = this.btnList.slice(2)

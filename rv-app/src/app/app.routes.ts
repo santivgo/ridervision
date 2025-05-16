@@ -3,10 +3,12 @@ import { MainCardRiderComponent } from './pages/main-card-rider/main-card-rider.
 import { ShowcaseRiderComponent } from './pages/showcase-rider/showcase-rider.component';
 import { LoginComponent } from './pages/forms/login/login.component';
 import { CadastroComponent } from './pages/forms/cadastro/cadastro.component';
+import { ApiPageComponent } from './pages/api-page/api-page.component';
 
 export const routes: Routes = [
     {path: '', component: MainCardRiderComponent},
     {path: 'riders', component: ShowcaseRiderComponent},
+    {path: 'api', component: ApiPageComponent},
     {path: 'login', component: LoginComponent},
     {path: 'cadastro', component: CadastroComponent},
 
