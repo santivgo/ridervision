@@ -5,6 +5,7 @@ import { NgbCollapse, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { IShow } from '../../core/interfaces/show';
 import { CommentService } from '../../core/services/comment.service';
 import { SeriesService } from '../../core/services/series.service';
+import { UsersService } from '../../core/services/users.service';
 
 import { DividerHorizontalComponent } from '../../shared/components/dividers/divider-horizontal/divider-horizontal.component';
 import { CommentComponent } from '../../shared/components/comment/comment.component';
@@ -30,6 +31,7 @@ export class ProfileComponent {
   @Input() riders: IShow[] = [];
 
   imgSrc: string = '';
+  username: string = '';
   seriesName: string = '';
   isCollapsed: boolean = true;
   riderCollapse: IShow = {} as IShow;
@@ -37,10 +39,12 @@ export class ProfileComponent {
 
   constructor(
     private commentsService: CommentService,
-    private seriesService: SeriesService
+    private seriesService: SeriesService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {
+    this.getUser();
     this.loadComments();
     this.loadSeries();
   }
@@ -70,6 +74,13 @@ export class ProfileComponent {
     this.riderCollapse = rider;
     this.imgSrc = rider.imgs.rider_img_xl; // Temporariamente usando essa imagem enquanto o banco não está com as imagens PNG de poses :v
     this.seriesName = rider.name.replace('Kamen Rider ', '').replace(' (TV Show)', '');
+  }
+
+  getUser(): void {
+    const userId = 1;
+    this.usersService.getUser(userId).subscribe((data) => {
+      this.username = data.username;
+    });
   }
 
 

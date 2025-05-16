@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-main-card-rider',
-  imports: [CardRiderComponent, CardHeaderDirective, DividerHorizontalComponent, CardContentDirective, DividerHorizontalGradientComponent, CommentComponent, HorizontalSepComponent, CommentInputComponent, CommonModule],
+  imports: [CardRiderComponent, CardHeaderDirective, DividerHorizontalComponent, CardContentDirective, DividerHorizontalGradientComponent, CommentComponent, CommentInputComponent, CommonModule],
   templateUrl: './main-card-rider.component.html',
   styleUrl: './main-card-rider.component.sass'
 })
