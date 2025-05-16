@@ -318,7 +318,8 @@
   "users": [
     {
       "id": 1,
-      "username": "Calros"
+      "username": "Calros",
+      "img": "/assets/foto-perfil-mock.jpg"
     }
   ]
 }

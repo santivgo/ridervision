@@ -32,6 +32,7 @@ export class ProfileComponent {
 
   imgSrc: string = '';
   username: string = '';
+  profileImg: string = '';
   seriesName: string = '';
   isCollapsed: boolean = true;
   riderCollapse: IShow = {} as IShow;
@@ -80,6 +81,7 @@ export class ProfileComponent {
     const userId = 1;
     this.usersService.getUser(userId).subscribe((data) => {
       this.username = data.username;
+      this.profileImg = data.img;
     });
   }
 
