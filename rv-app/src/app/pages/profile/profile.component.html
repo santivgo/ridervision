@@ -2,11 +2,24 @@
     <div class="rv-container__card">
         <div class="rv-container__card__perfil">
             <div class="rv-container__card__perfil__content">
-                <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
-                <div class="rv-container__card__perfil__content__dados">
-                    <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img">
-                    <p>{{user.username}}</p>
+                <div class="rv-container__card__perfil__top">
+                    <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
+                    <div class="rv-container__card__perfil__content__dados">
+                        <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img">
+                        <p>{{user.username}}</p>
+                    </div>
                 </div>
+
+                <nav class="menu-section">
+                    <div class="menu-section__item">
+                        <span (click)="changeSection('posts')" [class.clicked]="selectedSection === 'posts'"
+                            class="menu-section__link">Posts</span>
+                    </div>
+                    <div class="menu-section__item">
+                        <span (click)="changeSection('fav')" [class.clicked]="selectedSection === 'fav'"
+                            class="menu-section__link">Favoritos</span>
+                    </div>
+                </nav>
 
                 <div class="rv-container__card__perfil__content__comments">
                     <div class="rv-container__comment-area__display">
@@ -20,24 +33,4 @@
 
         <app-divider-horizontal></app-divider-horizontal>
 
-        <div class="rv-container__card__rider">
-            <app-card-header>
-                <div class="rv-c-card__header__rider">
-                    <img [src]="riderCollapse.imgs.rider_img_xl" [alt]="seriesName" />
-                </div>
-                <div class="rv-c-card__header__rider__text">
-                    <h1>{{ riderCollapse.name | shortName | uppercase }}</h1>
-                </div>
-            </app-card-header>
-        </div>
-
-        <app-divider-horizontal></app-divider-horizontal>
-
-        <div class="rv-container__card__favoritos" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed"
-            [animation]="false">
-            <app-button-icon *ngFor="let rider of riders" [isCollapsed]="isCollapsed" [collapseRef]="collapse"
-                [rider]="rider" (em)="selectRider($event)">
-            </app-button-icon>
-        </div>
     </div>
-</div>

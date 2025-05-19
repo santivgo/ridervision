@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommentService } from '../../../core/services/comment.service';
+import { CommentService } from '../../../../core/services/comment.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({

@@ -6,10 +6,10 @@ import { CardContentDirective } from '../../core/directives/card-content.directi
 import { DividerHorizontalGradientComponent } from '../../shared/components/dividers/divider-horizontal-gradient/divider-horizontal-gradient.component';
 import { CommentComponent } from '../../shared/components/comment/comment.component';
 import { HorizontalSepComponent } from '../../shared/components/dividers/horizontal-sep/horizontal-sep.component';
-import { CommentInputComponent } from '../../shared/components/comment-input/comment-input.component';
 import { CommentService } from '../../core/services/comment.service';
 import { CommonModule } from '@angular/common'
 import { IComment } from '../../core/interfaces/models/comment.interface';
+import { CommentInputComponent } from '../../shared/components/comment/comment-input/comment-input.component';
 
 @Component({
   selector: 'app-main-card-rider',

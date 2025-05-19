@@ -13,7 +13,7 @@ import { ShortNamePipe } from '../../core/pipes/short-name.pipe';
 import { UsersService } from '../../core/services/users.service';
 import { IShow } from '../../core/interfaces/models/show.interface';
 import { IUser } from '../../core/interfaces/models/user.interface';
-import { IComment } from '../../core/interfaces/models/comment.interface';
+import { IComment, ICommentPreview } from '../../core/interfaces/models/comment.interface';
 
 @Component({
   selector: 'app-profile',
@@ -34,13 +34,15 @@ export class ProfileComponent {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
   @Input() riders: IShow[] = [];
 
+  selectedSection: string = 'posts'; 
+
 
   user: IUser = {} as IUser;
   imgSrc: string = '';
   seriesName: string = '';
   isCollapsed: boolean = true;
   riderCollapse: IShow = {} as IShow;
-  comments: IComment[] = [];
+  comments: ICommentPreview[] = [];
 
   constructor(
     private commentsService: CommentService,
@@ -51,8 +53,13 @@ export class ProfileComponent {
   ngOnInit(): void {
     this.loadComments();
     this.loadSeries();
+    this.getUser();
   }
 
+  
+  changeSection(section: string): void{
+    this.selectedSection = section
+  }
   private loadComments(): void {
     this.commentsService.getComments().subscribe((data) => {
       this.comments = data;
@@ -66,6 +73,15 @@ export class ProfileComponent {
     });
   }
 
+
+  private getUser(): void {
+    const userId = 1;
+    this.usersService.getUser(userId).subscribe((data) => {
+      console.log(data.img)
+      this.user.username = data.username;
+      this.user.img = data.img;
+    })};
+
   private setRandomRider(): void {
     if (this.riders.length) {
       const index = Math.floor(Math.random() * this.riders.length);
@@ -78,13 +94,6 @@ export class ProfileComponent {
     this.riderCollapse = rider;
   }
 
-  getUser(): void {
-    const userId = 1;
-    this.usersService.getUser(userId).subscribe((data) => {
-      this.user.username = data.username;
-      this.user.img = data.img;
-    });
-  }
 
 
 }
