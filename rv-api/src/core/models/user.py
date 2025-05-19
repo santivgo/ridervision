@@ -18,3 +18,4 @@ class User(models.Model):
     img = models.ImageField(upload_to="media/users")
     favorite_shows = models.ManyToManyField(Show)
 
+
