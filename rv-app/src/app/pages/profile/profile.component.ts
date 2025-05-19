@@ -5,12 +5,14 @@ import { NgbCollapse, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { IShow } from '../../core/interfaces/show';
 import { CommentService } from '../../core/services/comment.service';
 import { SeriesService } from '../../core/services/series.service';
-import { UsersService } from '../../core/services/users.service';
 
 import { DividerHorizontalComponent } from '../../shared/components/dividers/divider-horizontal/divider-horizontal.component';
 import { CommentComponent } from '../../shared/components/comment/comment.component';
 import { CardHeaderDirective } from '../../core/directives/card-header.directive';
 import { ButtonIconComponent } from '../../shared/components/showcase/showcase-line/button-icon/button-icon.component';
+import { IUser } from '../../core/interfaces/user';
+import { ShortNamePipe } from '../../core/pipes/short-name.pipe';
+import { UsersService } from '../../core/services/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,15 +26,16 @@ import { ButtonIconComponent } from '../../shared/components/showcase/showcase-l
     CommentComponent,
     CardHeaderDirective,
     ButtonIconComponent,
+    ShortNamePipe
   ]
 })
 export class ProfileComponent {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
   @Input() riders: IShow[] = [];
 
+
+  user: IUser = {} as IUser;
   imgSrc: string = '';
-  username: string = '';
-  profileImg: string = '';
   seriesName: string = '';
   isCollapsed: boolean = true;
   riderCollapse: IShow = {} as IShow;
@@ -45,7 +48,6 @@ export class ProfileComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getUser();
     this.loadComments();
     this.loadSeries();
   }
@@ -73,15 +75,13 @@ export class ProfileComponent {
 
   selectRider(rider: IShow): void {
     this.riderCollapse = rider;
-    this.imgSrc = rider.imgs.rider_img_xl; // Temporariamente usando essa imagem enquanto o banco não está com as imagens PNG de poses :v
-    this.seriesName = rider.name.replace('Kamen Rider ', '').replace(' (TV Show)', '');
   }
 
   getUser(): void {
     const userId = 1;
     this.usersService.getUser(userId).subscribe((data) => {
-      this.username = data.username;
-      this.profileImg = data.img;
+      this.user.username = data.username;
+      this.user.img = data.img;
     });
   }
 

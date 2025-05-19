@@ -32,6 +32,13 @@ export class HeaderComponent{
     }
     return undefined
   }
+
+
+  setHome(){
+    this.selectedButton = this.btnList[0].title
+    this.router.navigate([this.btnList[0].route])
+  }
+
   onButtonClicked(event: MouseEvent){
 
     this.selectedButton = (event.target as HTMLDivElement).innerText 
