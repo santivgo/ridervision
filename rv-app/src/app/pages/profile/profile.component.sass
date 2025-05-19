@@ -16,7 +16,7 @@
     border-radius: 1vh
 
     &__perfil
-      width: 30%
+      width: 40%
       background-color: #1B1B1B
 
       &__top
@@ -26,6 +26,8 @@
         display: flex
         flex-direction: column
         width: 100%
+        overflow: hidden
+
         position: relative
 
         &__banner
@@ -83,28 +85,9 @@
             display: flex
             flex-direction: column
             gap: 20px
-
-    &__rider
-      width: 55%
-
-    &__favoritos
-      width: 15%
-      height: 100%
-      padding-top: 15%
-      display: flex
-      overflow: auto
-      flex-direction: column
-      justify-items: center
-      justify-content: center
-
-      &::-webkit-scrollbar
-        height: 5px
-        width: 5px
-      &::-webkit-scrollbar-thumb
-        background: #312527
-        border-radius: 10px
-      &::-webkit-scrollbar-track
-        background: transparent
+    &__posts
+      width: 100%
+      background-color: #1B1B1B
 
 .menu-section
   margin-top: 2%

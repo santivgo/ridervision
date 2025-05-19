@@ -14,6 +14,7 @@ import { UsersService } from '../../core/services/users.service';
 import { IShow } from '../../core/interfaces/models/show.interface';
 import { IUser } from '../../core/interfaces/models/user.interface';
 import { IComment, ICommentPreview } from '../../core/interfaces/models/comment.interface';
+import { PostComponent } from "../../shared/components/post/post.component";
 
 @Component({
   selector: 'app-profile',
@@ -27,8 +28,9 @@ import { IComment, ICommentPreview } from '../../core/interfaces/models/comment.
     CommentComponent,
     CardHeaderDirective,
     ButtonIconComponent,
-    ShortNamePipe
-  ]
+    ShortNamePipe,
+    PostComponent
+]
 })
 export class ProfileComponent {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
