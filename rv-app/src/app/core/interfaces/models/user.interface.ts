@@ -1,4 +1,4 @@
-import { IShow } from './show';
+import { IShow } from './show.interface';
 
 export interface IUser{
     id: BigInteger,

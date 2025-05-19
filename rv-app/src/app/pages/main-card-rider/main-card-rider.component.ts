@@ -9,6 +9,7 @@ import { HorizontalSepComponent } from '../../shared/components/dividers/horizon
 import { CommentInputComponent } from '../../shared/components/comment-input/comment-input.component';
 import { CommentService } from '../../core/services/comment.service';
 import { CommonModule } from '@angular/common'
+import { IComment } from '../../core/interfaces/models/comment.interface';
 
 @Component({
   selector: 'app-main-card-rider',
@@ -22,7 +23,7 @@ export class MainCardRiderComponent implements OnInit {
   riderDescription: string = 'from kamen rider gotchard';
   textAreaTitle: string = 'BASE FORM';
   textAreaContent: string = `Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.`;
-  comments: any[] = [];
+  comments: IComment[] = [];
   intervalId: any;
 
   constructor(private commentsService: CommentService) {}

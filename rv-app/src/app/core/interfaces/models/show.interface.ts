@@ -5,9 +5,8 @@ export interface IShow {
 	name: string;
 	year: number;
 	synopsis: string;
-	imgs: {
+	imgs: {	
         rider_img_xl: string;
-	    //rider_img_bg: string;
 		rider_img_sm: string;
     };
 }

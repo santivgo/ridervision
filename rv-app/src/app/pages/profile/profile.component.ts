@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbCollapse, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { IShow } from '../../core/interfaces/show';
 import { CommentService } from '../../core/services/comment.service';
 import { SeriesService } from '../../core/services/series.service';
 
@@ -10,9 +9,11 @@ import { DividerHorizontalComponent } from '../../shared/components/dividers/div
 import { CommentComponent } from '../../shared/components/comment/comment.component';
 import { CardHeaderDirective } from '../../core/directives/card-header.directive';
 import { ButtonIconComponent } from '../../shared/components/showcase/showcase-line/button-icon/button-icon.component';
-import { IUser } from '../../core/interfaces/user';
 import { ShortNamePipe } from '../../core/pipes/short-name.pipe';
 import { UsersService } from '../../core/services/users.service';
+import { IShow } from '../../core/interfaces/models/show.interface';
+import { IUser } from '../../core/interfaces/models/user.interface';
+import { IComment } from '../../core/interfaces/models/comment.interface';
 
 @Component({
   selector: 'app-profile',
@@ -39,7 +40,7 @@ export class ProfileComponent {
   seriesName: string = '';
   isCollapsed: boolean = true;
   riderCollapse: IShow = {} as IShow;
-  comments: any[] = [];
+  comments: IComment[] = [];
 
   constructor(
     private commentsService: CommentService,

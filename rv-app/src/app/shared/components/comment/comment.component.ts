@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IComment } from '../../../core/interfaces/comment';
+import {ICommentPreview } from '../../../core/interfaces/models/comment.interface';
 
 @Component({
   selector: 'app-comment',
@@ -10,5 +10,5 @@ import { IComment } from '../../../core/interfaces/comment';
 export class CommentComponent {
 
   @Input({required: true, alias: 'comment'})
-  comment: IComment = {} as IComment;
+  comment: ICommentPreview = {} as ICommentPreview;
 }

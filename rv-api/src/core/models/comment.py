@@ -1,10 +1,10 @@
 from django.db import models
 from core.models.user import User
-from core.models.show import Show
+from core.models.post import Post
 
 class Comment(models.Model):
     id = models.AutoField(primary_key=True)
     content = models.CharField(blank=False, null=False)
     date = models.DateField(blank=False, null=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    show = models.ManyToManyField(Show)
+    author = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

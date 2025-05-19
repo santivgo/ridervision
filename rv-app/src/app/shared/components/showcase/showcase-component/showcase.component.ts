@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShowcaseLineComponent } from '../showcase-line/showcase-line.component';
-import { IShow } from '../../../../core/interfaces/show';
 import { SeriesService } from '../../../../core/services/series.service';
 import { Observable, of, Subscribable, Subscription } from 'rxjs';
 import { BigTitleComponent } from "../../header/big-title/big-title.component";
 import { TextTitleDirective } from "../../header/big-title/text-title.directive";
+import { IShow } from '../../../../core/interfaces/models/show.interface';
 @Component({
   selector: 'app-showcase',
   imports: [ShowcaseLineComponent, CommonModule, BigTitleComponent, TextTitleDirective],

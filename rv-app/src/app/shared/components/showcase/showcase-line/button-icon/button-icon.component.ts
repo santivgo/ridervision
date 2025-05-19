@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, input, Input, Output, ViewChild } from '@angular/core';
 import { NgbCollapse, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { IShow } from '../../../../../core/interfaces/show';
 import { ShortNamePipe } from '../../../../../core/pipes/short-name.pipe';
+import { IShow } from '../../../../../core/interfaces/models/show.interface';
 
 @Component({
   selector: 'app-button-icon',
