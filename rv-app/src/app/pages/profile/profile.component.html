@@ -21,13 +21,22 @@
                     </div>
                 </nav>
 
-                <div class="rv-container__card__perfil__content__comments">
-                    <div class="rv-container__comment-area__display">
-                        <ng-container *ngFor="let c of comments">
-                            <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
-                        </ng-container>
+                <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionPost : sectionFav">
+                </ng-container>
+
+                <ng-template #sectionPost>
+                    <div class="rv-container__card__perfil__content__comments">
+                        <div class="rv-container__comment-area__display">
+                            <ng-container *ngFor="let c of comments">
+                                <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
+                            </ng-container>
+                        </div>
                     </div>
-                </div>
+                </ng-template>
+                <ng-template #sectionFav></ng-template>
+
+
+
             </div>
 
 
