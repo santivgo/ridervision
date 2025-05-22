@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { IShow } from '../../../core/interfaces/models/show.interface';
+import { ShowcaseCardImgDirective } from '../../../core/directives/card-poster.directive';
 
 @Component({
   selector: 'app-mural',
-  imports: [],
+  imports: [ShowcaseCardImgDirective],
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.sass'
 })
