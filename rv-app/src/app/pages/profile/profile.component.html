@@ -34,8 +34,14 @@
                     </div>
                 </ng-template>
                 <ng-template #sectionMiniFav>
-                    <app-fav-show-btn (riderEmitter)="changeShow($event)" [rider]="rider"
-                        *ngFor="let rider of favRiders"></app-fav-show-btn>
+
+
+                    <div class="rv-container__card__perfil__stats">
+                        <h5>{{'Séries assistidas'}}</h5>
+
+                        <app-stats></app-stats>
+                    </div>
+
                 </ng-template>
 
 
@@ -57,7 +63,7 @@
             <app-post [user]="user"></app-post>
         </ng-template>
         <ng-template #sectionFav>
-            <app-mural [show]="actualShow"></app-mural>
+            <app-mural></app-mural>
         </ng-template>
 
 
