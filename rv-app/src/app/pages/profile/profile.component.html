@@ -21,22 +21,53 @@
                     </div>
                 </nav>
 
-                <div class="rv-container__card__perfil__content__comments">
-                    <div class="rv-container__comment-area__display">
-                        <ng-container *ngFor="let c of comments">
-                            <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
-                        </ng-container>
+                <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionMiniPost : sectionMiniFav">
+                </ng-container>
+
+                <ng-template #sectionMiniPost>
+                    <div class="rv-container__card__perfil__content__comments">
+                        <div class="rv-container__comment-area__display">
+                            <ng-container *ngFor="let c of comments">
+                                <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
+                            </ng-container>
+                        </div>
                     </div>
-                </div>
+                </ng-template>
+                <ng-template #sectionMiniFav>
+
+
+                    <div class="rv-container__card__perfil__stats">
+                        <h5>{{'Séries assistidas'}}</h5>
+
+                        <app-stats></app-stats>
+                    </div>
+
+                </ng-template>
+
+
+
             </div>
 
 
         </div>
         <app-divider-horizontal></app-divider-horizontal>
 
-        <div class="rv-container__card__posts">
-            <app-post [user]="user"></app-post>
+
+        <div class="rv-container__card__side">
+            <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionPost : sectionFav">
+            </ng-container>
         </div>
+
+
+        <ng-template #sectionPost>
+            <app-post [user]="user"></app-post>
+        </ng-template>
+        <ng-template #sectionFav>
+            <app-mural></app-mural>
+        </ng-template>
+
+
+
 
     </div>
 </div>
