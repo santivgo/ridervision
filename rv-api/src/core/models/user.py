@@ -1,5 +1,4 @@
 from django.db import models
-from core.models.show import Show   
 from core.models.rider import Rider
 
 class User(models.Model):
@@ -15,10 +14,10 @@ class User(models.Model):
     
     """
     id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=15,unique=True, null=False, blank=False)
+    username = models.CharField(max_length=15, unique=True, null=False, blank=False)
     password = models.CharField(null=False, blank=False)
     img = models.ImageField(upload_to="media/users")
-    favorite_shows = models.ManyToManyField(Show, blank=True)
+    favorite_shows = models.ManyToManyField("core.Show", blank=True) 
     favorite_riders = models.ManyToManyField(Rider, blank=True)
 
     def __str__(self):
