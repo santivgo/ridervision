@@ -13,13 +13,9 @@
         <img src="/assets/image-5.png">
     </div>
     <div class="post-section__bottom"> 
-        <!-- talvez depois adicionar como um componente proprio, n sei sé é mlhor -->
-        <div class="post-section__bottom__tag">
-            <h1>Kamen Rider Marika</h1> 
-            <button class="close-icon" aria-label="Remove tag">
-                <i class="fas fa-xmark"></i>
-            </button>
-        </div>
+        <ng-container *ngFor="let rider of post.tagged_riders">
+            <app-tag [tagged_rider]="rider"></app-tag>
+        </ng-container>
         <button class="post-section__bottom__comment" aria-label="Add comment">
             <i class="fa-solid fa-message"></i>
         </button>

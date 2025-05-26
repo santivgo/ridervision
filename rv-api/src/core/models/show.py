@@ -5,6 +5,16 @@ from core.models.user import User
 
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
+# tive que fazer isso pq na hora de fazer upload das imagens dava esse erro
+# 'A sintaxe do nome do arquivo, do nome do diretório ou do rótulo do volume está incorreta:'
+
+def upload_show_poster(instance, arquivo):
+    return f"media/shows/posters/{instance.name}/{arquivo}"
+
+def upload_show_icon(instance, arquivo):
+    return f"media/shows/icons/{instance.name}/{arquivo}_sm"
+
 class Show(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(blank=False, null=False)
@@ -20,3 +30,4 @@ class FavoriteShow(models.Model):
     fav_rider_2 = models.ForeignKey(Rider, on_delete=models.CASCADE)
     fav_rider_3 = models.ForeignKey(Rider, on_delete=models.CASCADE)
     show_review = models.CharField(blank=True, null=False)
+
