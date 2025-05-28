@@ -52,5 +52,5 @@
 - [ ] Montar endpoints
 
 #### OUTROS
-- [ ] Montar os scrapers que faltam (não sei se já tem todos, perguntar)
-- [ ] Rodar os scrapers
+- [ ] Montar os scrapers que faltam
+- [ ] Rodar os scrapers e popular bd
