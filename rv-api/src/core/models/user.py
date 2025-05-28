@@ -1,8 +1,5 @@
 from django.db import models
-from core.models.show import Show   
-from core.models.rider import Rider
-from utils.upload_img import upload_img_factory
-
+from core.utils.upload_img import upload_img
 class User(models.Model):
     """
     Classe do Usuário
@@ -18,9 +15,11 @@ class User(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=15,unique=True, null=False, blank=False)
     password = models.CharField(null=False, blank=False)
-    img = models.ImageField(upload_to=upload_img_factory('users'))
-    favorite_shows = models.ManyToManyField(Show, blank=True)
-    favorite_riders = models.ManyToManyField(Rider, blank=True)
+    img = models.ImageField(upload_to=upload_img)
+
+    #   Evitando imports circulares
+    favorite_shows = models.ManyToManyField('core.Show', blank=True)
+    favorite_riders = models.ManyToManyField('core.Rider', blank=True)
 
     def __str__(self):
         return f"{self.username}"

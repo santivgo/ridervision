@@ -1,5 +1,4 @@
-def upload_img_factory(categoria: str) -> function:
-    def upload_img(instance: any, filename):
-        return f"{categoria}/{instance.id}/{instance.id}"
-    return upload_img
+
+def upload_img(instance: any, filename):
+    return f"{instance._meta_.model_name}/{instance.id}/{instance.id}"
 
