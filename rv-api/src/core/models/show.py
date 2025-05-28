@@ -10,10 +10,7 @@ class Show(models.Model):
     synopsis = models.CharField(blank=True, null=False)
     show_img_xg = models.ImageField(upload_to=upload_img) # poster
     show_img_sm = models.ImageField(upload_to=upload_img) # icons
+    show_img_banner= models.ImageField(upload_to=upload_img) # banners
+    
 
-class FavoriteShow(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    show = models.ForeignKey(Show, on_delete=models.CASCADE)
-    fav_riders = models.ManyToManyField(Show, related_name="fav_shows")
-    show_review = models.CharField(blank=True, null=False)
 

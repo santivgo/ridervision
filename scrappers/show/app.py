@@ -1,7 +1,7 @@
 import json
 import requests
 from bs4 import BeautifulSoup
-from main_show import kamenRiderSeries
+from show.model import kamenRiderSeries
 from time import sleep
 
 

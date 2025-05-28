@@ -1,5 +1,7 @@
 from django.db import models
 from core.utils.upload_img import upload_img
+from core.models.show import Show
+
 class User(models.Model):
     """
     Classe do Usuário
@@ -23,3 +25,9 @@ class User(models.Model):
 
     def __str__(self):
         return f"{self.username}"
+
+class FavoriteShow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    fav_riders = models.ManyToManyField(Show, related_name="fav_shows")
+    show_review = models.CharField(blank=True, null=False)
