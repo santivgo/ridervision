@@ -54,3 +54,21 @@
                 cursor: pointer
                 transform: scaleX(-1)
                 margin-right: 5px
+
+    &__comments
+        display: flex
+        flex-direction: column
+        gap: 20px
+        overflow: auto
+        max-height: 150px
+        padding-bottom: 30px
+        padding-right: 5px
+
+        &::-webkit-scrollbar
+            height: 5px
+            width: 5px
+        &::-webkit-scrollbar-thumb
+            background: #312527
+            border-radius: 10px
+        &::-webkit-scrollbar-track
+            background: transparent
