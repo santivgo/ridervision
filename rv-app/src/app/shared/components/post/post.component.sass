@@ -1,10 +1,18 @@
+@keyframes fadeIn
+    0%
+        opacity: 0
+        transform: scale(0.9)
+    100%
+        opacity: 1
+        transform: scale(1)
+    
 .post-section
     margin-inline: 5%
 
     &__header
         display: flex
         height: 20vh
-        margin-top: 5%
+        margin-top: 2%
         margin-bottom: -8%
         img
             max-width: 200px
@@ -61,8 +69,9 @@
         gap: 20px
         overflow: auto
         max-height: 150px
-        padding-bottom: 30px
+        padding-bottom: 10%
         padding-right: 5px
+        animation: fadeIn 0.4s ease-out
 
         &::-webkit-scrollbar
             height: 5px
