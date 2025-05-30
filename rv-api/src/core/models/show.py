@@ -11,6 +11,8 @@ class Show(models.Model):
     show_img_xl = models.ImageField(upload_to=upload_img) # poster
     show_img_sm = models.ImageField(upload_to=upload_img) # icons
     show_img_banner = models.ImageField(upload_to=upload_img) # banners
+    show_img_logo = models.ImageField(upload_to=upload_img) # logo
+
     
 
 

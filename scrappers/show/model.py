@@ -1,5 +1,5 @@
 class Show:
-    def __init__(self, id, name, year, synopsis, poster, path_btn, path_banner):
+    def __init__(self, id, name, year, synopsis, poster, path_btn, path_banner, path_logo):
         self.id = id
         self.name = name
         self.year = year
@@ -7,4 +7,6 @@ class Show:
         self.imgs = {
             'rider_img_xl': poster, 
             'rider_img_sm': path_btn,
-            'rider_img_banner': path_banner}
+            'rider_img_banner': path_banner,
+            'rider_img_logo': path_banner
+            }

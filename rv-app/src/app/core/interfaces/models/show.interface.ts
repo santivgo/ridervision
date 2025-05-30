@@ -9,8 +9,8 @@ export interface IShow {
 	imgs: {	
         rider_img_xl: string;
 		rider_img_sm: string; 
+		rider_img_banner: string;
 		rider_img_logo: string;
-
     };
 }
 
