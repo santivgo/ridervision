@@ -2,13 +2,14 @@ import json
 from bs4 import BeautifulSoup
 # from show.model import kamenRiderSeries
 from time import sleep
-from soup import getAllTVShow, getAllEraLinks, getAllShowLinks
+from soup import *
+from models import Show
 
 
 prefix = "https://kamenrider.fandom.com"
 
 
-
+series_dict = {}
 
 # def writeJson(tv_shows):
 #     with open("data.json", "w") as file:
@@ -19,9 +20,23 @@ def main():
     eras_links = getAllEraLinks(prefix)
     eras_links.pop(2)
 
-    shows_links = getAllShowLinks(eras_links, prefix)
-    print(shows_links)
-    tv_shows_all = getAllTVShow(shows_links)
+    rider_category = getAllRidersCategoryLinks(prefix)
+    # shows_links = getAllShowLinks(eras_links, prefix)
+    
+
+    # for i, link in enumerate(shows_links[:-1]):
+    #     show = Show(link)
+    #     series_dict.update({show.url:i})
+    
+
+
+    rider_links = [url for link in rider_category for url in getAllRidersLink(link)]
+
+    print(rider_links)
+
+    
+
+
     # writeJson(tv_shows_all)
 
 main()

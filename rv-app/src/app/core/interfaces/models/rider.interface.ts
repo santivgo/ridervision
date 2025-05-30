@@ -10,6 +10,7 @@ export interface IRider{
     id_rider: number,
     show: IShow
     name: string,
+    main_user: string,
     forms: IRiderForm[],
     imgs: {
         rider_img_sm: string, // icone

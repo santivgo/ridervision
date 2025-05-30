@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from model import Show
-from utils import *
+from parse import *
 
 def getAllEraLinks(prefix):
     soup = BeautifulSoup(requests.get(f'{prefix}/wiki/Kamen_Rider_Series').content, 'html.parser')
@@ -12,6 +11,51 @@ def getAllEraLinks(prefix):
 
 
     return [ f"{prefix}{table.find('tr').find('a').get('href')}" for table in tables[1:-1]]
+
+
+def getAllRidersCategoryLinks(prefix):
+    links = []
+    riderEls = []
+    soup = BeautifulSoup(requests.get(f'{prefix}/wiki/Category:Riders_by_series').content, 'html.parser')
+    by_show = soup.find('span', id='By_show').find_parent()
+    adaptations = soup.find('span', id='Adaptations').find_parent()
+    
+    for p in by_show.find_next_siblings():
+        if p == adaptations:
+            break
+        riderEls.append(p)
+
+    for el in riderEls:
+        if el.find_all('li'):
+            li_items = el.find_all('li')
+            for li in li_items:
+                links.append('{}{}'.format(prefix, li.find('a').get('href')) )
+    links.append('https://kamenrider.fandom.com/wiki/Category:Amazons_Riders')
+    return links
+
+
+def getAllRidersLink(link):
+    soup = BeautifulSoup(requests.get(link).content, 'html.parser')
+
+    
+    if (link == 'https://kamenrider.fandom.com/wiki/Category:Gaim_Riders'):
+        soup = BeautifulSoup(requests.get(link+"#Armored_Riders").content, 'html.parser')
+    
+    if soup.find('div', id='gallery-0'):
+        ridersEl = soup.find('div', id='gallery-0')
+    elif soup.find('div', id='gallery-1'):
+        ridersEl = soup.find('div', id='gallery-1')
+    elif soup.find('div', id='gallery-8'):
+        ridersEl = soup.find('div', id='gallery-8')
+
+    bolds = ridersEl.find_all('b')
+    urlList = []
+
+    for bold in bolds:
+        riderUrl = bold.find('a')
+        if riderUrl:
+            urlList.append(riderUrl.get('href'))
+    return urlList        
 
 
 def getAllShowLinks(links, prefix):
@@ -33,101 +77,3 @@ def getAllShowLinks(links, prefix):
 
     return all_shows
 
-
-
-def getAllRiders(soup):
-    table = soup.find_all("table", {'class':"mw-collapsible mw-collapsed"})
-    for h in table: 
-        link_list =  h.find_all("a")
-        for link in link_list:
-            title = link.get('title')
-            print(f'Título: {title}' if title else 'Sem título')
-
-
-def getAllTVShow(links):
-  
-    tv_shows = []
-    airdate = ""
-    tv_show = ""
-    poster = ""
-    synopsis = []
-    
-    for i, link in enumerate(links):
-        local_soup = BeautifulSoup(requests.get(f'{link}').content, 'html.parser')
-                
-        tv_show = local_soup.find("h2", {'data-source':'name'}).text + " (TV Show)"
-        if(tv_show == "Kamen Rider Zeztz (TV Show)"):
-            continue
-        
-        #getAllRiders(local_soup)
-
-        airdate = getYearFromAirDate(local_soup.find("div", {'data-source':'airdate'}).text)
-
-        try:
-            poster = local_soup.find("figure", {'data-source':'poster'}).find("a", {'class': 'image'})['href']
-        except:
-            poster = local_soup.find("figure", {'class':'pi-image'}).find("a", {'class': 'image'})['href']
-        
-        poster = get_poster(poster)
-
-        print(tv_show)
-
-
-        if 'Decade' in tv_show:
-            inicio_sinopse = local_soup.find("span", {'id':'Plot'}).find_parent()
-            fim_sinopse = local_soup.find("span", {'id':'Production'}).find_parent()
-        elif 'Amazons' in tv_show:
-            inicio_sinopse = local_soup.find("span", {'id':'Series_Overview'}).find_parent()
-            fim_sinopse = local_soup.find("span", {'id':'Characters'}).find_parent()
-        else:
-            try:
-                inicio_sinopse = local_soup.find("span", {'id':'Story'}).find_parent()
-            except:
-                inicio_sinopse = local_soup.find("span", {'id':'Plot'}).find_parent().find_next()
-
-            fim_sinopse = local_soup.find("span", {'id':'Characters'}).find_parent()
-
-
-        # try: 
-        #     inicio_sinopse = local_soup.find("span", {'id':'Story'}).find_parent()
-
-        #     print(local_soup.find("span", {'id':'Series_Overview'}))
-
-        #     # inicio_sinopse = local_soup.find("span", {'id':'Series_Overview'}).find_parent()
-
-
-        # fim_sinopse = local_soup.find("span", {'id':'Characters'}).find_parent()
-        
-        for paragrafo in inicio_sinopse.find_next_siblings():
-            if paragrafo == fim_sinopse:
-                break
-            synopsis.append(paragrafo.getText())
-            
-            
-
-
-    #     try:
-    #     except:
-    #         pass
-    #     try: 
-    #         synopsis_el = local_soup.find("span", {'id':'Plot'}).find_next("p")
-    #     except:
-    #         pass 
-        
-
-    #     if("Kamen Rider OOO (TV Show)" == tv_show):
-    #         synopsis_el = synopsis_el.find_next_sibling()
-        
-
-
-    #     if (synopsis_el.find_next_sibling('p')):
-    #         synopsis = (synopsis_el.text + synopsis_el.find_next_sibling('p').text)
-    #     else:
-    #         synopsis = (synopsis_el.text)
-            
-    #     tv_shows.append(Show(i, tv_show, airdate, poster,synopsis))
-    # return tv_shows  
-
-
-if __name__ == "__main__":
-    print("Este arquivo não deve ser executado diretamente.")
