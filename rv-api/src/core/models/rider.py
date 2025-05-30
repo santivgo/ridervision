@@ -13,10 +13,5 @@ class Rider(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-class RiderForm(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(blank=False, null=False)
-    rider = models.ForeignKey(Rider, on_delete=models.CASCADE)
-    
     def __str__(self):
         return f"{self.name}"
