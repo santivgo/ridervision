@@ -4,8 +4,8 @@ from core.utils.upload_img import upload_img
 
 class Rider(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(blank=False, null=False)
-    main_user = models.CharField(blank=False, null=False, max_length=50)
+    name = models.CharField(max_length=50, blank=False, null=False)
+    main_user = models.CharField(max_length=50, blank=False, null=False)
     rider_img_body = models.ImageField(upload_to=upload_img) # full body rider image
     rider_img_sm = models.ImageField(upload_to=upload_img) # cards
     tv_show = models.ForeignKey(Show, on_delete=models.PROTECT)

@@ -5,7 +5,7 @@ from core.utils.upload_img import upload_img
 
 class Show(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(blank=False, null=False)
+    name = models.CharField(max_length=100, blank=False, null=False)
     year = models.IntegerField(validators=[MinValueValidator(1800)])
     synopsis = models.CharField(blank=True, null=False)
     show_img_xl = models.ImageField(upload_to=upload_img) # poster
