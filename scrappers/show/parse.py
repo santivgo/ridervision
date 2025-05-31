@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+from utils import writeImage
 
 class Parse:
         
@@ -27,21 +27,37 @@ class Parse:
             } # todos esses aqui usam a LOGO, entao da pra aproveitar na proxima funcao de LOGO!
         
         poster = hasPoster.get(name)
-        if(poster):
-            return poster
-        
-        try:
-            poster = soup.find("figure", {'data-source':'poster'}).find("a", {'class': 'image'})['href']
-        except:
-            poster = soup.find("figure", {'class':'pi-image'}).find("a", {'class': 'image'})['href']
+        if not poster:
+            try:
+                poster = soup.find("figure", {'data-source':'poster'}).find("a", {'class': 'image'})['href']
+            except:
+                poster = soup.find("figure", {'class':'pi-image'}).find("a", {'class': 'image'})['href']
 
-        return poster.split('revision')[0]   
+        return writeImage(name, Parse.getImgFull(poster), 'show', 'posters') 
+
+    @staticmethod
+    def getImgFull(img):   
+        return img.split('revision')[0]   
+
+
+    @staticmethod
+    def getRiderBodyImage(item):
+        return Parse.getImgFull(item.find('a', class_='image').find('img').get('src'))
+    
+    @staticmethod
+    def getRiderName(item):
+        return item.find('div', class_='lightbox-caption').find('b').text
+    
+    @staticmethod
+    def getMainUser(item):
+        return item.find('div', class_='lightbox-caption').find_all('a')[-1].text
 
     @staticmethod
     def getSynopsis(name, soup):
             changeSynopsis = {
                 'Kamen Rider Decade (TV Show)': ('Plot', 'Production'), 
                 'Kamen Rider Amazons (TV Show)': ('Series_Overview', 'Characters'),
+
                 'normal': ('Story', 'Characters'),
                 'alt': ('Plot', 'Characters')
             }
@@ -51,12 +67,19 @@ class Parse:
                 initName, endName = changeSynopsis.get(name)
             else:
                 initName, endName = changeSynopsis.get('normal')
+            
+
 
             try:
                 inicio_sinopse = soup.find("span", {'id':f'{initName}'}).find_parent()
             except:
                 initName, endName = changeSynopsis.get('alt')
                 inicio_sinopse = soup.find("span", {'id':f'{initName}'}).find_parent().find_next()
+
+                if(len(inicio_sinopse.find_next_siblings()) < 2):
+                    inicio_sinopse = soup.find("span", {'id':f'{initName}'}).find_parent()
+
+
             fim_sinopse = soup.find("span", {'id': f'{endName}'}).find_parent()
 
 
@@ -67,9 +90,9 @@ class Parse:
             return " ".join(synopsis_list)
 
     @staticmethod
-    def getLogo(soup):
+    def getLogo(showName, soup):
         logo = soup.find("img", {'class':'pi-image-thumbnail'})['src']
-        return logo.split('revision')[0]   
+        return writeImage(showName, logo.split('revision')[0], 'show', 'logos')    
     
     @staticmethod
     def getYearFromAirDate(soup):
@@ -82,5 +105,5 @@ class Parse:
             airdate_str = airdate.split(",")[2].split("-")[0].split("(")[0].split("(")
         
         airdate_str = airdate_str.split("(")[0].split("\n")[0]
-        airdate_str.strip()
-        return airdate_str
+        return airdate_str.strip()
+

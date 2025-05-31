@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 from parse import *
+from utils import writeImage
+from models import Rider
 
 def getAllEraLinks(prefix):
     soup = BeautifulSoup(requests.get(f'{prefix}/wiki/Kamen_Rider_Series').content, 'html.parser')
@@ -9,8 +11,10 @@ def getAllEraLinks(prefix):
     tables = tables.find("div")
     tables = tables.find_all("div")
 
+    l = [ f"{prefix}{table.find('tr').find('a').get('href')}" for table in tables[1:-1]]
+    l.pop(2)
 
-    return [ f"{prefix}{table.find('tr').find('a').get('href')}" for table in tables[1:-1]]
+    return l
 
 
 def getAllRidersCategoryLinks(prefix):
@@ -34,13 +38,17 @@ def getAllRidersCategoryLinks(prefix):
     return links
 
 
-def getAllRidersLink(link):
+def getAllRidersLink(prefix, link, series_dict):
     soup = BeautifulSoup(requests.get(link).content, 'html.parser')
+    riderList = []
 
     
     if (link == 'https://kamenrider.fandom.com/wiki/Category:Gaim_Riders'):
         soup = BeautifulSoup(requests.get(link+"#Armored_Riders").content, 'html.parser')
     
+    show = prefix + soup.find('table').find('i').find('a').get('href')
+    show_id = series_dict.get(show)
+
     if soup.find('div', id='gallery-0'):
         ridersEl = soup.find('div', id='gallery-0')
     elif soup.find('div', id='gallery-1'):
@@ -48,15 +56,15 @@ def getAllRidersLink(link):
     elif soup.find('div', id='gallery-8'):
         ridersEl = soup.find('div', id='gallery-8')
 
-    bolds = ridersEl.find_all('b')
-    urlList = []
+    items = ridersEl.find_all('div', class_='wikia-gallery-item')
 
-    for bold in bolds:
-        riderUrl = bold.find('a')
-        if riderUrl:
-            urlList.append(riderUrl.get('href'))
-    return urlList        
+    for item in items:
+        rider_name = Parse.getRiderName(item)
+        image = writeImage(rider_name, Parse.getRiderBodyImage(item), 'rider', f'full-body/{show_id:02d}')
+        main_user = Parse.getMainUser(item)
+        riderList.append(Rider(rider_name, main_user, image, show_id))
 
+    return riderList
 
 def getAllShowLinks(links, prefix):
     all_shows = []
