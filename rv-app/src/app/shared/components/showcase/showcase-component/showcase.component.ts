@@ -28,7 +28,6 @@ export class ShowcaseComponent implements OnInit, OnDestroy{
     this.riderListRef = this.series.getShows().subscribe((data) => {
 
       const riderList: IShow[] = data.reverse();
-
       const lineSize = 5;
       for (let index = 0; index < riderList.length; index+=lineSize) {
         this.lineRidersList.push(riderList.slice(index, index+lineSize))

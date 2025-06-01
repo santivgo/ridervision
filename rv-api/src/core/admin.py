@@ -1,9 +1,6 @@
 from django.contrib import admin
-from core.models.user import User
-from core.models.show import Show
-from core.models.rider import Rider
-from core.models.post import Post
-from core.models.comment import Comment
+from core.models import User, Show, Rider, Post, Comment
+
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('username', 'img')

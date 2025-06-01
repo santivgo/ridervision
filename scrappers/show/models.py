@@ -14,18 +14,18 @@ class Show:
         self.synopsis = Parse.getSynopsis(self.name, Parse.getSoup(self.url))
 
         self.imgs = {
-            'rider_img_xl': Parse.getPoster(self.name, Parse.getSoup(self.url)), 
-            'rider_img_sm': self.iconPath,
-            'rider_img_banner': self.bannerPath,
-            'rider_img_logo':  Parse.getLogo(self.name, Parse.getSoup(self.url))
+            'show_img_xl': Parse.getPoster(self.name, Parse.getSoup(self.url)), 
+            'show_img_sm': self.iconPath,
+            'show_img_banner': self.bannerPath,
+            'show_img_logo':  Parse.getLogo(self.name, Parse.getSoup(self.url))
             }
     
     @property
     def iconPath(self):
-        return f'media/show/icons/{normalizeName(self.name)}-sm.png'
+        return f'show/icons/{normalizeName(self.name)}-sm.png'
     @property
     def bannerPath(self):
-        return f'media/show/banners/{normalizeName(self.name)}-banner.png'
+        return f'show/banners/{normalizeName(self.name)}-banner.png'
     
 
 
@@ -35,7 +35,7 @@ class Rider:
         self.main_user = main_user
         self.rider_img_sm = self.cardPath   #cards
         self.rider_img_body = rider_img_body # full-body img
-        self.show_id = show_id
+        self.tv_show = int(show_id)+1
     @property
     def cardPath(self):
-        return f'media/riders/cards/{normalizeName(self.name)}-card.png'
+        return f'riders/cards/{normalizeName(self.name)}-card.png'

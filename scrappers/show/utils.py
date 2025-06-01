@@ -9,10 +9,10 @@ def serializer_show(obj):
             'name': obj.name,
             'year': obj.year,
             'synopsis': obj.synopsis,
-            "rider_img_xl": obj.imgs.get("rider_img_xl"),
-            "rider_img_sm": obj.imgs.get("rider_img_sm"),
-            "rider_img_banner": obj.imgs.get("rider_img_banner"),
-            "rider_img_logo": obj.imgs.get("rider_img_logo")
+            "show_img_xl": obj.imgs.get("show_img_xl"),
+            "show_img_sm": obj.imgs.get("show_img_sm"),
+            "show_img_banner": obj.imgs.get("show_img_banner"),
+            "show_img_logo": obj.imgs.get("show_img_logo")
         }
 
 def to_json(classList, archive):
@@ -45,7 +45,7 @@ def writeImage(name, url, parent_folder, folder,):
     else:
         new_name = normalizeRiderName(name)
 
-    relative_path = f'media/{parent_folder}/{folder}'
+    relative_path = f'{parent_folder}/{folder}'
     os.makedirs(relative_path, exist_ok=True)
 
     full_path = f"{relative_path}/{new_name}.png"

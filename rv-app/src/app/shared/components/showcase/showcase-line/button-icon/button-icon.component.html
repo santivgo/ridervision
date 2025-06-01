@@ -1,5 +1,5 @@
 <div (mouseenter)="textShow()" (click)="collapse.toggle(); emitRider()" (mouseleave)="textHide()" class="btn-rider">
-    <img class="btn-rider__img" btn-img [src]="rider.imgs.rider_img_sm" alt="">
+    <img class="btn-rider__img" btn-img [src]="rider.show_img_sm" alt="">
     <div class="btn-rider__text">
         <p #textButton class="montserrat f-bold uppercase disabled">{{rider.name | shortName}}</p>
     </div>

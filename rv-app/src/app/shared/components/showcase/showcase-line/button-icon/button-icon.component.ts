@@ -19,6 +19,8 @@ export class ButtonIconComponent {
   textShow = (()=> this.textBtnEl.nativeElement.classList.add("active"))
   textHide = (() => this.textBtnEl.nativeElement.classList.remove("active"))
 
+
+
   emitRider(){
     this.em.emit(this.rider)
   }
