@@ -6,18 +6,9 @@ export interface IShow {
 	name: string;
 	year: number;
 	synopsis: string;
-	imgs: {	
-        rider_img_xl: string;
-		rider_img_sm: string; 
-		rider_img_banner: string;
-		rider_img_logo: string;
-    };
+	show_img_xl: string;
+	show_img_sm: string; 
+	show_img_banner: string;
+	show_img_logo: string;
 }
 
-export interface IFavShow{
-	show: IShow
-	fav_rider_1: IRider
-	fav_rider_2: IRider
-	fav_rider_3: IRider
-	show_review: string
-}

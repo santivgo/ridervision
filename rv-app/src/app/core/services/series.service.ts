@@ -10,7 +10,7 @@ export class SeriesService {
 
   riderList: IShow = {} as IShow;
 
-  private apiUrl = 'http://localhost:3000/series'; 
+  private apiUrl = 'http://localhost:8000/shows/'; 
 
 
   getShows(): Observable<IShow[]> {

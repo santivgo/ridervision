@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Show(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100, blank=False, null=False)
+    name = models.CharField(max_length=100, blank=False, null=False, unique=True)
     year = models.IntegerField(validators=[MinValueValidator(1800)])
     synopsis = models.CharField(blank=True, null=False)
     show_img_xl = models.ImageField(upload_to=upload_img) # poster
@@ -51,18 +51,15 @@ class User(models.Model):
     password = models.CharField(null=False, blank=False)
     img = models.ImageField(upload_to=upload_img)
 
-    #   Evitando imports circulares
-    favorite_shows = models.ManyToManyField('core.Show', blank=True)
-    favorite_riders = models.ManyToManyField('core.Rider', blank=True)
 
     def __str__(self):
         return f"{self.username}"
 
-class FavoriteShow(models.Model):
+class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
-    fav_riders = models.ManyToManyField(Show, related_name="fav_shows")
-    show_review = models.CharField(blank=True, null=False)
+    fav_riders = models.ManyToManyField(Rider, related_name="fav_shows")
+    show_review = models.CharField(max_length=200, blank=True, null=False)
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
