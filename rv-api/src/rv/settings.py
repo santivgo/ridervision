@@ -61,7 +61,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = "rv.urls"
 
-FIXTURE_DIRS =  BASE_DIR / "fixtures" 
+FIXTURE_DIRS = [str(BASE_DIR / "fixtures")]
 
 TEMPLATES = [
     {
