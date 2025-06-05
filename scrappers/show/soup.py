@@ -58,13 +58,13 @@ def getAllRidersLink(prefix, link, series_dict):
 
     items = ridersEl.find_all('div', class_='wikia-gallery-item')
 
-    for i, item in items:
+    for item in items:
         rider_name = Parse.getRiderName(item)
         image = writeImage(rider_name, Parse.getRiderBodyImage(item), 'rider', f'full-body/{show_id:02d}')
         main_user = Parse.getMainUser(item)
         if not main_user:
             main_user = "John Doe"
-        riderList.append(Rider(i, rider_name, main_user, image, show_id))
+        riderList.append(Rider(rider_name, main_user, image, show_id))
 
     return riderList
 
