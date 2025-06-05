@@ -24,7 +24,7 @@ def main():
 
 
     for i, link in enumerate(shows_links[:-1]):
-        show = Show(link)
+        show = Show(i, link)
         showList.append(show)
         series_dict.update({show.url:i})
 
