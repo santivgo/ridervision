@@ -3,7 +3,7 @@ from core.models import User, Show, Rider, Post, Comment
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'img')
+    list_display = (id, 'username', 'img')
     search_fields = ('username',)
 
 class ShowAdmin(admin.ModelAdmin):

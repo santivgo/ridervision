@@ -2,37 +2,24 @@ import json
 import requests
 import os
 
-
-
-def serializer(obj):
+def serializer_show(obj):
     from models import Show
     if isinstance(obj, Show):
         return {
-                
-                    "model": "core.shows",
-                    "pk": obj.id,
-                    "fields": {
-                        'name': obj.name,
-                        'year': obj.year,
-                        'synopsis': obj.synopsis,
-                        "show_img_xl": obj.imgs.get("show_img_xl"),
-                        "show_img_sm": obj.imgs.get("show_img_sm"),
-                        "show_img_banner": obj.imgs.get("show_img_banner"),
-                        "show_img_logo": obj.imgs.get("show_img_logo")
-                    }
-            
-            }
-    else:
-         return {
-                    {
-                        "model": "core.riders",
-                        "pk": obj.id,
-                        "fields": obj.__dict___
-                }
-            }
-
+            'name': obj.name,
+            'year': obj.year,
+            'synopsis': obj.synopsis,
+            "show_img_xl": obj.imgs.get("show_img_xl"),
+            "show_img_sm": obj.imgs.get("show_img_sm"),
+            "show_img_banner": obj.imgs.get("show_img_banner"),
+            "show_img_logo": obj.imgs.get("show_img_logo")
+        }
 
 def to_json(classList, archive):
+    if (archive == 'shows'):
+        serializer = serializer_show
+    else: 
+        serializer = lambda o: o.__dict__
     with open(f"{archive}.json", "w") as file:
         json.dump(classList, file, indent=4, default=serializer)
 

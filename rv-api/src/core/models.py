@@ -13,6 +13,9 @@ class Show(models.Model):
     show_img_banner = models.ImageField(upload_to=upload_img) # banners
     show_img_logo = models.ImageField(upload_to=upload_img) # logo
 
+    def __str__(self):
+        return self.name.split('(')[0]
+    
     # show_img_xl = models.CharField(max_length=100) # poster
     # show_img_sm = models.CharField(max_length=100) # icons
     # show_img_banner = models.CharField(max_length=100) # banners
@@ -59,7 +62,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
     fav_riders = models.ManyToManyField(Rider, related_name="fav_shows")
-    show_review = models.CharField(max_length=200, blank=True, null=False)
+    show_review = models.CharField(max_length=250, blank=True, null=False)
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
