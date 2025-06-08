@@ -1,4 +1,6 @@
+from core.utils.get_meta_name import getModelName
 
-def upload_img(instance: any, filename):
-    return f"{instance._meta_.model_name}/{instance.id}/{instance.id}"
 
+def uploadImg(instance: any):
+    modelName = getModelName(instance)
+    return f"{modelName}/{instance.id}/{instance.id}"
