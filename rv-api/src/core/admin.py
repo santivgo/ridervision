@@ -1,26 +1,32 @@
 from django.contrib import admin
-from core.models import User, Show, Rider, Post, Comment
+
+from core.models import Comment, Post, Rider, Show, User
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = (id, 'username', 'img')
-    search_fields = ('username',)
+    list_display = (id, "username", "img")
+    search_fields = ("username",)
+
 
 class ShowAdmin(admin.ModelAdmin):
-    list_display = ('name', 'year')
-    search_fields = ('name',)
+    list_display = ("name", "year")
+    search_fields = ("name",)
+
 
 class RiderAdmin(admin.ModelAdmin):
-    list_display = ('name', 'tv_show')
-    search_fields = ('name',)
+    list_display = ("name", "tv_show")
+    search_fields = ("name",)
+
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('author', 'content', 'date')
-    search_fields = ('author__username', 'content')
+    list_display = ("author", "content", "date")
+    search_fields = ("author__username", "content")
+
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'post', 'content', 'date')
-    search_fields = ('author__username', 'content')
+    list_display = ("author", "post", "content", "date")
+    search_fields = ("author__username", "content")
+
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Show, ShowAdmin)
