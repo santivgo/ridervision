@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 
 from core.serializers import RiderSerializer, ShowSerializer, UserSerializer, ReviewSerializer
-from core.models import Rider, Show, User, Review
+from core.models import Rider, Show, User, Review, Post, Comment
 
 class RiderView(viewsets.ModelViewSet):
     queryset = Rider.objects.all()
@@ -26,3 +26,10 @@ class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
+class PostView(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class CommentView(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
