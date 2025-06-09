@@ -8,10 +8,10 @@ skinparam linetype ortho
 entity rider {
   * id : int
   --
-  name : char(50)
-  main_user : char(50)
-  rider_img_body : char(50)
-  rider_img_sm : char(50)
+  name : varchar(50)
+  main_user : varchar(50)
+  rider_img_body : varchar(50)
+  rider_img_sm : varchar(50)
   id_show : int <<FK>>
 
 }
@@ -19,7 +19,7 @@ entity rider {
 entity show {
   * id : int
   --
-  name : char(100)
+  name : varchar(100)
   year : int
   synopsis : varchar(500)
   show_img_sm : imageField
@@ -53,7 +53,7 @@ entity comentario {
   * id : int
   --
   id_post : int <<FK>>
-  comentario : char(50)
+  comentario : varchar(50)
   id_autor : int <<FK>>
   date : DateField
 }
@@ -70,7 +70,7 @@ entity review {
   --
   id_show : int <<FK>>
   id_user : int <<FK>>
-  review : char(250)
+  review : varchar(250)
 }
 
 entity tag {

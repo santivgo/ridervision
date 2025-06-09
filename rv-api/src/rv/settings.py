@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "core",
     "rest_framework",
+    "rest_framework.authtoken",
     "corsheaders",
+    "djoser"
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,9 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200'
+]
 
 
 ROOT_URLCONF = "rv.urls"
@@ -136,3 +140,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+    ]
+}
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT', ),
+}
+
+AUTH_USER_MODEL = 'core.User'
+LOGIN_FIELD = 'username'
