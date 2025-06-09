@@ -1,4 +1,5 @@
 from django.core.validators import MinValueValidator
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from core.utils.upload_img import uploadImg
@@ -42,7 +43,7 @@ class Rider(models.Model):
         return f"{self.name}"
 
 
-class User(models.Model):
+class User(AbstractUser):
     """
     Classe do Usuário
 
