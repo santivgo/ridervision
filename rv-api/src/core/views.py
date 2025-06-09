@@ -1,19 +1,17 @@
+from bs4 import Comment
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-<<<<<<< HEAD
-from core.serializers import RiderSerializer, ShowSerializer, UserSerializer, ReviewSerializer
-from core.models import Rider, Show, User, Review, Post, Comment
-=======
-from core.models import Review, Rider, Show, User
+from core.models import Post, Review, Rider, Show, User, Comment
 from core.serializers import (
+    CommentSerializer,
+    PostSerializer,
     ReviewSerializer,
     RiderSerializer,
     ShowSerializer,
     UserSerializer,
 )
 
->>>>>>> main
 
 class RiderView(viewsets.ModelViewSet):
     queryset = Rider.objects.all()
@@ -39,7 +37,6 @@ class UserView(viewsets.ModelViewSet):
 class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-<<<<<<< HEAD
 
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -48,5 +45,3 @@ class PostView(viewsets.ModelViewSet):
 class CommentView(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-=======
->>>>>>> main
