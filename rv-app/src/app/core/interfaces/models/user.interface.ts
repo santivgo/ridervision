@@ -6,3 +6,5 @@ export interface IUser{
     password: string, // hashcode
     img: string, // path
 }
+
+export type IUserRegister = Omit<IUser, 'id'|'img'>
