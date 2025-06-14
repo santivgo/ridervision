@@ -20,5 +20,16 @@ export class UsersService {
   registerUser(user: IUserRegister): Observable<any>{
     return this.http.post(`${this.apiUrl}/`, user)
   }
+  
+  loginUser(user: {username: string, password: string}): void{
+      this.http
+      .post<{ access: string; refresh: string }>(
+        'http://localhost:8000/auth/jwt/create/',
+        user
+      )
+      .subscribe((resp) => localStorage.setItem('token', resp.access));
+  }
 
 }
+
+
