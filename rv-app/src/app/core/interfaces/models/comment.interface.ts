@@ -3,12 +3,12 @@ import { IUser } from "./user.interface"
 
 export interface IComment{
     id: number,
-    comment: string, 
+    content: string, 
+    author: string,
+    author_username: string,
+    author_img: string,
     date: Date,
-    // author: IUser,
-    username: string // ISSO É PRA ESTAR DEPRECADO!
     post: IPost
 }
 
 export type ICommentPreview = Omit<IComment, 'id' | 'author' | 'date' | 'post' >
-

@@ -7,13 +7,11 @@ import { IUser } from '../interfaces/models/user.interface';
   providedIn: 'root'
 })
 export class UsersService {
+    private apiUrl = 'http://localhost:8000/users';
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  private apiUrl = 'http://localhost:3000/users'; 
-
-  getUser(id: number): Observable<IUser> {
-    return this.http.get<IUser>(`${this.apiUrl}/${id}`);
-  }
-
+    getUserById(userId: number): Observable<IUser> {
+        return this.http.get<IUser>(`${this.apiUrl}/${userId}/`);
+    }
 }

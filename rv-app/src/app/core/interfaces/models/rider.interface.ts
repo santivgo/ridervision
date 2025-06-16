@@ -1,11 +1,12 @@
 import { IShow } from "./show.interface"
+
 export interface IRider{
     id_rider: number,
     show: IShow
-    name: string,
-    main_user: string,
-    rider_img_sm: string, // icone
-    rider_img_bd: string, // full-body img
-
-    
+    url: string;
+    name: string;
+    main_user: string;
+    rider_img_body: string;
+    rider_img_sm: string;
+    tv_show: string;   // full-body img    
 }

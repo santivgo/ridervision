@@ -26,11 +26,11 @@
 
                 <ng-template #sectionMiniPost>
                     <div class="rv-container__card__perfil__content__comments">
-                        <div class="rv-container__comment-area__display">
-                            <ng-container *ngFor="let c of comments">
-                                <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
-                            </ng-container>
-                        </div>
+                      <div class="rv-container__comment-area__display">
+                        <ng-container *ngFor="let comment of comments">
+                          <app-comment [comment]="comment"></app-comment>
+                        </ng-container>
+                      </div>
                     </div>
                 </ng-template>
                 <ng-template #sectionMiniFav>
@@ -52,22 +52,19 @@
         </div>
         <app-divider-horizontal></app-divider-horizontal>
 
-
         <div class="rv-container__card__side">
             <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionPost : sectionFav">
             </ng-container>
         </div>
 
-
         <ng-template #sectionPost>
-            <app-post [user]="user"></app-post>
+            <ng-container *ngFor="let post of posts">
+                <app-post [post]="post"></app-post>
+            </ng-container>
         </ng-template>
         <ng-template #sectionFav>
             <app-mural></app-mural>
         </ng-template>
-
-
-
 
     </div>
 </div>

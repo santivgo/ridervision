@@ -1,9 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TagComponent } from '../tag/tag.component';
-import { IUser } from '../../../core/interfaces/models/user.interface';
 import { IPost } from '../../../core/interfaces/models/post.interface';
 import { PostCommentComponent } from './post-comment/post-comment.component';
+import { UsersService } from '../../../core/services/users.service';
+import { IUser } from '../../../core/interfaces/models/user.interface';
+import { CommentService } from '../../../core/services/comment.service';
+import { IComment } from '../../../core/interfaces/models/comment.interface';
 
 @Component({
   selector: 'app-post',
@@ -11,14 +14,40 @@ import { PostCommentComponent } from './post-comment/post-comment.component';
   templateUrl: './post.component.html',
   styleUrl: './post.component.sass'
 })
-export class PostComponent {
+export class PostComponent implements OnInit{
   @Input({required: true})
-  user: IUser = {} as IUser
-  post: IPost = {} as IPost
+  post = {} as IPost;
+  user: IUser = {} as IUser;
+  comments: IComment[] = [];
 
   exibirComments: boolean = false
 
+  constructor(
+    private userService: UsersService,
+    private commentsService: CommentService,
+  ) {}
+
   toggleComments(): void {
     this.exibirComments = !this.exibirComments
+  }
+
+  ngOnInit(): void {
+    this.loadUser();
+    this.loadComments();
+  }
+
+  loadUser(): void {
+    this.userService.getUserById(this.post.id)
+      .subscribe((data) => {
+        this.user = data;
+      });
+  }
+
+  loadComments(): void {    
+    this.commentsService.getCommentsByUser(Number(this.user.id))
+      .subscribe((data) => {
+        this.comments = data;
+        console.log(data)
+      });
   }
 }
