@@ -19,11 +19,6 @@ export class CommentInputComponent {
         username: 'Nun tem',
         comment: this.commentString
       };
-
-      this.commentService.postComment(newComentario).subscribe(() => {
-        console.log('mando');
-        this.commentString = ''; //limpa imput
-      })
     }
   }
 

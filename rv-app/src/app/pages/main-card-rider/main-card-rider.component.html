@@ -22,9 +22,9 @@
         </app-card-rider>
         <div class="rv-container__comment-area">
             <div class="rv-container__comment-area__display">
-                <ng-container *ngFor="let c of comments">
-                    <app-comment [comment]="{ username: c.username, comment: c.comment }"></app-comment>
-                </ng-container>
+                <ng-container *ngFor="let comment of comments">
+                    <app-comment [comment]="comment"></app-comment>
+                  </ng-container>
             </div>
             <div class="rv-container__comment-area__input">
                 <app-comment-input></app-comment-input>

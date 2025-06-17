@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IRider } from '../../../core/interfaces/models/rider.interface';
+import { RiderService } from '../../../core/services/rider.service';
 
 
 @Component({
@@ -7,7 +8,23 @@ import { IRider } from '../../../core/interfaces/models/rider.interface';
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.sass']
 })
-// por enquanto vai ficar só assim, vo implementar no django as coisas uqe fazem isso ficar 100%
-export class TagComponent {
+
+export class TagComponent implements OnInit{
   @Input() tagged_rider: IRider = {} as IRider;
+  rider: IRider = {} as IRider;
+
+  constructor(
+    private riderService: RiderService
+  ) {}
+
+  ngOnInit(): void {
+    this.loadRider();
+  }
+
+  loadRider(): void {
+    this.riderService.getRider(Number(this.tagged_rider))
+      .subscribe((data) => {
+        this.rider = data;
+      });
+  }
 }

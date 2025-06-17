@@ -3,10 +3,9 @@ import { IUser } from "./user.interface"
 
 export interface IPost {
     id: number,
-    author: IUser,
     content: string,
     date: Date,
     img: string,
+    author: IUser[],
     tagged_riders: IRider[]
 }
-

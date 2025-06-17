@@ -1,10 +1,9 @@
 <div class="comment">
     <div class="comment__header">
-
-        <img src="/assets/group-img.png" alt="foto-perfil">
-        <p>{{comment.username}}</p>
+        <img class="comment__header__image" [src]="user.img" alt="foto-perfil">
+        <p class="comment__header__username">{{user.username}}</p>
     </div>
     <div class="comment__content">
-        <p>{{comment.comment}}</p>
+        <p>{{comment.content}}</p>
     </div>
 </div>

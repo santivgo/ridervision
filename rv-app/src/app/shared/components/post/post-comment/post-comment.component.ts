@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IComment } from '../../../../core/interfaces/models/comment.interface';
+import { UsersService } from '../../../../core/services/users.service';
+import { IUser } from '../../../../core/interfaces/models/user.interface';
 
 @Component({
   selector: 'app-post-comment',
@@ -6,10 +9,22 @@ import { Component } from '@angular/core';
   templateUrl: './post-comment.component.html',
   styleUrl: './post-comment.component.sass'
 })
-export class PostCommentComponent {
-  // não vou tipar nem nada assim por enqunt, só pra n ter risco de dar bo tiver pegando dados reais
-  imgSrc = 'assets/o_magal_mock.png'
-  username = '@magal'
-  date = '14-09-2025'
-  comment = 'ai meu deus que delciia kkkkk'
+export class PostCommentComponent implements OnInit {
+  @Input() comment: IComment = {} as IComment;
+  user: IUser = {} as IUser;
+
+  constructor(
+    private userService: UsersService
+  ) {}
+
+  ngOnInit(): void {
+    this.loadUser()
+  }
+
+  private loadUser(): void {
+    this.userService.getUser(Number(this.comment.author))
+      .subscribe((data) => {
+        this.user = data;
+      });
+  }
 }
