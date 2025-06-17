@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
 import { tokenInterceptor } from './core/interceptors/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])), provideCharts(withDefaultRegisterables()), providePrimeNG(), MessageService, 
-    
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(withInterceptors([tokenInterceptor])), provideCharts(withDefaultRegisterables()), providePrimeNG(), MessageService, 
   ]
 };

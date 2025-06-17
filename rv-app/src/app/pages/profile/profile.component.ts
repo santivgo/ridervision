@@ -8,75 +8,68 @@ import { CommentComponent } from '../../shared/components/comment/comment.compon
 import { UsersService } from '../../core/services/users.service';
 import { IShow } from '../../core/interfaces/models/show.interface';
 import { IUser } from '../../core/interfaces/models/user.interface';
-import { IComment, ICommentPreview } from '../../core/interfaces/models/comment.interface';
+import { IComment } from '../../core/interfaces/models/comment.interface';
 import { PostComponent } from "../../shared/components/post/post.component";
-import { take } from 'rxjs';
-import { FavShowBtnComponent } from "../../shared/components/fav-show-btn/fav-show-btn.component";
-import { IRider } from '../../core/interfaces/models/rider.interface';
 import { MuralComponent } from "./sections/mural/mural.component";
-import { BaseChartDirective } from 'ng2-charts';
 import { StatsComponent } from "../../shared/components/stats/stats.component";
+import { PostService } from '../../core/services/post.service';
+import { IPost } from '../../core/interfaces/models/post.interface';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.sass',
-  imports: [
-    CommonModule,
-    NgbCollapseModule,
-    DividerHorizontalComponent,
-    CommentComponent,
-    PostComponent,
-    FavShowBtnComponent,
-    MuralComponent,
-    StatsComponent
-]
+  imports: [CommonModule, NgbCollapseModule, DividerHorizontalComponent, CommentComponent, StatsComponent, PostComponent, MuralComponent]
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
   @Input() riders: IShow[] = [];
 
   selectedSection: string = 'posts'; 
-
   user: IUser = {} as IUser;
   favRiders: IShow[] = [];
-  comments: ICommentPreview[] = [];
+  comments: IComment[] = [];
+  posts: IPost[] = [];
+  error = '';
+  userId = 0;
 
   constructor(
     private commentsService: CommentService,
-    private seriesService: SeriesService,
-    private usersService: UsersService
+    private postService: PostService,
+    private userService: UsersService
   ) {}
+  
+  protected changeSection(section: string): void {
+    this.selectedSection = section;
+  }
 
   ngOnInit(): void {
-    this.loadComments();
-    this.getUser();
+    this.loadData();
   }
 
-  
-  protected changeSection(section: string): void{
-    this.selectedSection = section
-  }
-  private loadComments(): void {
-    this.commentsService.getComments().subscribe((data) => {
-      this.comments = data;
+  loadData(): void {
+    this.userService.getCurrentUser().subscribe({
+      next: (data) => {
+        this.user = data;
+        this.userId = Number(data.id); 
+        this.loadComments();
+        this.loadPosts();
+      },
     });
   }
 
+  loadComments(): void {
+    this.commentsService.getCommentsByUser(this.userId)
+      .subscribe((data) => {
+        this.comments = data;
+      });
+  }
 
-
-
-  private getUser(): void {
-    const userId = 1;
-    this.usersService.getUser(userId).subscribe((data) => {
-      this.user.username = data.username;
-      this.user.img = data.img;
-    })};
-
-
-
-
-
-
+  loadPosts(): void {
+    this.postService.getPostByUser(this.userId)
+      .subscribe((data) => {
+        this.posts = data;
+      });
+  }
 }

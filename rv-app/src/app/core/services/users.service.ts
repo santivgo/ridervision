@@ -8,13 +8,16 @@ import { IUserRegister } from '../interfaces/auth/auth.interface';
   providedIn: 'root'
 })
 export class UsersService {
-
   constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://localhost:8000/auth/users'; 
 
   getUser(id: number): Observable<IUser> {
-    return this.http.get<IUser>(`${this.apiUrl}/${id}`);
+    return this.http.get<IUser>(`${this.apiUrl}/${id}/`);
+  }
+
+  getCurrentUser(): Observable<IUser> {
+    return this.http.get<IUser>('http://localhost:8000/auth/users/me/');
   }
 
   registerUser(user: IUserRegister): Observable<any>{
