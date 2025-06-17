@@ -38,7 +38,7 @@ export class PostComponent implements OnInit{
   }
 
   loadUser(): void {
-    this.userService.getUserById(Number(this.post.author))
+    this.userService.getUser(Number(this.post.author))
       .subscribe((data) => {
         this.user = data;
         console.log("user",data)

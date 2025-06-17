@@ -8,9 +8,7 @@ import { IUserRegister } from '../interfaces/auth/auth.interface';
   providedIn: 'root'
 })
 export class UsersService {
-    private apiUrl = 'http://localhost:8000/users';
-
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   private apiUrl = 'http://localhost:8000/auth/users'; 
 

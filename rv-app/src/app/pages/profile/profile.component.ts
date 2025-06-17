@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
   loadData(): void {
     const userId = 2; // TEMPORARIO
 
-    this.userService.getUserById(userId)
+    this.userService.getUser(userId)
       .subscribe((data) => {
         this.user = data;
 

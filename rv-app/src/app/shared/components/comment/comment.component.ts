@@ -25,7 +25,7 @@ export class CommentComponent {
   }
 
   private loadUser(): void {
-    this.userService.getUserById(Number(this.comment.author))
+    this.userService.getUser(Number(this.comment.author))
       .subscribe((data) => {
         this.user = data;
       });
