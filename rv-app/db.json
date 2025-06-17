@@ -1,0 +1,325 @@
+{
+  "series": [
+    {
+      "id": 0,
+      "name": "Kamen Rider Kuuga (TV Show)",
+      "year": 2001,
+      "synopsis": "Long ago, the Gurongi Tribe terrorized the Rinto (\u30ea\u30f3\u30c8, Rinto) until a warrior named Kuuga appeared and defeated the Gurongi, sealing their leader within a cave. In the present day, a multi-talented man named Yusuke Godai finds himself linked to the mysterious stoned belt that was found within the excavated cave as the Gurongi are resurrected and resume their murderous game on the descendants of the Rinto, humanity itself.\nIt is up to Yusuke, along with the assembled Science Police, to use the various powers of Kuuga to stop and defeat the Gurongi Tribesmen from their continuous killing and ensure the happiness of others. However, as the endgame draws near, Yusuke learns that there is a horrible revelation behind Kuuga and the Gurongis' leader.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/7a/Kuuga_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/kuuga-sm.png"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Kamen Rider Agito (TV Show)",
+      "year": 2002,
+      "synopsis": "A man named Shoichi Tsugami has lost his memories. He doesn't know who he is, where he came from, or how he came upon his peculiar circumstances.\nTsugami, seemingly for no reason, transforms into a powerful superhuman, Agito, whenever in the presence of the beings referred by the police as the \"Unknown\", a race of powerful monsters that have been causing murders around Tokyo, targeting certain people as their prey.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/d/d0/Agito_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/agito-sm.png"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Kamen Rider Ryuki (TV Show)",
+      "year": 2003,
+      "synopsis": "Thirteen Card Decks (\u30ab\u30fc\u30c9\u30c7\u30c3\u30ad, K\u0101do Dekki) were created for thirteen Kamen Riders. They make Contracts with monsters from the mysterious Mirror World (\u30df\u30e9\u30fc\u30ef\u30fc\u30eb\u30c9, Mir\u0101 W\u0101rudo), a parallel world opposite to the real one in which only the Kamen Riders can exist. The Riders draw on their monsters' strength in exchange for feeding them the life force of the creatures they destroy. The creator of the Advent Cards (\u30a2\u30c9\u30d9\u30f3\u30c8\u30ab\u30fc\u30c9, Adobento K\u0101do) has only one rule: that there can be only one Kamen Rider. The others must be killed, and the sole victor will be granted a single wish, which leads to a conflict known as the Rider War.\nAll over the city, innocent people are being mysteriously abducted, never to be seen again. During his investigations of these incidents, Shinji Kido \u2013 an intern at the online news service ORE Journal \u2013 discovers one of the Card Decks at an apartment where every reflective surface has been covered by the newspaper. He is soon sucked into the Mirror World, discovering the terrifying truth behind the disappearances: people are literally being pulled through mirrors by the monsters of the Mirror World so that they may feed. He is about to be killed by a powerful dragon named Dragreder when he is saved by Kamen Rider Knight: Ren Akiyama. Ren seeks to win the Rider War at all costs. He works with a young woman named Yui Kanzaki, who seeks her missing brother: the master of the Rider War, Shir\u014d Kanzaki. Seeing Ren's strength, Shinji enters the Rider War, not for the prize, but so that he may protect innocent people from the threat of the Mirror World, and stop the senseless fighting between the Kamen Riders. With Dragreder as his Contract Monster, he becomes Kamen Rider Ryuki.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/75/Ryuki_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/ryuki-sm.png"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Kamen Rider 555 (TV Show)",
+      "year": 2004,
+      "synopsis": "The Smart Brain corporation, the world's most powerful corporation, is trying to take over the world using Orphnoch, the next stage in humanity's evolution, to covertly kill off the human population. In pursuit of this, they develop three suits of power armor, called Rider Gear (Delta, Faiz, and Kaixa), to find and protect the Orphnoch King, who can fix a defect within Orphnoch DNA which causes their genetic structure to break down, leading to death.\nThe Rider Gears are stolen by Hanagata, the Goat Orphnoch and former chief of Smart Brain. He sends them to his foster children (dubbed the Ryuseiji, after the school they attended) so they can stop the Orphnoch from achieving their goal. However, Rider Gears were designed to be worn by Orphnoch, and humans are unable to activate the systems without undergoing genetic modification.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/6/64/555_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/faiz-sm.png"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Kamen Rider Blade (TV Show)",
+      "year": 2005,
+      "synopsis": "Ten thousand years ago, a massive battle royal known as the Battle Fight was fought by fifty-two demons known as the Undead, each representing a species fighting for dominance over all others. The winner was the Human Undead, known as Category Two of Hearts, giving dominion of the Earth to humanity. In the present day, archaeologists discover the sealed Undead, and accidentally set them free. Thus, a new Battle Fight begins.\nHaving developed the Rider System, based on the Joker's ability to copy sealed Undead, the organization BOARD (Board Of Archaeological Research Department) equips two young men, who become Kamen Riders: Kazuma Kenzaki and Sakuya Tachibana fight together as Kamen Rider Blade and Kamen Rider Garren to protect humans from Undead and seal them. Also fighting Undead is the mysterious Chalice, a Kamen Rider whose purpose is unknown. In addition, a young man struggles to free himself from the control of the sealed Undead powering his own Undead-made Rider System, fighting as Kamen Rider Leangle.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/76/Blade_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/blade-sm.png"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Kamen Rider Hibiki (TV Show)",
+      "year": 2006,
+      "synopsis": "The Kamen Riders, known as Oni, battle man eating beasts called Makamou with \"pure sound\". One of the Oni, a man named Hibiki ends up having a teacher and apprentice-like relationship with Asumu Adachi. A young boy unsure of himself and is at a crossroads in his life as he transitions to high school, Asumu learns to be an adult through watching Hibiki and the other Oni as they all train together to hone their skills in fighting the Makamou and the homunculi aiding them. However, the sudden raise of Makamou numbers proves to be a prelude to an upcoming calamity.\nThe series is divided into two story arcs[3]:\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/7/7b/Hibiki_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/hibiki-sm.png"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Kamen Rider Kabuto (TV Show)",
+      "year": 2007,
+      "synopsis": "Seven years ago, a meteorite struck at the heart of Shibuya, and emerged an alien life-form that threatens humanity, the Worms. Since that day, Soji Tendo has trained for all his life to one day take up the Kabuto Zecter and become the hero known as Kamen Rider Kabuto. Making many enemies while also meeting other Riders with mysterious origins, Tendou attempts to accomplish his goal at all costs: to destroy the Worms. He meets ZECT operative Arata Kagami and the two work together to save humanity while uncovering the conspiracies that lie within ZECT.\nThe series made some allusions to the whole Kamen Rider series. Masked Rider Project as mentioned in the course of the series was said to be started on 3 April 1971. The Worm species known as Natives also first arrived on Earth on the same year. In real-life, it was the date the first Kamen Rider show aired for the first time.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/b1/Kabuto_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/kabuto-sm.png"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Kamen Rider Den-O (TV Show)",
+      "year": 2008,
+      "synopsis": "Ryotaro Nogami is a young man with a lot of bad luck. One day, he finds a strange pass and things got stranger from a mysterious girl and a large time-traveling train to being possessed by an entity called an Imagin, beings from an alternate future whose kind are attempting to change the past. Though slightly confused about the nature of the crisis, Ryotaro, along with the aid of the hot-headed, violent Imagin, dubbed Momotaros, becomes Kamen Rider Den-O, traveling to different times on the DenLiner to battle the evil Imagin to prevent them from altering the past to affect the present and future. During his adventure, Ryotaro is joined by other Imagin who aid him as well; the lying, manipulating and womanizing Urataros, the herculean (and narcoleptic) Kintaros, and the childish yet powerful Ryutaros. He later meets the mysterious Yuto Sakurai and his bumbling Imagin partner Deneb. Yuto is not only Kamen Rider Zeronos but is the younger incarnation of Ryotaro's older sister Airi's fianc\u00e9, Sakurai, who mysteriously disappeared and is tied to the mysteries involving the Imagin and a person known as the Junction Point.\nThe series is divided into three story arcs:[3]\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/a/af/Den-O_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/deno-sm.png"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Kamen Rider Kiva (TV Show)",
+      "year": 2009,
+      "synopsis": "Twenty-two years after the disappearance of his father, Wataru Kurenai lives in an infamous \"haunted house\" where he is destined as Kamen Rider Kiva to fight life-draining monsters called Fangires, the very race his father fought years ago before his disappearance. Wataru must also deal with Kamen Rider Ixa who is part of an organization seeking to destroy the Fangire menace, as well as the Fangires' own Rider, Kamen Rider Saga. The story is split between the actions of Wataru in the present (2008-09) and his father Otoya in the past (1986-87), slowly revealing the link between the Fangire Race and Kiva.\nThe characters of Kamen Rider Kiva are spread throughout two time periods, each related to one another. There are the actions of Otoya Kurenai and the Fangire Hunter Yuri Aso with the Wolfen Jiro in the year 1986 with the first Ixa Ver.I that result in the various Fangires that persist to the current day, in 2008, with Otoya's son Wataru (as Kamen Rider Kiva) along and Keisuke Nago (as Kamen Rider Ixa Ver.X) and Yuri's daughter Megumi (also a Fangire Hunter), dealing with the Fangires to prevent deaths.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/4/4b/Kiva_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/kiva-sm.png"
+      }
+    },
+    {
+      "id": 9,
+      "name": "Kamen Rider Decade (TV Show)",
+      "year": 2009,
+      "synopsis": "Natsumi Hikari has repeatedly been having dreams of the Rider War, where every single Rider from the Heisei-era attack one being, a warrior known as \"Decade.\" In reality, she lives with Tsukasa Kadoya, a young man who doesn't seem to be able to call Hikari Studio home. One day, monsters from different dimensions begin to attack people, with the world starting to fall in chaos. Tsukasa, who had been separated from Natsumi, meets the mysterious Wataru Kurenai, who informs Tsukasa about his title as Kamen Rider Decade, the Destroyer of Worlds. Discovering that the nine universes of the Kamen Riders from the Heisei-era are merging into one, which would result in the collapse of multiverse, Tsukasa inherits the mission of traveling across these worlds to eliminate the anomaly in each, while embarking on a journey to find one world where he can call home.",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/c/cc/Decade_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/decade-sm.png"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Kamen Rider W (TV Show)",
+      "year": 2010,
+      "synopsis": "In the ecologically-minded city of Futo (\u98a8\u90fd, F\u016bto, the \"Windy City\"), where nearly everything is powered by windmills, the people live in harmony. However, the Sonozaki Family sell mysterious devices resembling USB flash drives called Gaia Memories to criminals and other interested parties who use them to become monsters called Dopants, committing crimes with the police force powerless to stop them. To make matters worse, the Gaia Memories carry a dangerous toxin that cause their users to go insane to the point where they could die from the life-threatening devices. After the death of his boss, the self-proclaimed hard-boiled (actually half-boiled) detective Shotaro Hidari works with the mysterious Philip, who possesses the true Gaia Memory, to investigate crimes which involve Dopants. Using their own Gaia Memories, Shotaro and Philip use the Doubledriver belts to transform and combine into Kamen Rider Double to fight the Dopant menace and keep Futo safe. While joined in their fight by investigator Ryu Terui, who transforms into Kamen Rider Accel, the mystery of Philip's past, his relation to the Sonozaki Family, and their Museum organization are revealed.[2][3]\nThe series is divided into three story arcs:[5]\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/f/fa/W_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/w-sm.png"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Kamen Rider OOO (TV Show)",
+      "year": 2011,
+      "synopsis": "Eiji Hino is a traveling man who has no place to call home and a tragic past. When coin-based homunculi known as the Greeed awaken after their 800-year slumber to attack humans and feed off of their desires, the disembodied arm of the Greeed named Ankh gives Eiji a belt and three Medals to fight the other Greeed as Kamen Rider OOO. The mysterious Kougami Foundation approaches Eiji and begins assisting him in his fight against the Greeed, though their true motives are not clear. As Eiji fights the Greeed and their Yummy monsters, learning more of the Greeed and Ankh, he starts to find a purpose beyond his journey.",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/d/d2/OOO_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/ooo-sm.png"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Kamen Rider Fourze (TV Show)",
+      "year": 2012,
+      "synopsis": "Amanogawa High School has become the center of strange happenings, and things only get stranger when the bad boy styled transfer student Gentaro Kisaragi attempts to make friends in his own unique way, reuniting with childhood friend and self-professed space travel otaku Yuki Jojima, all while gaining the ire of loner Kengo Utahoshi. When the campus becomes overrun with monstrous constructs called Zodiarts, Kengo and Yuki attempt to use the strange devices they have found in the Rabbit Hatch lunar base that they access through a locker on an off-limits part of campus to fight them. However, Gentaro interferes in their plans, in part due to Kengo's body unable to handle the strains of battle, and uses the devices to transform into Fourze. Upon learning of other heroes called Kamen Riders, Gentaro creates the Kamen Rider Club whose membership includes Yuki, Kengo, the school's queen bee Miu Kazashiro, Miu's jock boyfriend Shun Daimonji, garishly styled social butterfly JK and goth girl Tomoko Nozama. Later joined by Ryusei Sakuta, a transfer student who transforms into Kamen Rider Meteor, and their teacher Mr. Chuta Ohsugi, the Kamen Rider Club and Kamen Rider Fourze learn of the Horoscopes, an evolved group of Zodiarts who have been orchestrating events on the school grounds to build up their ranks. As the battle escalates, the Horoscopes sets their motions to their final phase of their master plan before Kengo discovers his true existence.",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/1/11/Fourze_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/fourze-sm.png"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Kamen Rider Wizard (TV Show)",
+      "year": 2013,
+      "synopsis": "A mysterious ceremony held on the day of a solar eclipse released demons called Phantoms into the world. Haruto Soma, a survivor of the ritual, obtains mystical powers and receives the Wizardriver belt and Wizard Rings from a mysterious White Wizard, so he may protect the hopes of the people, as Kamen Rider Wizard. Later on, a man named Kosuke Nito appears as the \"ancient wizard\" Kamen Rider Beast to feed on the Phantom's magical power to survive and becomes both a rival and ally to Haruto.\nThe series is divided into three story arcs:[2]\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/d/dc/Wizard_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/wizard-sm.png"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Kamen Rider Gaim (TV Show)",
+      "year": 2014,
+      "synopsis": "Because of the large company, Yggdrasill Corporation setting up shop in the once bustling city of Zawame (\u6ca2\u82bd\u5e02, Zawame-shi); the community started to become more like a j\u014dkamachi (\u57ce\u4e0b\u753a, castle town). To escape the feeling of being under castle authority, dance crews were formed by young people to bring joy back to the public. Along with this is a popular game that uses the mysterious Lockseeds that contain mysterious monsters called Inves that are said to come from another dimension.\nAs the game becomes more popular, tears in reality begin to open that bring the Inves from their home dimension to Earth. Kouta Kazuraba, a young man who recently quit his dance crew Team Gaim (to help his sister Akira Kazuraba), finds a special Lockseed and the Sengoku Driver to become an Armored Rider, named Armored Rider Gaim. He must fight the sudden appearance of the Inves, but also against other the armored-Kamen Riders known as Armored Riders, effectively becoming a Sengoku period-like conflict for only one victor to prove themselves that they have the right to possess the power of the Helheim Forest, the proverbial forbidden fruit. But while adamant to obtain the Golden Fruit to save the world, Kouta's goal involves him having a predestined confrontation with Kaito who desires the fruit's power to shatter the status quo of the world.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/ba/Gaim_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/gaim-sm.png"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Kamen Rider Drive (TV Show)",
+      "year": 2015,
+      "synopsis": "Shinnosuke Tomari is a former elite police officer in the Metropolitan Police who, after an event that traumatized one of his colleagues, has been \"demoted\" into the Special Investigations Division, a group that looks into the stranger happenings in the city, particularly the \"Heavy Acceleration\" events that leave people unable to move that the public have termed the \"Slowdown.\" When he is chosen by the Drive Driver and Tridoron, Shinnosuke transforms into Kamen Rider Drive and is tasked with battling the Roidmudes who wish to take over the world by eliminating humanity.\nThe series is divided into five story arcs:[2]\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/e/e3/Drive_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/drive-sm.png"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Kamen Rider Ghost (TV Show)",
+      "year": 2016,
+      "synopsis": "Takeru Tenkuji is a teen who aspires to be a Ghost Hunter just like his late father. On his eighteenth birthday, he is murdered by two monsters who are part of a race known as the Gamma. He is miraculously revived, however he must gather fifteen Ghost Eyecons based on fifteen historical figures within 99 days, otherwise he will permanently cease to exist. Along his quest, he battles more of the Gamma monster race, who also seek the Eyecons for an unknown evil purpose. Takeru must defeat the Gamma and at the same time, find a way to save himself in time.\nThe series is divided into three story arcs[2]:\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/5/58/Ghost_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/ghost-sm.png"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Kamen Rider Amazons (TV Show)",
+      "year": 2017,
+      "synopsis": "Takeru Tenkuji is a teen who aspires to be a Ghost Hunter just like his late father. On his eighteenth birthday, he is murdered by two monsters who are part of a race known as the Gamma. He is miraculously revived, however he must gather fifteen Ghost Eyecons based on fifteen historical figures within 99 days, otherwise he will permanently cease to exist. Along his quest, he battles more of the Gamma monster race, who also seek the Eyecons for an unknown evil purpose. Takeru must defeat the Gamma and at the same time, find a way to save himself in time.\nThe series is divided into three story arcs[2]:\n",
+      "imgs": {
+        "rider_img_xl": "https://static-wikia-nocookie-net.translate.goog/kamenrider/images/f/fd/Amazons_Season_1_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/amazons-sm.png"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Kamen Rider Ex-Aid (TV Show)",
+      "year": 2017,
+      "synopsis": "Several years ago, the Bugster Virus infected humanity and turned its victims into monsters known as Bugsters. To combat this, the Japanese Ministry of Heath worked with the gaming company Genm Corp. to form CR, a team of young doctors with the ability to transform into Kamen Riders that can effectively eliminate Bugsters. However the CEO of Genm Corp. has his own ulterior motives for collaborating as he later becomes an antagonist to our heroes.\n\nThe series is divided into four story arcs[2]:\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/2/2f/Ex-Aid_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/exaid-sm.png"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Kamen Rider Build (TV Show)",
+      "year": 2018,
+      "synopsis": "10 years ago, the Pandora Box was discovered on the planet Mars and brought forth a catastrophe that would forever change the country of Japan. In the years following the Sky Wall Tragedy, the rising of the Sky Wall divided the country into three warring territories: Touto (Eastern Capital), Hokuto (Northern Capital) and Seito (Western Capital), and created a series of unidentified monsters known as Smash that relentlessly attack the public. To combat this chaos, the Touto government requested the help of Sento Kiryu, a genius and prodigious physicist to help decipher the mysteries left behind by both the Pandora Box and the Smash. Alongside prison escapee Ryuga Banjo, who was wrongfully framed for a murder he did not commit, the duo embark on a journey as Kamen Riders to uncover the mysteries surrounding the Pandora Box, the Smash, and their own pasts. Their journey would not come easy as they face adversaries from Hokuto and Seito, whom they must ultimately confide in if they are to have any hope in stopping their mutual enemy, Evolto from destroying the planet that they hold dear.",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/b6/Build_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/build-sm.png"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Kamen Rider Zi-O (TV Show)",
+      "year": 2019,
+      "synopsis": "Sougo Tokiwa, a high school student born in the year 2000, has always dreamed of becoming a king when he encounters a mysterious girl named Tsukuyomi, who hails from the future in a desperate effort to alter her dire future. She presents Sougo with an ominous warning \"You will become the king of all time, Kamen Rider Zi-O, a demonic king destined to rule the world.\". Sougo takes up the mantle as Kamen Rider Zi-O to stop the Time Jackers from destroying the very fabric of space-time while protecting the legacy of the Heisei Kamen Riders that came before him. During his journey alongside Geiz Myokoin, a Kamen Rider from Tsukuyomi's future, and the mysterious prophet Woz who reminds Sougo of his demonic destiny, they will meet their esteemed predecessors who they must gain their trust and powers from in order to create a new future for the Kamen Riders and mankind itself. This is the story of a Kamen Rider who would be king, who will fight to save the past, present, and future, encountering the various Heisei Kamen Riders throughout space-time.",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/e/e6/Zi-O_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/zio-sm.png"
+      }
+    },
+    {
+      "id": 21,
+      "name": "Kamen Rider Zero-One (TV Show)",
+      "year": 2020,
+      "synopsis": "Humagear, created by the leading company for A.I., Hiden Intelligence, serve humanity's every convenience. But a cyber-terrorist organization begins hacking the Humagears in a conspiracy that turns them into monsters. Aruto Hiden has taken over at Hiden Intelligence, and along with the CEO's post, he also takes over the responsibility for Kamen Rider Zero-One by using his company's technology. Aruto tries to keep the peaceful world between humans and Humagears with his Humagear secretary, while A.I.M.S., a military squad, pursues the terrorists",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/b/be/Zero-One_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/zeroone-sm.png"
+      }
+    },
+    {
+      "id": 22,
+      "name": "Kamen Rider Saber (TV Show)",
+      "year": 2021,
+      "synopsis": "Long ago, a sect of swordsmen known as the Sword of Logos protected the Almighty Book, a powerful tome of history that contains everything known to man; myths, creatures, stories, science, technology, and the evolution of human civilization. However thousands of years ago, a traitor working for the Megid tried to steal it for himself. As a result, the Book vanished and each of its pages scattered across the world.\nFast-forward to present day, young novelist Touma Kamiyama has been having dreams of another dimension  where he witnessed swordsmen and monsters coming out of a storybook, and a \"mysterious girl\" calling for help. Recalling the dream sends chills down his spine, not knowing anything at all. One day, a strange phenomenon occurred without notice; a part of the city had disappeared. As people's loved ones disappear one after another, it sends the entire nation into chaos.\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/8/8d/Saber_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/saber-sm.png"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Kamen Rider Revice (TV Show)",
+      "year": 2022,
+      "synopsis": "In 1971, a scientific expedition in Latin America had uncovered an ancient artifact containing the remains of the demon Giff, leading to the creation of the Vistamps. In the present day, the remains of Giff now lie in the hands of a demon cult called the Deadmans, who seek to resurrect him by converting peoples' inner demons into their fold. Fenix, a governmental organization opposing the Deadmans, have developed the Revice Driver for someone with complete control over their inner demon. Ikki Igarashi, a young man who runs a public bath with his family, comes into acquisition of the belt while forming a contract with his inner demon Vice. Together, as Kamen Riders Revi and Vice, they are Kamen Rider Revice! \nThe series is divided into four story arcs:[11]\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/e/e2/Revice_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/revice-sm.png"
+      }
+    },
+    {
+      "id": 24,
+      "name": "Kamen Rider Geats (TV Show)",
+      "year": 2023,
+      "synopsis": "\nThe \"Desire Grand Prix\" is a game to protect the peace of the city from the threat of the mysterious enemy \"Jyamato\", whose origin and purpose are unknown. Each participant transforms into a Kamen Rider and competes to win the game by defeating enemies and saving people. The winner of the Desire Grand Prix will be rewarded with \"the right to bring an ideal world to life\" as a prize. In other words, only the true hero who wins the competition will be able to realize the world they have wished for.[5]",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/4/40/Geats_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/geats-sm.png"
+      }
+    },
+    {
+      "id": 25,
+      "name": "Kamen Rider Gotchard (TV Show)",
+      "year": 2024,
+      "synopsis": "",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/4/49/Gotchard_Q1_Poster.jpg",
+        "rider_img_bg": "\"Alchemy\" is a pseudo-science that attempts to create \"gold\" from various different combinations. One experiment to do so artificially brings to life a race of creatures, and the story revolves around an era where these experiments were being conducted in secret. In the story, the artificial lifeforms known as the \"Chemy\", made to imitate things that exist in the world such as grasshoppers, were created from the art of the best alchemy techniques. Each and every one of them were carefully stored in \"Ride Chemy Cards' until they were accidentally released all at once into the wild. Our main protagonist, Houtaro Ichinose, is entrusted with the Gotchardriver and the mission to recollect the Chemies that have been released into the world. Some are well suited for human companionship and if resonated with a good heart, Houtarou can fuse with them and transform into Kamen Rider Gotchard. However those that are influenced by human malice, there is a danger of them birthing monsters known as the Malgam. This is a story that explores the nature of good and evil, which are two sides of the same coin.",
+        "rider_img_sm": "assets/mock/gotchard-sm.png"
+      }
+    },
+    {
+      "id": 26,
+      "name": "Kamen Rider Gavv (TV Show)",
+      "year": 2024,
+      "synopsis": "The looming threat of monsters. Granutes, monsters from another world. Humans have no idea they are secretly coming to their world. Humans have no idea their kind are being hunted. \nOne young man steps up to protect humanity. Shoma is a young man who loves to eat. By eating treats, he can create beings known as the Gochizo that become his companions and his main source of power as Kamen Rider Gavv. The story of Shoma, who fights to protect people's happiness from the Granutes, begins now!\n",
+      "imgs": {
+        "rider_img_xl": "https://static.wikia.nocookie.net/kamenrider/images/5/54/Gavv_Q1_Poster.jpg/",
+        "rider_img_bg": "",
+        "rider_img_sm": "assets/mock/gavv-sm.png"
+      }
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "username": "User1",
+      "comment": "Este é o primeiro comentário."
+    },
+    {
+      "id": 2,
+      "username": "User2",
+      "comment": "Este é o segundo comentário."
+    },
+    {
+      "id": 3,
+      "username": "User3",
+      "comment": "Mais um comentário para testar."
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Calros",
+      "img": "/assets/foto-perfil-mock.jpg"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+<div class="rv-signup">
+    <div class="rv-signup__container">
+        <div class="rv-signup__container__left">
+            <img src="assets/forms-imgs/blade_signup.svg" alt="">
+        </div>
+        <div class="rv-signup__container__right">
+
+            <form (ngSubmit)="submit()" class="rv-signup__container__right__form" [formGroup]="cadastroForm"
+                #formDir="ngForm">
+                <div class="rv-signup__container__right__signup">
+                    <div class="form-group">
+                        <label class='montserrat f-md' for="username">set a <span class="f-bold">username</span></label>
+                        <input type="text" class="form-control" placeholder="username" formControlName="username"
+                            required>
+                        <div class="form-error" *ngIf="username.invalid && username.touched">
+                            <p>O nome de usuário é obrigatório.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class='montserrat f-md' for="password">set a <span class="f-bold">password</span></label>
+                        <input type="password" class="form-control" id="password" placeholder="password"
+                            formControlName="password" required>
+                        <div class="form-error" *ngIf="password.invalid && password.touched">
+                            <p>A senha é obrigatória.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class='montserrat f-md' for="retype">retype the <span
+                                class="f-bold">password</span></label>
+                        <input type="password" class="form-control" id="retype" placeholder="password"
+                            formControlName="rpassword" required>
+                        <div class="form-error" *ngIf="rpassword.touched && cadastroForm.hasError('PasswordNoMatch')">
+                            <p>As senhas não conferem.</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary color-madder montserrat f-light f-1d5rem">sign
+                        up</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="showcase-line">
+    <div class="showcase-line__list">
+        <app-button-icon *ngFor="let rider of riders" [isCollapsed]="isCollapsed" [collapseRef]="collapse"
+            [rider]="rider" (em)="changeRiderCollapse($event)">
+        </app-button-icon>
+    </div>
+
+
+    <div class="showcase-line__collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="card">
+            <app-showcase-card *ngIf="!isCollapsed && riderCollapse">
+                <app-showcase-card-header>
+                    <div class="rv-c-showcase-card__header__brand" [attr.era]="riderCollapse.year | era">
+                        <h1 class=" rv-c-showcase-card__header__brand-title montserrat f-black f-1d5rem">
+                            {{riderCollapse.year | era | uppercase}}
+                        </h1>
+                    </div>
+                    <img appShowcaseImg [src]="riderCollapse.show_img_xl" alt="">
+
+                    <div class="rv-c-showcase-card__header__bot" *ngIf="riderCollapse">
+                        <h1 class="rv-c-showcase-card__header__bot__title">
+                            {{riderCollapse.name | shortName | uppercase}}</h1>
+                        <h2 class="rv-c-showcase-card__header__bot__subtitle">{{riderCollapse.name | lowercase |
+                            age:riderCollapse.year}}</h2>
+                    </div>
+
+                </app-showcase-card-header>
+                <app-showcase-card-content>
+                    <p class="f-1rem">{{riderCollapse.synopsis}}</p>
+
+                    <!-- <img class="rv-c-showcase-card__content__img"
+                        src="https://media1.tenor.com/m/5hl3A89bP2UAAAAd/kamen-rider-gavv-kamen-rider.gif" alt="">
+                    <h5 class="f-bold">RIDER KICK!!</h5> -->
+
+                </app-showcase-card-content>
+            </app-showcase-card>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="rv-container">
+    <div class="rv-container__card">
+        <div class="rv-container__card__perfil">
+            <div class="rv-container__card__perfil__content">
+                <div class="rv-container__card__perfil__top">
+                    <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
+                    <div class="rv-container__card__perfil__content__dados">
+                        <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img">
+                        <p>{{user.username}}</p>
+                    </div>
+                </div>
+
+                <nav class="menu-section">
+                    <div class="menu-section__item">
+                        <span (click)="changeSection('posts')" [class.clicked]="selectedSection === 'posts'"
+                            class="menu-section__link">Posts</span>
+                    </div>
+                    <div class="menu-section__item">
+                        <span (click)="changeSection('fav')" [class.clicked]="selectedSection === 'fav'"
+                            class="menu-section__link">Favoritos</span>
+                    </div>
+                </nav>
+
+                <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionMiniPost : sectionMiniFav">
+                </ng-container>
+
+                <ng-template #sectionMiniPost>
+                    <div class="rv-container__card__perfil__content__comments">
+                      <div class="rv-container__comment-area__display">
+                        <ng-container *ngFor="let comment of comments">
+                          <app-comment [comment]="comment"></app-comment>
+                        </ng-container>
+                      </div>
+                    </div>
+                </ng-template>
+                <ng-template #sectionMiniFav>
+
+
+                    <div class="rv-container__card__perfil__stats">
+                        <h5>{{'Séries assistidas'}}</h5>
+
+                        <app-stats></app-stats>
+                    </div>
+
+                </ng-template>
+
+
+
+            </div>
+
+
+        </div>
+        <app-divider-horizontal></app-divider-horizontal>
+
+        <div class="rv-container__card__side">
+            <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionPost : sectionFav">
+            </ng-container>
+        </div>
+
+        <ng-template #sectionPost>
+            <ng-container *ngFor="let post of posts">
+                <app-post [post]="post"></app-post>
+            </ng-container>
+        </ng-template>
+        <ng-template #sectionFav>
+            <app-mural></app-mural>
+        </ng-template>
+
+    </div>
+</div>
