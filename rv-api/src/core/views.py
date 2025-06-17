@@ -1,5 +1,3 @@
-from bs4 import Comment
-from bs4 import Comment
 from rest_framework import viewsets
 from rest_framework.response import Response
 
