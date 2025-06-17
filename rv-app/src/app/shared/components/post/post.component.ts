@@ -32,14 +32,16 @@ export class PostComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    console.log("post",this.post.author)
     this.loadUser();
     this.loadComments();
   }
 
   loadUser(): void {
-    this.userService.getUserById(this.post.id)
+    this.userService.getUserById(Number(this.post.author))
       .subscribe((data) => {
         this.user = data;
+        console.log("user",data)
       });
   }
 
@@ -47,7 +49,7 @@ export class PostComponent implements OnInit{
     this.commentsService.getCommentsByUser(Number(this.user.id))
       .subscribe((data) => {
         this.comments = data;
-        console.log(data)
+        console.log("coment",data)
       });
   }
 }
