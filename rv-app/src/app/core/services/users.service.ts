@@ -12,6 +12,20 @@ export class UsersService {
 
   private apiUrl = 'http://localhost:8000/auth/users'; 
 
+  private userIsLogged: boolean = false
+  
+  get isLogged(){
+    return this.userIsLogged;
+  }
+
+  set logged(){
+    this.userIsLogged = true
+  }
+
+  set unlogged(){
+    this.userIsLogged = false
+  }
+
   getUser(id: number): Observable<IUser> {
     return this.http.get<IUser>(`${this.apiUrl}/${id}/`);
   }
