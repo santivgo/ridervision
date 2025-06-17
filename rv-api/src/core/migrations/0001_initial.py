@@ -15,58 +15,35 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ("auth", "0012_alter_user_first_name_max_length"),
+        ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name="Rider",
+            name='Rider',
             fields=[
-                ("id", models.AutoField(primary_key=True, serialize=False)),
-                ("name", models.CharField(max_length=100)),
-                ("main_user", models.CharField(max_length=50)),
-                (
-                    "rider_img_body",
-                    models.ImageField(upload_to=core.utils.upload_img.uploadImg),
-                ),
-                (
-                    "rider_img_sm",
-                    models.ImageField(upload_to=core.utils.upload_img.uploadImg),
-                ),
+                ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=100)),
+                ('main_user', models.CharField(max_length=50)),
+                ('rider_img_body', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
+                ('rider_img_sm', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
             ],
         ),
         migrations.CreateModel(
-            name="Show",
+            name='Show',
             fields=[
-                ("id", models.AutoField(primary_key=True, serialize=False)),
-                ("name", models.CharField(max_length=100, unique=True)),
-                (
-                    "year",
-                    models.IntegerField(
-                        validators=[django.core.validators.MinValueValidator(1800)]
-                    ),
-                ),
-                ("synopsis", models.CharField(blank=True)),
-                (
-                    "show_img_xl",
-                    models.ImageField(upload_to=core.utils.upload_img.uploadImg),
-                ),
-                (
-                    "show_img_sm",
-                    models.ImageField(upload_to=core.utils.upload_img.uploadImg),
-                ),
-                (
-                    "show_img_banner",
-                    models.ImageField(upload_to=core.utils.upload_img.uploadImg),
-                ),
-                (
-                    "show_img_logo",
-                    models.ImageField(upload_to=core.utils.upload_img.uploadImg),
-                ),
+                ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=100, unique=True)),
+                ('year', models.IntegerField(validators=[django.core.validators.MinValueValidator(1800)])),
+                ('synopsis', models.CharField(blank=True)),
+                ('show_img_xl', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
+                ('show_img_sm', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
+                ('show_img_banner', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
+                ('show_img_logo', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
             ],
         ),
         migrations.CreateModel(
-            name="User",
+            name='User',
             fields=[
                 (
                     "id",
@@ -172,109 +149,48 @@ class Migration(migrations.Migration):
                 ),
             ],
             options={
-                "verbose_name": "user",
-                "verbose_name_plural": "users",
-                "abstract": False,
+                'verbose_name': 'user',
+                'verbose_name_plural': 'users',
+                'abstract': False,
             },
             managers=[
-                ("objects", django.contrib.auth.models.UserManager()),
+                ('objects', django.contrib.auth.models.UserManager()),
             ],
         ),
         migrations.CreateModel(
-            name="Post",
+            name='Post',
             fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("content", models.CharField()),
-                ("date", models.DateField()),
-                ("img", models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
-                (
-                    "author",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to=settings.AUTH_USER_MODEL,
-                    ),
-                ),
-                (
-                    "tagged_riders",
-                    models.ManyToManyField(related_name="posts", to="core.rider"),
-                ),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('content', models.CharField()),
+                ('date', models.DateField()),
+                ('img', models.ImageField(upload_to=core.utils.upload_img.uploadImg)),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('tagged_riders', models.ManyToManyField(related_name='posts', to='core.rider')),
             ],
         ),
         migrations.CreateModel(
-            name="Comment",
+            name='Comment',
             fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("content", models.CharField()),
-                ("date", models.DateField()),
-                (
-                    "author",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        related_name="comments",
-                        to=settings.AUTH_USER_MODEL,
-                    ),
-                ),
-                (
-                    "post",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="core.post"
-                    ),
-                ),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('content', models.CharField()),
+                ('date', models.DateField()),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to=settings.AUTH_USER_MODEL)),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.post')),
             ],
         ),
         migrations.AddField(
-            model_name="rider",
-            name="tv_show",
-            field=models.ForeignKey(
-                on_delete=django.db.models.deletion.PROTECT, to="core.show"
-            ),
+            model_name='rider',
+            name='tv_show',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='core.show'),
         ),
         migrations.CreateModel(
-            name="Review",
+            name='Review',
             fields=[
-                (
-                    "id",
-                    models.BigAutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
-                    ),
-                ),
-                ("show_review", models.CharField(blank=True, max_length=250)),
-                (
-                    "user",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to=settings.AUTH_USER_MODEL,
-                    ),
-                ),
-                (
-                    "fav_riders",
-                    models.ManyToManyField(related_name="fav_shows", to="core.rider"),
-                ),
-                (
-                    "show",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="core.show"
-                    ),
-                ),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('show_review', models.CharField(blank=True, max_length=250)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('fav_riders', models.ManyToManyField(related_name='fav_shows', to='core.rider')),
+                ('show', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.show')),
             ],
         ),
     ]
