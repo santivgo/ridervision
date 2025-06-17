@@ -6,28 +6,37 @@
             </div>
 
 
-            <form>
+            <form (ngSubmit)="submit()" [formGroup]="loginForm" #formDir="ngForm">
                 <div class="rv-login__container__left__login">
                     <div class="form-group">
-                        <label class='montserrat f-md' for="login">Login</label>
-                        <input type="login" class="form-control" id="login" aria-describedby="emailHelp"
-                            placeholder="Login">
+                        <label class='montserrat f-md' for="login">Username</label>
+                        <input type="text" class="form-control" id="login" placeholder="Username"
+                            formControlName="username" required>
+
+                        <div class="form-error" *ngIf="username.invalid && username.touched">
+                            <p>O username é obrigatório.</p>
+                        </div>
 
                     </div>
                     <div class="form-group">
-                        <label class='montserrat f-md' for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label class='montserrat f-md' for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                            formControlName="password" required>
+
+                        <div class="form-error" *ngIf="password.invalid && password.touched">
+                            <p>A senha é obrigatória.</p>
+                        </div>
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <label class="form-check-label" for="exampleCheck1">Manter Login</label>
                     </div>
                     <button type="submit"
                         class="btn btn-primary color-madder montserrat f-light f-1d5rem">Login</button>
-   
-                          
-                        <small>doesn't have a account? <a class="rv-link" routerLink="/cadastro">sign up</a></small>
-                    </div>
+
+
+                    <small>doesn't have a account? <a class="rv-link" routerLink="/cadastro">sign up</a></small>
+                </div>
             </form>
 
         </div>

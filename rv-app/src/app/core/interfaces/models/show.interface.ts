@@ -2,6 +2,7 @@ import { IRider } from "./rider.interface";
 import { IUser } from "./user.interface";
 
 export interface IShow {
+	url: string;
 	id: string;
 	name: string;
 	year: number;

@@ -1,8 +1,8 @@
 import { IShow } from './show.interface';
 
 export interface IUser{
-    id: BigInteger,
+    id: string,
     username: string,
-    password: string, // hashcode
     img: string, // path
 }
+

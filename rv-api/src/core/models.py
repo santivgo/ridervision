@@ -53,10 +53,7 @@ class User(AbstractUser):
     img: img, representa a imagem do usuário
 
     """
-
-    id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=15, unique=True, null=False, blank=False)
-    password = models.CharField(null=False, blank=False)
+    
     img = models.ImageField(upload_to=uploadImg)
 
     def __str__(self):
