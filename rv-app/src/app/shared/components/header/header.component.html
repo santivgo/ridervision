@@ -12,7 +12,7 @@
         <app-horizontal-sep></app-horizontal-sep>
 
         <div class="m-bot-5">
-            <app-header-menu-button (click)="onButtonClicked($event)" *ngFor="let btn of btnListBot"
+            <app-header-menu-button (click)="onButtonClicked($event)" *ngFor="let btn of btnListBot | securityMenu"
                 routerLink="btn.route" routerLinkActive="selectedButton === btn.title"
                 [ativo]="selectedButton===btn.title">
                 {{btn.title}}

@@ -14,15 +14,15 @@ export class UsersService {
 
   private userIsLogged: boolean = false
   
-  get isLogged(){
+  get isLogged(): boolean{
     return this.userIsLogged;
   }
 
-  set logged(){
+  logged(): void{
     this.userIsLogged = true
   }
 
-  set unlogged(){
+  unlogged(){
     this.userIsLogged = false
   }
 
@@ -45,6 +45,10 @@ export class UsersService {
         user
       )
       .subscribe((resp) => localStorage.setItem('token', resp.access));
+
+      if(! this.isLogged){
+        this.logged();
+      }
   }
 
 }
