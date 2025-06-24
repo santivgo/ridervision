@@ -34,7 +34,6 @@ export class LoginComponent {
      this._usersService.loginUser({username, password}).subscribe({
       next: (response) => {
         this._usersService.saveTokens(response);
-        this._usersService.logged();
         this.router.navigate(['/perfil']);
       },
       error: (error) => {

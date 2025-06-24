@@ -16,11 +16,7 @@ export class UsersService {
   private userIsLogged: boolean = !!localStorage.getItem('token') // ✅
   
   get isLogged(): boolean{
-    return this.userIsLogged;
-  }
-
-  logged(): void{
-    this.userIsLogged = true
+    return !!localStorage.getItem('token');
   }
 
   unlogged(){
