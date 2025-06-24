@@ -31,6 +31,15 @@ export class LoginComponent {
 
   submit(){
     const {username, password} = this.loginForm.value
-    this._usersService.loginUser({username, password})
+     this._usersService.loginUser({username, password}).subscribe({
+      next: (response) => {
+        this._usersService.saveTokens(response);
+        this._usersService.logged();
+        this.router.navigate(['/perfil']);
+      },
+      error: (error) => {
+        console.error('Erro no login:', error);
+      },})
+
   }
 }

@@ -1,22 +1,22 @@
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from "@angular/router";
-import { UsersService } from "../services/users.service";
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(
-    private router: Router, private readonly _usersService: UsersService) {
-  }
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    if (this._usersService.isLogged) {
-      return true;
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = localStorage.getItem('token');
+    
+    if (token) {
+      const authReq = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      return next.handle(authReq);
     }
-    this.router.navigate(["login"]);
-    return false;
-  }
-  canActivateChild(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    return this.canActivate(next, state);
+    
+    return next.handle(req);
   }
 }
