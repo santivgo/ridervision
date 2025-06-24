@@ -6,6 +6,7 @@ import { IUserRegister } from '../../../core/interfaces/auth/auth.interface';
 import { UsersService } from '../../../core/services/users.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +16,7 @@ import { MessageService } from 'primeng/api';
 })
 
 export class CadastroComponent implements OnInit{
-  constructor(private readonly _userService: UsersService, private messageService: MessageService) {}
+  constructor(private readonly _userService: UsersService, private messageService: MessageService, private router: Router) {}
   cadastroForm!: FormGroup
   submit(){
     const {username, password, re_password } = this.cadastroForm.value
@@ -27,7 +28,11 @@ export class CadastroComponent implements OnInit{
             { severity: 'info', summary: 'Message 2', detail: 'Message Content' },
             { severity: 'warn', summary: 'Message 3', detail: 'Message Content' },
             { severity: 'error', summary: 'Message 4', detail: 'Message Content' }
+
         ]);
+
+        this.router.navigate(['/login']);
+
         },
         error: (err) => {
         }

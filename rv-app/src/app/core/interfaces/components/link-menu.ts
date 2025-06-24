@@ -1,4 +1,5 @@
 export interface ILinkMenu{
     title: string,
-    route: string
+    route: string,
+    security: boolean 
 }
