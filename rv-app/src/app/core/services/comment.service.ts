@@ -20,4 +20,15 @@ export class CommentService {
     const params = new HttpParams().set('post', postId.toString());
     return this.http.get<IComment[]>(this.apiUrl, { params });
   }
+
+  getCommentsByPost(postId: number): Observable<IComment[]> {
+    const url = `${this.apiUrl}por-post/${postId}/`;
+    return this.http.get<IComment[]>(url);
+  }
+
+  createComment(comment: { post: number; content: string }, token: string) {
+    return this.http.post(this.apiUrl, comment, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
 }

@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getCurrentUser().subscribe({
       next: (data) => {
         this.user = data;
+        console.log(data)
         this.userId = Number(data.id); 
         this.loadComments();
         this.loadPosts();

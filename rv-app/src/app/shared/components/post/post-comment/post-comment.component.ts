@@ -25,6 +25,7 @@ export class PostCommentComponent implements OnInit {
     this.userService.getUser(Number(this.comment.author))
       .subscribe((data) => {
         this.user = data;
+        console.log(data)
       });
   }
 }

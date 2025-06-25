@@ -18,14 +18,6 @@ export class UsersService {
     return this.userIsLogged;
   }
 
-  set logged(){
-    this.userIsLogged = true
-  }
-
-  set unlogged(){
-    this.userIsLogged = false
-  }
-
   getUser(id: number): Observable<IUser> {
     return this.http.get<IUser>(`${this.apiUrl}/${id}/`);
   }

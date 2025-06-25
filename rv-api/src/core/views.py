@@ -1,6 +1,9 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.decorators import action
+from rest_framework.decorators import action, permission_classes
+from rest_framework.permissions import AllowAny
+import random
+from datetime import date
 
 from core.models import Post, Review, Rider, Show, User, Comment
 from core.serializers import (
@@ -22,8 +25,7 @@ class RiderView(viewsets.ModelViewSet):
     #     serializer.is_valid(raise_exception=True)
     #     self.perform_create(serializer)
     #     return Response(serializer.data)
-
-
+    
 class ShowView(viewsets.ReadOnlyModelViewSet):
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
@@ -49,29 +51,28 @@ class PostView(viewsets.ModelViewSet):
             filters['author_id'] = int(author_id)
 
         return queryset.filter(**filters)
-
-    @action(detail=False, methods=['get'], url_path='day')
-    def get_daily_post(self, request):
-        daily_post = self.queryset.first()
-        if daily_post:
-            # Serializar o post
-            post_serializer = self.get_serializer(daily_post)
-
-            # Buscar os dados dos Riders associados
-            tagged_riders = daily_post.tagged_riders
-            rider_data = []
-            if tagged_riders:
-                rider_data = Rider.objects.filter(id__in=tagged_riders)
-                rider_serializer = RiderSerializer(rider_data, many=True)
-
-            # Combinar os dados do post com os dados dos Riders
-            response_data = {
-                "post": post_serializer.data,
-                "tagged_riders": rider_serializer.data  # Dados completos dos Riders
-            }
-            return Response(response_data)
-
-        return Response({'detail': 'Nenhum post encontrado'}, status=404)
+    
+    @action(detail=False, methods=['get'], url_path='daily')
+    @permission_classes([AllowAny])
+    def daily_post(self, request):
+        """
+        Retorna o post do dia já criado pela task.
+        """
+        today = date.today()
+        user_id = 1
+        post = Post.objects.filter(author_id=user_id, date=today).first()
+        if not post:
+            return Response({'error': 'No daily post found.'}, status=404)
+        
+        tagged_riders = post.tagged_riders.all()
+        rider_data = RiderSerializer(tagged_riders, many=True, context={'request': request}).data
+        show_ids = tagged_riders.values_list('tv_show', flat=True)
+        shows = Show.objects.filter(id__in=show_ids)
+        show_data = ShowSerializer(shows, many=True, context={'request': request}).data
+        
+        post_data = PostSerializer(post, context={'request': request}).data
+        
+        return Response({'post': post_data, 'tagged_riders': rider_data, 'shows': show_data})
     
 class CommentView(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
@@ -91,3 +92,12 @@ class CommentView(viewsets.ModelViewSet):
             filters['post_id'] = int(post_id)
 
         return queryset.filter(**filters)
+
+    @action(detail=False, methods=['get'], url_path='por-post/(?P<post_id>[^/.]+)')
+    def comments_by_post(self, request, post_id=None):
+        """
+        Buscar por ID do post
+        """
+        comments = self.queryset.filter(post_id=post_id)
+        serializer = self.get_serializer(comments, many=True)
+        return Response(serializer.data)

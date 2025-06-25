@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommentService } from '../../../../core/services/comment.service';
 import { FormsModule } from '@angular/forms';
 
@@ -9,17 +9,24 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './comment-input.component.sass'
 })
 export class CommentInputComponent {
-  commentString = ''
+  @Input() postId!: number;
+  @Output() commentSent = new EventEmitter<void>();
+  commentString = '';
 
   constructor(private commentService: CommentService) {}
 
-  postComment(): void{
-    if(this.commentString.trim()) {
-      const newComentario = {
-        username: 'Nun tem',
-        comment: this.commentString
+  postComment(): void {
+    if (this.commentString.trim() && this.postId) {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const newComment = {
+        post: this.postId,
+        content: this.commentString
       };
+      this.commentService.createComment(newComment, token).subscribe(() => {
+        this.commentString = '';
+        this.commentSent.emit();
+      });
     }
   }
-
 }

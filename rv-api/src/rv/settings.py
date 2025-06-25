@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
-    "djoser"
+    "djoser",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -164,8 +165,8 @@ SIMPLE_JWT = {
 DJOSER = {
     'SERIALIZERS': {
         'user_create': 'djoser.serializers.UserCreateSerializer',
-        'user': 'djoser.serializers.UserSerializer',
-        'current_user': 'djoser.serializers.UserSerializer',
+        'user': 'core.serializers.DjoserUserSerializer',
+        'current_user': 'core.serializers.DjoserUserSerializer',
     },
     'LOGIN_FIELD': 'username',
     'USER_CREATE_PASSWORD_RETYPE': False,  
@@ -174,3 +175,5 @@ DJOSER = {
 
 AUTH_USER_MODEL = 'core.User'
 LOGIN_FIELD = 'username'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
