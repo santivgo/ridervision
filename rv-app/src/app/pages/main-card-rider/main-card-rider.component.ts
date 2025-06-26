@@ -37,7 +37,6 @@ export class MainCardRiderComponent implements OnInit {
   ngOnInit(): void {
     this.checkLogin();
     this.loadPost();
-    console.log(this.post,this.rider,this.show)
   }
 
   checkLogin(): void {

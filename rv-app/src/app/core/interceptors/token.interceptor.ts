@@ -1,16 +1,25 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
+const isPublicEndpoint = (url: string, method: string) => {
+  if (method === 'GET' && (
+    url.match(/\/auth\/users\/?$/) !== null ||
+    url.match(/\/auth\/users\/\d+\/?$/) !== null
+  )) {
+    return true;
+  }
+  // outros endpoints públicos
+  if (url.includes('/posts/daily/')) return true;
+  return false;
+};
+
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
-  // para não passa token no endpoint publico
-  if (req.url.includes('/posts/daily/')) {
+  if (isPublicEndpoint(req.url, req.method)) {
     return next(req);
   }
-  if (localStorage.getItem('token')) {
+  const token = localStorage.getItem('token');
+  if (token) {
     const reqClone = req.clone({
-      headers: req.headers.set(
-        'Authorization',
-        `Bearer ${localStorage.getItem('token')}`
-      ),
+      headers: req.headers.set('Authorization', `Bearer ${token}`),
     });
     return next(reqClone);
   }

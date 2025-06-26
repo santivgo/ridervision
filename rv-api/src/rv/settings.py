@@ -168,6 +168,10 @@ DJOSER = {
         'user': 'core.serializers.DjoserUserSerializer',
         'current_user': 'core.serializers.DjoserUserSerializer',
     },
+    "PERMISSIONS": {
+        "user": ["rest_framework.permissions.AllowAny"],
+        "user_list": ["rest_framework.permissions.AllowAny"],
+    },
     'LOGIN_FIELD': 'username',
     'USER_CREATE_PASSWORD_RETYPE': False,  
     'SEND_ACTIVATION_EMAIL': False,

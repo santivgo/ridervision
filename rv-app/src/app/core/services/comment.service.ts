@@ -26,9 +26,7 @@ export class CommentService {
     return this.http.get<IComment[]>(url);
   }
 
-  createComment(comment: { post: number; content: string }, token: string) {
-    return this.http.post(this.apiUrl, comment, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+  createComment(comment: { post: number; content: string; date: string; author: number }): Observable<IComment> {
+    return this.http.post<IComment>(this.apiUrl, comment);
   }
 }
