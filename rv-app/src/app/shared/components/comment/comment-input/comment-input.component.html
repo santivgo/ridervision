@@ -6,7 +6,7 @@
         <textarea 
             [(ngModel)]="commentString" 
             placeholder="Escreva seu comentário aqui..."
-            (keydown.enter)="postComment()"
+            (keydown.enter)="postComment($event)"
         ></textarea>
     </div>
 </div>

@@ -11,6 +11,10 @@ import { CommonModule } from '@angular/common'
 import { IComment } from '../../core/interfaces/models/comment.interface';
 import { CommentInputComponent } from '../../shared/components/comment/comment-input/comment-input.component';
 import { IPost } from '../../core/interfaces/models/post.interface';
+import { UsersService } from '../../core/services/users.service';
+import { Output, EventEmitter } from '@angular/core';
+import { IRider } from '../../core/interfaces/models/rider.interface';
+import { IShow } from '../../core/interfaces/models/show.interface';
 
 @Component({
   selector: 'app-main-card-rider',
@@ -19,38 +23,46 @@ import { IPost } from '../../core/interfaces/models/post.interface';
   styleUrl: './main-card-rider.component.sass'
 })
 export class MainCardRiderComponent implements OnInit {
-  imgSrc: string = '/assets/MiBRrBm.png';
-  riderName: string = 'MAJEDE';
-  riderDescription: string = 'from kamen rider gotchard';
-  textAreaTitle: string = 'BASE FORM';
-  textAreaContent: string = `Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.`;
   comments: IComment[] = [];
   post = {} as IPost;
-  intervalId: any;
+  rider = {} as IRider;
+  show = {} as IShow;
+  isLogged: boolean = false;
 
   constructor(
     private commentsService: CommentService,
-    private postService: PostService
+    private postService: PostService,
   ) {}
 
   ngOnInit(): void {
+    this.checkLogin();
     this.loadPost();
-    //this.loadComments();
   }
 
-  loadPost(): void{
-    this.postService.getDailyPost()
-    .subscribe((data) => {
-      console.log(data)
-      this.post = data[0];
+  checkLogin(): void {
+    this.isLogged = !!localStorage.getItem('token');
+  }
+
+  loadPost(): void {
+    this.postService.getDailyRider().subscribe((data: any) => {
+      if (data && data.post) {
+        this.post = data.post;
+        this.show = data.shows[0];
+        this.rider = data.tagged_riders[0];
+        this.loadComments();
+      }
     });
   }
 
-  loadComments(): void{
-    const postId = 1; // TEMPORARIO
-    this.commentsService.getPostComments(postId)
-    .subscribe((data) => {
-      this.comments = data;
-    });
+  loadComments(): void {
+    if (this.post.id) {
+      this.commentsService.getCommentsByPost(this.post.id).subscribe((data) => {
+        this.comments = data;
+      });
+    }
+  }
+
+  onCommentSent() {
+    this.loadComments();
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IPost } from '../interfaces/models/post.interface';
 import { Observable } from 'rxjs';
@@ -17,8 +17,12 @@ export class PostService {
     return this.http.get<IPost[]>(this.apiUrl, { params })
   }
 
-  getDailyPost(): Observable<IPost[]> {
-    const params = new HttpParams().set('day', '1');
-    return this.http.get<IPost[]>(this.apiUrl, { params })
+  getDailyRider(): Observable<any> {
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.get<any>(this.apiUrl + 'daily/', { headers });
   }
 }

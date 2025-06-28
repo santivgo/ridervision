@@ -3,20 +3,19 @@
         <app-card-rider>
             <app-card-header>
                 <div class="rv-c-card__header__rider">
-                    <img [src]="imgSrc" alt="{{riderName}}" />
+                    <img [src]="rider.rider_img_body" alt="{{rider.name}}" />
                 </div>
                 <div class="rv-c-card__header__rider__text">
-                    <h1>{{riderName}}</h1>
-                    <p>{{riderDescription}}</p>
+                    <h1>{{rider.name}}</h1>
                 </div>
             </app-card-header>
             <app-divider-horizontal></app-divider-horizontal>
 
             <app-card-content>
                 <div class="rv-c-card__content__text-area">
-                    <div class="rv-c-card__content__text-area__text-1">{{textAreaTitle}}</div>
+                    <div class="rv-c-card__content__text-area__text-1">{{rider.main_user}}</div>
                     <app-divider-horizontal-gradient></app-divider-horizontal-gradient>
-                    <div class="rv-c-card__content__text-area__text-2">{{textAreaContent}}</div>
+                    <div class="rv-c-card__content__text-area__text-2">{{show.synopsis}}</div>
                 </div>
             </app-card-content>
         </app-card-rider>
@@ -27,7 +26,11 @@
                   </ng-container>
             </div>
             <div class="rv-container__comment-area__input">
-                <app-comment-input></app-comment-input>
+                <app-comment-input 
+                  *ngIf="isLogged && post.id"
+                  [postId]="post.id"
+                  (commentSent)="onCommentSent()"
+                ></app-comment-input>
             </div>
         </div>
     </div>
