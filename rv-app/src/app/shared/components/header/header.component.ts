@@ -15,7 +15,7 @@ import { SecurityMenuPipe } from '../../../core/pipes/security-menu.pipe';
 export class HeaderComponent{
 
   constructor(private router: Router){}
-  btnList: ILinkMenu[] = [{title: 'Rider do Dia', route: "", security: false }, {title: 'Riders', route: "riders", security: false }, {title: 'API', route: "api", security: false}, {title: 'Login', route: "login", security: false}, {title: 'Perfil', route: "perfil", security: true}]
+  btnList: ILinkMenu[] = [{title: 'Rider do Dia', route: "", security: false }, {title: 'Riders', route: "riders", security: false }, {title: 'API', route: "api", security: false}, {title: 'Login', route: "login", security: false}, {title: 'Logout', route: "/logout", security: true}, {title: 'Perfil', route: "perfil", security: true}]
 
 
   btnListUpper: ILinkMenu[] = this.btnList.slice(0, 2)

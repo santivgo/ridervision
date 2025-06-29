@@ -13,13 +13,14 @@ export class UsersService {
 
   private apiUrl = 'http://localhost:8000/auth/users'; 
 
-  private userIsLogged: boolean = !!localStorage.getItem('token') // ✅
+  private userIsLogged: boolean = !!localStorage.getItem('token') 
   
   get isLogged(): boolean{
-    return !!localStorage.getItem('token');
+    return this.userIsLogged;
   }
 
   unlogged(){
+    localStorage.removeItem('token');
     this.userIsLogged = false
   }
 

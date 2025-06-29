@@ -12,12 +12,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-
-      const isLoggedIn = this._usersService.isLogged;
-      const token = localStorage.getItem('token');
-
-      console.log('🔍 Token no localStorage:', token); // DEBUG
-      console.log('🔍 Service isLogged:', isLoggedIn); // DEBUG
     if (this._usersService.isLogged) {
       return true;
     }
