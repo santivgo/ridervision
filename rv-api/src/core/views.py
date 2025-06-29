@@ -41,6 +41,12 @@ class UserView(viewsets.ModelViewSet):
 class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    @action(detail=False, methods=['get'], url_path='user/(?P<user_id>[^/.]+)')
+    def user_reviews(self, request, user_id=None):
+        reviews = Review.objects.filter(user_id=user_id)
+        serializer = self.get_serializer(reviews, many=True)
+        return Response(serializer.data)
+
 
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
