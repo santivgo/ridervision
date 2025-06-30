@@ -1,6 +1,6 @@
 <div class="post-section">
     <div class="post-section__header">
-        <img [src]="user.img" alt="foto_perfil">
+        <img [src]="user.img || 'assets/Default.png'" alt="foto_perfil">
         <div class="post-section__header__text">
             <h1>&#64;{{ user.username }}</h1>
             <p>{{ post.content }}</p>

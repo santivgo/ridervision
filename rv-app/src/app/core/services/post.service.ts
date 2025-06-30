@@ -25,4 +25,8 @@ export class PostService {
     }
     return this.http.get<any>(this.apiUrl + 'daily/', { headers });
   }
+
+  getAllPosts(): Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.apiUrl);
+  }
 }

@@ -7,6 +7,7 @@ import { ApiPageComponent } from './pages/api-page/api-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LogoutGuard } from './core/guards/logout.guard';
+import { FeedComponent } from './pages/feed/feed.component';
 
 export const routes: Routes = [
     {path: '', component: MainCardRiderComponent},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'cadastro', component: CadastroComponent},
     {path: 'perfil', component: ProfileComponent, canActivate: [AuthGuard]},
-    { path: 'logout', component: MainCardRiderComponent, canActivate: [LogoutGuard]}
+    { path: 'logout', component: MainCardRiderComponent, canActivate: [LogoutGuard]},
+    { path: 'feed', component: FeedComponent }
 
 ];

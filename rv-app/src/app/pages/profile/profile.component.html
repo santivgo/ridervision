@@ -5,7 +5,7 @@
                 <div class="rv-container__card__perfil__top">
                     <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
                     <div class="rv-container__card__perfil__content__dados">
-                        <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img">
+                        <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img || 'assets/Default.png'">
                         <p>{{user.username}}</p>
                     </div>
                 </div>
