@@ -8,6 +8,9 @@ import { FavShowBtnComponent } from "../../../../shared/components/fav-show-btn/
 import { SeriesService } from '../../../../core/services/series.service';
 import { take } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../../../../core/services/users.service';
+import { IUser } from '../../../../core/interfaces/models/user.interface';
+import { IReview } from '../../../../core/interfaces/models/review.interface';
 
 @Component({
   selector: 'app-mural',
@@ -19,13 +22,18 @@ export class MuralComponent implements OnInit {
   actualShow: IShow = {} as IShow;
 
   show: IShow = {} as IShow
+  reviewList: IReview[] = []
   favRiders: IShow[] = [];
   
-  constructor(
-      private seriesService: SeriesService) {}
-  
-    ngOnInit(): void {
-      this.loadSeries();
+  constructor(private readonly seriesService: SeriesService, private readonly userService: UsersService) {}
+    
+  ngOnInit(): void {
+        this.loadSeries();
+        this.userService.getReviewsByUser().subscribe((reviewList: IReview[]) => {
+          this.reviewList = reviewList
+          console.log(reviewList)
+        })
+        
     }
 
 
