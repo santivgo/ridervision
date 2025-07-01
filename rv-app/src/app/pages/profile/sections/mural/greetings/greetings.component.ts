@@ -6,6 +6,8 @@ import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
 import { SeriesService } from '../../../../../core/services/series.service';
 import { ShortNamePipe } from '../../../../../core/pipes/short-name.pipe';
+import { IRider } from '../../../../../core/interfaces/models/rider.interface';
+import { RiderService } from '../../../../../core/services/rider.service';
 
 @Component({
   selector: 'app-greetings',
@@ -16,9 +18,14 @@ import { ShortNamePipe } from '../../../../../core/pipes/short-name.pipe';
 export class GreetingsComponent implements OnInit{
   shows: IShow[] = [];
   selectedShow: IShow | undefined;
+  riderListFromShow: IRider[] | undefined;
   responsiveOptions: any[] | undefined;
 
-  constructor(private readonly _seriesService: SeriesService){}
+  constructor(
+    private readonly _seriesService: SeriesService,
+    private readonly _riderService: RiderService,
+
+  ){}
 
   ngOnInit(): void {
       this._seriesService.getShows().subscribe((showList: IShow[])=>this.shows = showList)
@@ -47,7 +54,7 @@ export class GreetingsComponent implements OnInit{
   changeSelectedShow(show: IShow){
     if(this.selectedShow===undefined){
       this.selectedShow = show;
-      console.log(this.selectedShow)
+      this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
     }
   }
     

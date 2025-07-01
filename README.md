@@ -37,3 +37,17 @@
 - [Angular powered Bootstrap](https://ng-bootstrap.github.io/): Usada para o collapse
 
 ---
+
+
+### Comando para ativar manualmente task de rider do dia
+
+```
+[em um terminal]
+celery -A rv worker --loglevel=info
+
+[em outro]
+python manage.py shell
+from core.tasks import create_daily_post
+create_daily_post.delay()
+
+``` 

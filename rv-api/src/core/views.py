@@ -19,13 +19,14 @@ from core.serializers import (
 class RiderView(viewsets.ModelViewSet):
     queryset = Rider.objects.all()
     serializer_class = RiderSerializer
-    # def create(self, request, *args, **kwargs):
-    #     many = isinstance(request.data, list)
-    #     serializer = self.get_serializer(data=request.data, many=many)
-    #     serializer.is_valid(raise_exception=True)
-    #     self.perform_create(serializer)
-    #     return Response(serializer.data)
-    
+
+    @action(detail=False, methods=['get'], url_path='show/(?P<show_id>[^/.]+)')
+    def riders_by_show(self, request, show_id=None):
+        riders = Rider.objects.filter(tv_show=show_id)
+        serializer = self.get_serializer(riders, many=True)
+        return Response(serializer.data)
+
+  
 class ShowView(viewsets.ReadOnlyModelViewSet):
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
