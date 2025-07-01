@@ -1,5 +1,7 @@
+<div class="rv-greetings__container">
+
 <div class="rv-greetings__caroussel">
-    <p-carousel [value]="shows" [numVisible]="3" [numScroll]="3" [circular]="false"
+    <p-carousel [value]="shows" [numVisible]="4" [numScroll]="4" [circular]="true"
         [responsiveOptions]="responsiveOptions" showIndicators="false">
         <ng-template let-show #item>
             <div (click)="changeSelectedShow(show)" class="btn m-1 p-4">
@@ -26,7 +28,11 @@
 <div class="rv-greetings-form" *ngIf="selectedShow">
     <div class="rv-greetings-form__review">
         <p>Escreva ou altere sua review para {{selectedShow!.name}}</p>
-        <textarea name="" id=""></textarea>
+        <textarea name="" id="" rows="9"></textarea>
+        <div class="btn-save">
+            <p-button label="Salvar" icon="pi pi-check" iconPos="right" />
+        </div>
+
     </div>
     <div class="rv-greetings-form__riders">
         <p>Quais são seus riders favoritos?</p>
@@ -36,4 +42,7 @@
             </div>
         </div>
     </div>
+</div>
+
+
 </div>
