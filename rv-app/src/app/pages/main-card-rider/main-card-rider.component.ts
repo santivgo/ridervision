@@ -11,8 +11,6 @@ import { CommonModule } from '@angular/common'
 import { IComment } from '../../core/interfaces/models/comment.interface';
 import { CommentInputComponent } from '../../shared/components/comment/comment-input/comment-input.component';
 import { IPost } from '../../core/interfaces/models/post.interface';
-import { UsersService } from '../../core/services/users.service';
-import { Output, EventEmitter } from '@angular/core';
 import { IRider } from '../../core/interfaces/models/rider.interface';
 import { IShow } from '../../core/interfaces/models/show.interface';
 
