@@ -52,10 +52,10 @@ export class GreetingsComponent implements OnInit{
     }
 
   changeSelectedShow(show: IShow){
-    if(this.selectedShow===undefined){
+    // if(this.selectedShow===undefined){
       this.selectedShow = show;
-      this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
-    }
+      this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)    //   this.selectedShow = show;
+    // }
   }
     
 

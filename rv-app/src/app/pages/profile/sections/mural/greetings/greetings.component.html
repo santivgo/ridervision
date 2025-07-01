@@ -31,8 +31,8 @@
     <div class="rv-greetings-form__riders">
         <p>Quais são seus riders favoritos?</p>
         <div class="rv-greetings-form__riders__container">
-            <div class="rv-greetings-form__riders__container__rider">
-                <p>Kamen Rider Kuuga</p>
+            <div *ngFor="let rider of riderListFromShow" class="rv-greetings-form__riders__container__rider">
+                <p>{{rider.name}}</p>
             </div>
         </div>
     </div>

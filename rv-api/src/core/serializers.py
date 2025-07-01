@@ -14,7 +14,7 @@ class RiderSerializer(serializers.HyperlinkedModelSerializer):
         fields = "__all__"
 
 
-class ShowSerializer(serializers.HyperlinkedModelSerializer):
+class ShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Show
         fields = "__all__"
