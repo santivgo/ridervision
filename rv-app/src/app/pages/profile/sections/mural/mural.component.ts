@@ -11,10 +11,11 @@ import { CommonModule } from '@angular/common';
 import { UsersService } from '../../../../core/services/users.service';
 import { IUser } from '../../../../core/interfaces/models/user.interface';
 import { IReview } from '../../../../core/interfaces/models/review.interface';
+import { GreetingsComponent } from "./greetings/greetings.component";
 
 @Component({
   selector: 'app-mural',
-  imports: [FavShowBtnComponent, CommonModule],
+  imports: [FavShowBtnComponent, CommonModule, GreetingsComponent],
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.sass'
 })

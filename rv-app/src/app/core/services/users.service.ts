@@ -34,7 +34,7 @@ export class UsersService {
   getReviewsByUser(): Observable<IReview[]> {
   return this.getCurrentUser().pipe(
     switchMap((user: IUser) => 
-      this.http.get<IReview[]>(`http://localhost:8000/reviews/user/${user.id}`)
+      this.http.get<IReview[]>(`http://localhost:8000/reviews/user/${user.id}/`)
     )
   );
 }
