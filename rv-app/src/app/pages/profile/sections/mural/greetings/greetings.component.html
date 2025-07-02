@@ -1,48 +1,53 @@
 <div class="rv-greetings__container">
 
-<div class="rv-greetings__caroussel">
-    <p-carousel [value]="shows" [numVisible]="4" [numScroll]="4" [circular]="true"
-        [responsiveOptions]="responsiveOptions" showIndicators="false">
-        <ng-template let-show #item>
-            <div (click)="changeSelectedShow(show)" class="btn m-1 p-4">
-                <div>
-                    <div class="relative mx-auto">
-                        <img [src]="show.show_img_sm" [alt]="show.name" class="card rounded-border" />
-                        <!-- <p-tag [value]="show.inventoryStatus" [severity]="getSeverity(show.inventoryStatus)"
+    <div class="rv-greetings__caroussel">
+        <p-carousel class="carousel" [value]="shows" [numVisible]="4" [numScroll]="4" [circular]="true"
+            [responsiveOptions]="responsiveOptions" showIndicators="false">
+            <ng-template let-show #item>
+                <div (click)="changeSelectedShow(show)" class="btn m-1 p-4">
+                    <div>
+                        <div class="relative mx-auto">
+                            <img [src]="show.show_img_sm" [alt]="show.name" class="card rounded-border" />
+                            <!-- <p-tag [value]="show.inventoryStatus" [severity]="getSeverity(show.inventoryStatus)"
                         class="absolute" [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" /> -->
+                        </div>
                     </div>
-                </div>
-                <div class="mb-4 font-medium text-center">{{ show.name | shortName }}</div>
-                <!-- <div class="flex items-center w-full">
+                    <div class="mb-4 font-medium text-center">{{ show.name | shortName }}</div>
+                    <!-- <div class="flex items-center w-full">
                     <span>
                         <p-button label="Selecionado" icon="pi pi-heart" severity="secondary"
                             [outlined]="true"></p-button>
                     </span>
                 </div> -->
-            </div>
-        </ng-template>
-    </p-carousel>
-</div>
-
-
-<div class="rv-greetings-form" *ngIf="selectedShow">
-    <div class="rv-greetings-form__review">
-        <p>Escreva ou altere sua review para {{selectedShow!.name}}</p>
-        <textarea name="" id="" rows="9"></textarea>
-        <div class="btn-save">
-            <p-button label="Salvar" icon="pi pi-check" iconPos="right" />
-        </div>
-
+                </div>
+            </ng-template>
+        </p-carousel>
     </div>
-    <div class="rv-greetings-form__riders">
-        <p>Quais são seus riders favoritos?</p>
-        <div class="rv-greetings-form__riders__container">
-            <div *ngFor="let rider of riderListFromShow" class="rv-greetings-form__riders__container__rider">
-                <p>{{rider.name}}</p>
+
+
+    <div class="rv-greetings-form" *ngIf="selectedShow">
+        <div class="rv-greetings-form__review">
+            <p>Escreva ou altere sua review para {{selectedShow!.name | shortName}}</p>
+            <form class="reviewForm" (ngSubmit)="submit()" [formGroup]="reviewForm" #formDir="ngForm">
+                <textarea class="review" formControlName="review" placeholder="Digite a sua review sobre a série"
+                    name="" id="" rows="9"></textarea>
+                <div class="btn-save">
+                    <p-button class="save-button-c" label="Salvar" icon="pi pi-check" iconPos="right" />
+                </div>
+            </form>
+
+
+        </div>
+        <div class="rv-greetings-form__riders">
+            <p>Quais são seus riders favoritos?</p>
+            <div class="rv-greetings-form__riders__container">
+                <div [ngClass]="{'active': riderListSelected.includes(rider)}" *ngFor="let rider of riderListFromShow"
+                    (click)="addRider(rider)" class="btn rv-greetings-form__riders__container__rider">
+                    <p>{{rider.name}}</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </div>
