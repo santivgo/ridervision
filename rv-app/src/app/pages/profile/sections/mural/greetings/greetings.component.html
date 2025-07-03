@@ -1,6 +1,6 @@
 <div class="rv-greetings__container">
     <div class="btn-submit">
-        <p-button (click)="saveReviews()" class="btn-c-submit" [disabled]="reviewsList.length" [raised]="true"
+        <p-button (click)="saveReviews()" class="btn-c-submit" [disabled]="reviewsList.length <= 0" [raised]="true"
             size="small" [outlined]="true">
             <div class="review-text">
                 <p class="m-0">Concluir Review</p>
@@ -17,7 +17,7 @@
                     <div>
                         <div class="relative mx-auto">
                             <img [src]="show.show_img_sm" [alt]="show.name" class="card rounded-border" />
-                            <p-tag *ngIf="containsShow(show)" [value]="'Selecionado'" class="absolute"
+                            <p-tag *ngIf="containsShow(show).show" [value]="'Selecionado'" class="absolute"
                                 [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
                         </div>
                     </div>

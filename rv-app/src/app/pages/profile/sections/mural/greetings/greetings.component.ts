@@ -77,29 +77,38 @@ export class GreetingsComponent implements OnInit{
 
   submit(){
     let user: IUser = {} as IUser
+    const reviewText = this.reviewForm.value.review
     this._userService.getCurrentUser().subscribe({
     next: (currentUser) => {
       user = currentUser
+      const review: IReview = {
+        show: this.selectedShow!,
+        user: user,
+        fav_riders: this.riderListSelected,
+        review: reviewText
+    }
+  
+    this.reviewsList.push(review)    
+    
     },
     error: (error) => {
       console.log(error)
     }});
 
-    const reviewText = this.reviewForm.value.review
-    const review: IReview = {
-      show: this.selectedShow!,
-      user: user,
-      fav_riders: this.riderListSelected,
-      review: reviewText
-    }
-   
-    this.reviewsList.push(review)
-    
   }
     
   saveReviews(){
+    console.log(this.reviewsList)
     for (const review of this.reviewsList){
-      this._reviewService.submitReview(review)
+      
+      this._reviewService.submitReview(review).subscribe({
+    next: (response) => {
+      console.log('✅ Review enviado com sucesso!', response);
+    },
+    error: (error) => {
+      console.error('❌ Erro ao enviar review:', error);
+    }
+  });
     }
   }
 
@@ -109,7 +118,7 @@ export class GreetingsComponent implements OnInit{
     this.selectedShow = show;
 
 
-    if(!this.containsShow(show)){ 
+    if(!(this.containsShow(show).show)){ 
       this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
       this.riderListSelected = [];
     }else{

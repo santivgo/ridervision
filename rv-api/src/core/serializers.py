@@ -8,7 +8,7 @@ from core.models import Review, Rider, Show, User
 from djoser.serializers import UserSerializer as DjoserUserSerializer
 
 
-class RiderSerializer(serializers.HyperlinkedModelSerializer):
+class RiderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rider
         fields = "__all__"

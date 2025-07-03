@@ -11,8 +11,13 @@ export class ReviewService {
 
   constructor(private http: HttpClient) { }
 
-  submitReview(review: IReview): Observable<any>{
-    return this.http.post(`${this.apiUrl}/`, review)
+  submitReview(re: IReview): Observable<any>{
+    const { show, user, fav_riders, review } = re;
+    const { id: showId } = show;
+    const { id: userId } = user;
+    const ridersId = fav_riders.map((value)=> value.id)
+    console.log(user)
+    return this.http.post(`${this.apiUrl}`, {'review': review, 'user': userId, 'show': showId, 'fav_riders': ridersId })
   }
 
   getAllReviews(): Observable<IReview> | void{}

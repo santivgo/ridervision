@@ -1,7 +1,7 @@
 import { IShow } from "./show.interface"
 
 export interface IRider{
-    id_rider: number,
+    id: number,
     show: IShow
     url: string;
     name: string;
