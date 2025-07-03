@@ -8,9 +8,11 @@ import { SeriesService } from '../../../../../core/services/series.service';
 import { ShortNamePipe } from '../../../../../core/pipes/short-name.pipe';
 import { IRider } from '../../../../../core/interfaces/models/rider.interface';
 import { RiderService } from '../../../../../core/services/rider.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, isFormRecord, ReactiveFormsModule } from '@angular/forms';
 import { IUser } from '../../../../../core/interfaces/models/user.interface';
 import { UsersService } from '../../../../../core/services/users.service';
+import { IReview } from '../../../../../core/interfaces/models/review.interface';
+import { ReviewService } from '../../../../../core/services/review.service';
 
 @Component({
   selector: 'app-greetings',
@@ -19,18 +21,20 @@ import { UsersService } from '../../../../../core/services/users.service';
   styleUrl: './greetings.component.sass'
 })
 export class GreetingsComponent implements OnInit{
+  
   shows: IShow[] = [];
   selectedShow: IShow | undefined;
   riderListFromShow: IRider[] | undefined;
   responsiveOptions: any[] | undefined;
   riderListSelected: IRider[] = []
+  reviewsList: IReview[] = []
   reviewForm!: FormGroup;
 
   constructor(
     private readonly _seriesService: SeriesService,
     private readonly _riderService: RiderService,
-    private readonly _userService: UsersService
-
+    private readonly _userService: UsersService,
+    private readonly _reviewService: ReviewService,
   ){}
 
   ngOnInit(): void {
@@ -45,56 +49,76 @@ export class GreetingsComponent implements OnInit{
         },)
     }
   
-  getSeverity(status: string) {
-        switch (status) {
-            case 'INSTOCK':
-                return 'success';
-            case 'LOWSTOCK':
-                return 'warn';
-            case 'OUTOFSTOCK':
-                return 'danger';
-            default:
-                return 'teste';
-
+  containsShow(show: IShow): IReview {
+      for (const review of this.reviewsList){
+        if (review.show === show){
+          return review
         }
+      }
+      return {} as IReview
+
     }
   
   addRider(rider: IRider){
+    console.log(this.riderListSelected)
 
     if (this.riderListSelected.includes(rider)){
-      this.riderListSelected = this.riderListSelected.filter(item => item ! = rider)
+      this.riderListSelected = this.riderListSelected.filter(item => item !== rider)
     }else{
-      console.log(this.riderListSelected.length)
       if(this.riderListSelected.length <= 2){
         this.riderListSelected.push(rider)
       }
     }
+    console.log(this.riderListSelected)
+
 
   }
 
-  submit(){
-    const {review} = this.reviewForm.value
-    let user: IUser = {} as IUser
-    this._userService.getCurrentUser().subscribe((currentUser)=> user = currentUser);
-    // this._usersService.loginUser({username, password}).subscribe({
-    // next: (response) => {
-    //   this._usersService.saveTokens(response);
-    //   this.router.navigate(['/perfil']);
-    // },
-    // error: (error) => {
-    //   console.error('Erro no login:', error);
-    // },})
 
+  submit(){
+    let user: IUser = {} as IUser
+    this._userService.getCurrentUser().subscribe({
+    next: (currentUser) => {
+      user = currentUser
+    },
+    error: (error) => {
+      console.log(error)
+    }});
+
+    const reviewText = this.reviewForm.value.review
+    const review: IReview = {
+      show: this.selectedShow!,
+      user: user,
+      fav_riders: this.riderListSelected,
+      review: reviewText
+    }
+   
+    this.reviewsList.push(review)
+    
+  }
+    
+  saveReviews(){
+    for (const review of this.reviewsList){
+      this._reviewService.submitReview(review)
+    }
   }
 
   changeSelectedShow(show: IShow){
-    if(this.riderListSelected){ // && this.form.dirty...
-      this.selectedShow = show;
+    const review: IReview = this.containsShow(show)
+
+    this.selectedShow = show;
+
+
+    if(!this.containsShow(show)){ 
       this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
-    }    
-  }
+      this.riderListSelected = [];
+    }else{
+      this.reviewForm.patchValue({review: review.review}) 
+      this.riderListSelected = review.fav_riders
+    }
     
 
   }
+}
 
 

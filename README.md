@@ -42,12 +42,19 @@
 ### Comando para ativar manualmente task de rider do dia
 
 ```
-[em um terminal]
-celery -A rv worker --loglevel=info
+comandos que eu usei no startup
 
-[em outro]
-python manage.py shell
-from core.tasks import create_daily_post
-create_daily_post.delay()
+-poetry install
+
+-source $(poetry env info --path)/bin/activate
+
+-celery -A rv worker -l info
+
+-python3 manage.py migrate
+
+-python3 manage.py createsuperuser
+
+-python3 manage.py loaddata fixtures/*
+
 
 ``` 
