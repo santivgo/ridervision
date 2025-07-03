@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
-
+from celery.schedules import crontab
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -181,3 +181,10 @@ AUTH_USER_MODEL = 'core.User'
 LOGIN_FIELD = 'username'
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+CELERY_BEAT_SCHEDULE = {
+    'create-daily-post-every-midnight': {
+        'task': 'core.tasks.create_daily_post',
+        'schedule': crontab(hour=0, minute=0),
+    },
+}
