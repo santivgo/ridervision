@@ -1,0 +1,85 @@
+.fav-rider-btn
+    position: relative
+    width: 8vw
+    height: 8vw
+    margin: 1% 0.5%
+    border-radius: 12px
+    overflow: hidden
+    cursor: pointer
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
+    border: 2px solid transparent
+    background: linear-gradient(145deg, rgba(27, 27, 27, 0.8), rgba(27, 27, 27, 0.9))
+    
+    &:hover
+        transform: translateY(-4px) scale(1.02)
+        box-shadow: 0 8px 24px rgba(166, 23, 49, 0.3)
+        border-color: #A61731
+        
+        .fav-rider-btn__overlay
+            opacity: 1
+            
+        .fav-rider-btn__img
+            transform: scale(1.1)
+    
+    &:active
+        transform: translateY(-2px) scale(0.98)
+        box-shadow: 0 4px 16px rgba(166, 23, 49, 0.4)
+    
+    &__image-container
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        overflow: hidden
+        border-radius: 10px
+    
+    &__img
+        width: 100%
+        height: 150%
+        object-fit: cover
+        object-position: top center
+        transition: transform 0.3s ease
+        filter: brightness(0.9) contrast(1.1)
+    
+    &__overlay
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8))
+        padding: 8px 12px
+        opacity: 0
+        transition: opacity 0.3s ease
+        
+    &__name
+        color: #F2F2F2
+        font-size: 0.75em
+        font-weight: 600
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8)
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
+        display: block
+
+// pra responsividade
+@media (max-width: 768px)
+    .fav-rider-btn
+        width: 20vw
+        height: 20vw
+        margin: 2% 1%
+        
+        &__name
+            font-size: 0.65em
+
+@media (max-width: 480px)
+    .fav-rider-btn
+        width: 28vw
+        height: 28vw
+        margin: 2% 1%
+        border-radius: 8px
+        
+        &__name
+            font-size: 0.6em
+            padding: 4px 8px
