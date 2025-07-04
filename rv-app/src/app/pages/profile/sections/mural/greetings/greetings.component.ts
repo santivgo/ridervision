@@ -49,7 +49,7 @@ export class GreetingsComponent implements OnInit{
       console.log(error)
     }});
 
-    this._reviewService.getReviewByUser(this.currentUser).subscribe((userReviewList)=>{
+    this._reviewService.getReviewsByUser(this.currentUser).subscribe((userReviewList)=>{
       for(const review of userReviewList){
         this.reviewsList.push(review)
       }

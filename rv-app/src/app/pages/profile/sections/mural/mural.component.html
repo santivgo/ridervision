@@ -8,18 +8,20 @@
             <div class="mural__left-side__review b-radius-20">
                 <div class="mural__left-side__logo">
                     <img class="b-radius-20"
-                        src="https://static.wikia.nocookie.net/kamenrider/images/7/7d/Kamen_Rider_Agito_Logo.png"
+                        [src]="actualReview.show.show_img_logo"
                         alt="">
                 </div>
-                <p>{{actualShow.name}}
+                <p>{{actualReview.show.name}}
                 </p>
+                <p>{{actualReview.review}}</p>
             </div>
         </div>
 
         <div class="mural__right-side">
             <div class="mural__right-side__shows">
-                <app-fav-show-btn (riderEmitter)="changeShow($event)" [rider]="rider"
-                    *ngFor="let rider of favRiders"></app-fav-show-btn>
+                <app-fav-show-btn (riderEmitter)="changeShow($event)" [review]="review"
+                    *ngFor="let review of reviewList">
+                </app-fav-show-btn>
             </div>
             <div class="mural__right-side__fav-riders">
                 <img src="https://static.wikia.nocookie.net/kamenrider/images/f/fe/KRDCD-KamenRide_Ixa_%28Burst_Mode%29_Rider_Card.png"

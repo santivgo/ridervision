@@ -12,6 +12,7 @@ import { UsersService } from '../../../../core/services/users.service';
 import { IUser } from '../../../../core/interfaces/models/user.interface';
 import { IReview } from '../../../../core/interfaces/models/review.interface';
 import { GreetingsComponent } from "./greetings/greetings.component";
+import { ReviewService } from '../../../../core/services/review.service';
 
 @Component({
   selector: 'app-mural',
@@ -20,56 +21,38 @@ import { GreetingsComponent } from "./greetings/greetings.component";
   styleUrl: './mural.component.sass'
 })
 export class MuralComponent implements OnInit {
-  actualShow: IShow = {} as IShow;
-
-  show: IShow = {} as IShow
+  actualReview: IReview = {} as IReview;
   reviewList: IReview[] = []
-  favRiders: IShow[] = [];
   
-  constructor(private readonly seriesService: SeriesService, private readonly userService: UsersService) {}
+  constructor(
+    private readonly _seriesService: SeriesService,
+    private readonly _userService: UsersService,
+    private readonly _reviewService: ReviewService
+  ) {}
     
   ngOnInit(): void {
-        this.loadSeries();
-        this.userService.getReviewsByUser().subscribe((reviewList: IReview[]) => {
-          this.reviewList = reviewList
-          console.log(reviewList)
-        })
-        
-    }
 
-
-   private setFavList(riderList: IShow[]): IShow[]{
-
-    const fav_riders: IShow[] = []
-    if (riderList.length > 4){
-        for (let index = 0; index < 4; index++) {
-          fav_riders.push(this.getRandomShow(riderList))
-      }
-      this.actualShow = fav_riders[0]
-    }
-    return fav_riders
-
-  }
-
-  private getRandomShow(riderList: IShow[]): IShow {
-    if (riderList.length) {
-      const index = Math.floor(Math.random() * riderList.length);
-      return riderList[index];
-    }
-    return {} as IShow
-  }
-
-
-  private loadSeries(): void {
-    this.seriesService.getShows().pipe(take(1)).subscribe((data) => {
-      this.favRiders = this.setFavList(data)
-
+    this._userService.getCurrentUser().subscribe((user: IUser)=> {
+      this._reviewService.getReviewsByUser(user).pipe(take(1)).subscribe((reviewList) => {
+      this.reviewList = reviewList
+      this.actualReview = this.reviewList[0]
+      })
     });
 
+    this.setPrimaryReview(); 
   }
 
-  protected changeShow(event: IShow): void{
-    this.actualShow = event 
+
+  private setPrimaryReview(): void{
+
+    console.log(this.reviewList)
+
+  }
+
+
+
+  protected changeShow(event: IReview): void{
+    this.actualReview = event 
   }
 
 

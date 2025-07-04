@@ -27,6 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     show = ShowSerializer(read_only=True)
     fav_riders = RiderSerializer(many=True, read_only=True)
     class Meta:

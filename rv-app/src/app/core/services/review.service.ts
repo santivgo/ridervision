@@ -14,14 +14,10 @@ export class ReviewService {
 
   submitReview(re: IReview): Observable<any>{
     const { show, user, fav_riders, review } = re;
-    const { id: showId } = show;
-    const { id: userId } = user;
-    const ridersId = fav_riders.map((value)=> value.id)
-    console.log(user)
-    return this.http.post(`${this.apiUrl}`, {'review': review, 'user': userId, 'show': showId, 'fav_riders': ridersId })
+    return this.http.post(`${this.apiUrl}`, {'review': review, 'user': user, 'show': show, 'fav_riders': fav_riders })
   }
 
-  getReviewByUser(user: IUser): Observable<IReview[]>{
+  getReviewsByUser(user: IUser): Observable<IReview[]>{
       return this.http.get<IReview[]>(`${this.apiUrl}user/${user.id}/`)
   }
 
