@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IReview } from '../interfaces/models/review.interface';
+import { IUser } from '../interfaces/models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class ReviewService {
     return this.http.post(`${this.apiUrl}`, {'review': review, 'user': userId, 'show': showId, 'fav_riders': ridersId })
   }
 
-  getAllReviews(): Observable<IReview> | void{}
+  getReviewByUser(user: IUser): Observable<IReview[]>{
+      return this.http.get<IReview[]>(`${this.apiUrl}user/${user.id}/`)
+  }
 
 
 }

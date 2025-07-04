@@ -29,6 +29,8 @@ export class GreetingsComponent implements OnInit{
   riderListSelected: IRider[] = []
   reviewsList: IReview[] = []
   reviewForm!: FormGroup;
+  currentUser: IUser = {} as IUser
+
 
   constructor(
     private readonly _seriesService: SeriesService,
@@ -38,6 +40,21 @@ export class GreetingsComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+
+    this._userService.getCurrentUser().subscribe({
+    next: (currentUser) => {
+      this.currentUser = currentUser;
+    },
+    error: (error) => {
+      console.log(error)
+    }});
+
+    this._reviewService.getReviewByUser(this.currentUser).subscribe((userReviewList)=>{
+      for(const review of userReviewList){
+        this.reviewsList.push(review)
+      }
+      })
+
     this._seriesService.getShows().subscribe((showList: IShow[])=>this.shows = showList)
     this.responsiveOptions = [
       { breakpoint: '1024px', numVisible: 3, numScroll: 1 },
@@ -78,24 +95,19 @@ export class GreetingsComponent implements OnInit{
   submit(){
     let user: IUser = {} as IUser
     const reviewText = this.reviewForm.value.review
-    this._userService.getCurrentUser().subscribe({
-    next: (currentUser) => {
-      user = currentUser
-      const review: IReview = {
-        show: this.selectedShow!,
-        user: user,
-        fav_riders: this.riderListSelected,
-        review: reviewText
-    }
-  
+
+    const review: IReview = {
+      show: this.selectedShow!,
+      user: this.currentUser,
+      fav_riders: this.riderListSelected,
+      review: reviewText
+  }
+
     this.reviewsList.push(review)    
     
-    },
-    error: (error) => {
-      console.log(error)
-    }});
+    }
 
-  }
+  
     
   saveReviews(){
     console.log(this.reviewsList)

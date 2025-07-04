@@ -27,9 +27,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    show = ShowSerializer(read_only=True)
+    fav_riders = RiderSerializer(many=True, read_only=True)
     class Meta:
         model = Review
-        fields = "__all__"
+        fields = ['id', 'show_review', 'user', 'show', 'fav_riders']
     
     def validate(self, data):
 
