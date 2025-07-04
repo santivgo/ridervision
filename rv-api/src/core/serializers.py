@@ -8,13 +8,13 @@ from core.models import Review, Rider, Show, User
 from djoser.serializers import UserSerializer as DjoserUserSerializer
 
 
-class RiderSerializer(serializers.HyperlinkedModelSerializer):
+class RiderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rider
         fields = "__all__"
 
 
-class ShowSerializer(serializers.HyperlinkedModelSerializer):
+class ShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Show
         fields = "__all__"
@@ -30,6 +30,22 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = "__all__"
+    
+    def validate(self, data):
+
+        if 'show' not in data or 'fav_riders' not in data:
+            return data
+        
+        show = data['show']
+        riders_fav = data['fav_riders']
+
+        for rider in riders_fav:
+            if rider.tv_show != show:
+                raise serializers.ValidationError(
+                    f"O Rider '{rider.name}' não pertence à série '{show.name}'."
+                )
+        return data
+
         
 class PostSerializer(serializers.ModelSerializer):
     class Meta:

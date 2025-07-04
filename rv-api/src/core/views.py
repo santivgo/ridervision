@@ -19,13 +19,14 @@ from core.serializers import (
 class RiderView(viewsets.ModelViewSet):
     queryset = Rider.objects.all()
     serializer_class = RiderSerializer
-    # def create(self, request, *args, **kwargs):
-    #     many = isinstance(request.data, list)
-    #     serializer = self.get_serializer(data=request.data, many=many)
-    #     serializer.is_valid(raise_exception=True)
-    #     self.perform_create(serializer)
-    #     return Response(serializer.data)
-    
+
+    @action(detail=False, methods=['get'], url_path='show/(?P<show_id>[^/.]+)')
+    def riders_by_show(self, request, show_id=None):
+        riders = Rider.objects.filter(tv_show=show_id)
+        serializer = self.get_serializer(riders, many=True)
+        return Response(serializer.data)
+
+  
 class ShowView(viewsets.ReadOnlyModelViewSet):
     queryset = Show.objects.all()
     serializer_class = ShowSerializer
@@ -41,6 +42,12 @@ class UserView(viewsets.ModelViewSet):
 class ReviewView(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
+    @action(detail=False, methods=['get'], url_path='user/(?P<user_id>[^/.]+)')
+    def user_reviews(self, request, user_id=None):
+        reviews = Review.objects.filter(user_id=user_id)
+        serializer = self.get_serializer(reviews, many=True)
+        return Response(serializer.data)
+
 
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()

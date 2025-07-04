@@ -1,5 +1,6 @@
 from django.core.validators import MinValueValidator
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from core.utils.upload_img import uploadImg
@@ -65,6 +66,21 @@ class Review(models.Model):
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
     fav_riders = models.ManyToManyField(Rider, related_name="fav_shows")
     show_review = models.CharField(max_length=250, blank=True, null=False)
+    
+    def clean(self):
+        super().clean()
+        
+        # Esta validação só funciona se a instância já foi salva
+        if self.pk:
+            invalid_riders = []
+            for rider in self.fav_riders.all():
+                if rider.tv_show != self.show:
+                    invalid_riders.append(rider.name)
+            
+            if invalid_riders:
+                raise ValidationError({
+                    'fav_riders': f"Os seguintes riders não pertencem à série '{self.show.name}': {', '.join(invalid_riders)}"
+                })
 
 
 class Post(models.Model):

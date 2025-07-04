@@ -37,3 +37,24 @@
 - [Angular powered Bootstrap](https://ng-bootstrap.github.io/): Usada para o collapse
 
 ---
+
+
+### Comando para ativar manualmente task de rider do dia
+
+```
+comandos que eu usei no startup
+
+-poetry install
+
+-source $(poetry env info --path)/bin/activate
+
+-celery -A rv worker -l info
+
+-python3 manage.py migrate
+
+-python3 manage.py createsuperuser
+
+-python3 manage.py loaddata fixtures/*
+
+
+``` 
