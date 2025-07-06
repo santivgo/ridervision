@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TagComponent } from '../tag/tag.component';
 import { IPost } from '../../../core/interfaces/models/post.interface';
@@ -21,6 +21,9 @@ export class PostComponent implements OnInit{
   comments: IComment[] = [];
 
   exibirComments: boolean = false
+  expandedImg: string | null = null;
+
+  @Output() expandImage = new EventEmitter<string>();
 
   constructor(
     private userService: UsersService,
@@ -48,5 +51,13 @@ export class PostComponent implements OnInit{
       .subscribe((data) => {
         this.comments = data;
       });
+  }
+
+  expandImg(imgUrl: string) {
+    this.expandedImg = imgUrl;
+  }
+
+  closeModal() {
+    this.expandedImg = null;
   }
 }

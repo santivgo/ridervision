@@ -1,5 +1,5 @@
 <div class="comment-section">
-    <img class="comment-section__img" [src]="user.img" alt="imagem_perfil">
+    <img class="comment-section__img" [src]="user.img || 'assets/Default.png'" alt="imagem_perfil">
     <div class="comment-section__info">
         <div class="comment-section__info__user">
             <p class="comment-section__info__user__username">{{user.username}}</p>

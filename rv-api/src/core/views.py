@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import random
-from datetime import date
+from datetime import date, timedelta
 
 from core.models import Post, Review, Rider, Show, User, Comment
 from core.serializers import (
@@ -73,9 +73,14 @@ class PostView(viewsets.ModelViewSet):
         """
         today = date.today()
         user_id = 1
-        post = Post.objects.filter(author_id=user_id, date=today).first()
+        post = None
+        for i in range(5):
+            ver_data = today - timedelta(days=i)
+            post = Post.objects.filter(author_id=user_id, date=ver_data).first()
+            if post:
+                break
         if not post:
-            return Response({'error': 'No daily post found.'}, status=404)
+            return Response({'error': 'Nenhum post diário no banco'}, status=404)
         
         tagged_riders = post.tagged_riders.all()
         rider_data = RiderSerializer(tagged_riders, many=True, context={'request': request}).data
