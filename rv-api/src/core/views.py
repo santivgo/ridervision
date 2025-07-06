@@ -65,8 +65,7 @@ class PostView(viewsets.ModelViewSet):
 
         return queryset.filter(**filters)
     
-    @action(detail=False, methods=['get'], url_path='daily')
-    @permission_classes([AllowAny])
+    @action(detail=False, methods=['get'], url_path='daily', permission_classes=[AllowAny])
     def daily_post(self, request):
         """
         Retorna o post do dia já criado pela task.
