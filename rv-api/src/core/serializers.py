@@ -25,12 +25,16 @@ class ShowSerializer(serializers.HyperlinkedModelSerializer):
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = User
         fields = ["id", "username", "img"]
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    show = ShowSerializer()
+    fav_riders = RiderSerializer(many=True, read_only=True)
+
     class Meta:
         model = Review
         fields = "__all__"

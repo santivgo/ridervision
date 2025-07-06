@@ -33,9 +33,10 @@ export class MuralComponent implements OnInit {
   ngOnInit(): void {
 
     this._userService.getCurrentUser().subscribe((user: IUser)=> {
-      this._reviewService.getReviewsByUser(user).pipe(take(1)).subscribe((reviewList) => {
+      this._reviewService.getReviewsByUser(user.id).pipe(take(1)).subscribe((reviewList) => {
       this.reviewList = reviewList
       this.actualReview = this.reviewList[0]
+      console.log(reviewList)
       })
     });
 

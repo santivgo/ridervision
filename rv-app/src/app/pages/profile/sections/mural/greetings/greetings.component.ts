@@ -44,16 +44,17 @@ export class GreetingsComponent implements OnInit{
     this._userService.getCurrentUser().subscribe({
     next: (currentUser) => {
       this.currentUser = currentUser;
+      this._reviewService.getReviewsByUser(this.currentUser.id).subscribe((userReviewList)=>{
+      for(const review of userReviewList){
+        this.reviewsList.push(review)
+      }
+      })
     },
     error: (error) => {
       console.log(error)
     }});
 
-    this._reviewService.getReviewsByUser(this.currentUser).subscribe((userReviewList)=>{
-      for(const review of userReviewList){
-        this.reviewsList.push(review)
-      }
-      })
+   
 
     this._seriesService.getShows().subscribe((showList: IShow[])=>this.shows = showList)
     this.responsiveOptions = [

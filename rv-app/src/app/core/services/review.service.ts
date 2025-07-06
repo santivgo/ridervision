@@ -19,8 +19,8 @@ export class ReviewService {
     return this.http.post(`${this.apiUrl}`, {'show_review': review, 'user': user.id, 'show': show.id, 'fav_riders': fav_riders_id })
   }
 
-  getReviewsByUser(user: IUser): Observable<IReview[]>{
-      return this.http.get<IReview[]>(`${this.apiUrl}user/${user.id}/`)
+  getReviewsByUser(userID: string): Observable<IReview[]>{
+      return this.http.get<IReview[]>(`${this.apiUrl}user/${userID}/`)
   }
 
 
