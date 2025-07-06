@@ -14,13 +14,17 @@ import { MuralComponent } from "./sections/mural/mural.component";
 import { StatsComponent } from "../../shared/components/stats/stats.component";
 import { PostService } from '../../core/services/post.service';
 import { IPost } from '../../core/interfaces/models/post.interface';
+import { RiderService } from '../../core/services/rider.service';
+import { IRider } from '../../core/interfaces/models/rider.interface';
+import { FormsModule } from '@angular/forms';
+import { NewPostComponent } from '../../shared/components/new-post/new-post.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.sass',
-  imports: [CommonModule, NgbCollapseModule, DividerHorizontalComponent, CommentComponent, StatsComponent, PostComponent, MuralComponent]
+  imports: [CommonModule, NgbCollapseModule, DividerHorizontalComponent, CommentComponent, StatsComponent, PostComponent, MuralComponent, FormsModule, NewPostComponent]
 })
 export class ProfileComponent implements OnInit {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
@@ -34,10 +38,15 @@ export class ProfileComponent implements OnInit {
   error = '';
   userId = 0;
 
+
+  showCreatePostModal = false;
+  availableRiders: IRider[] = [];
+
   constructor(
     private commentsService: CommentService,
     private postService: PostService,
-    private userService: UsersService
+    private userService: UsersService,
+    private riderService: RiderService
   ) {}
   
   protected changeSection(section: string): void {
@@ -46,13 +55,32 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.loadRiders();
+  }
+
+  loadRiders(): void {
+    this.riderService.getAllRiders().subscribe({
+      next: (data) => {
+        this.availableRiders = data;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar riders:', err);
+      }
+    });
+  }
+
+  openCreatePostModal(): void {
+    this.showCreatePostModal = true;
+  }
+
+  closeCreatePostModal(): void {
+    this.showCreatePostModal = false;
   }
 
   loadData(): void {
     this.userService.getCurrentUser().subscribe({
       next: (data) => {
         this.user = data;
-        console.log(data)
         this.userId = Number(data.id); 
         this.loadComments();
         this.loadPosts();

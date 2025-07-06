@@ -1,0 +1,332 @@
+@import '../../../styles/variables'
+
+.modal-overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(0, 0, 0, 0.7)
+  backdrop-filter: blur(5px)
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 1000
+  animation: fadeIn 0.3s ease
+
+.modal-container
+  background: #1B1B1B
+  border-radius: 20px
+  max-width: 600px
+  width: 90%
+  max-height: 90vh
+  overflow-y: auto
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5)
+  animation: slideUp 0.3s ease
+
+.modal-header
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 1.5rem 2rem
+  border-bottom: 1px solid #333
+
+  h2
+    color: $white-smoke
+    font-size: 1.5rem
+    font-weight: 700
+    margin: 0
+
+  .modal-close
+    background: none
+    border: none
+    color: #AB9899
+    font-size: 1.5rem
+    cursor: pointer
+    padding: 0.5rem
+    border-radius: 50%
+    transition: all 0.2s ease
+
+.modal-body
+  padding: 2rem
+
+.post-form
+  .user-info
+    display: flex
+    align-items: center
+    gap: 1rem
+    margin-bottom: 1.5rem
+
+    .user-avatar
+      width: 50px
+      height: 50px
+      border-radius: 50%
+      object-fit: cover
+      border: 2px solid #AB9899
+
+    .username
+      color: #AB9899
+      font-weight: 600
+
+  .post-content
+    width: 100%
+    min-height: 120px
+    background: #2b2828
+    border: 2px solid #333
+    border-radius: 15px
+    padding: 1rem
+    color: $white-smoke
+    font-size: 1.1rem
+    font-family: inherit
+    resize: vertical
+    transition: border-color 0.2s ease
+
+    &:focus
+      outline: none
+      border-color: $fire-engine-red
+
+    &::placeholder
+      color: #666
+
+  .char-count
+    text-align: right
+    color: #AB9899
+    font-size: 0.9rem
+    margin-top: 0.5rem
+
+    &.warning
+      color: $fire-engine-red
+
+  .image-preview
+    position: relative
+    margin: 1rem 0
+    border-radius: 15px
+    overflow: hidden
+    max-width: 100%
+
+    img
+      width: 100%
+      max-height: 300px
+      object-fit: cover
+
+    .remove-image
+      position: absolute
+      top: 10px
+      right: 10px
+      background: rgba(0, 0, 0, 0.7)
+      border: none
+      color: white
+      width: 30px
+      height: 30px
+      border-radius: 50%
+      cursor: pointer
+      display: flex
+      align-items: center
+      justify-content: center
+
+      &:hover
+        background: rgba(0, 0, 0, 0.9)
+
+.riders-selection
+  margin: 1.5rem 0
+
+  h4
+    color: $white-smoke
+    margin-bottom: 1rem
+    font-size: 1.1rem
+
+  .riders-grid
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))
+    gap: 1rem
+    max-height: 300px
+    overflow-y: auto
+
+    &::-webkit-scrollbar
+      width: 6px
+
+    &::-webkit-scrollbar-thumb
+      background: #333
+      border-radius: 3px
+
+  .rider-item
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 0.75rem
+    background: #2b2828
+    border: 2px solid transparent
+    border-radius: 12px
+    cursor: pointer
+    transition: all 0.2s ease
+
+    &:hover
+      background: #333
+      border-color: #AB9899
+
+    &.selected
+      border-color: $fire-engine-red
+      background: rgba(217, 4, 43, 0.1)
+
+    .rider-image
+      width: 40px
+      height: 40px
+      border-radius: 50%
+      object-fit: cover
+      margin-bottom: 0.5rem
+
+    .rider-name
+      color: $white-smoke
+      font-size: 0.8rem
+      text-align: center
+      word-wrap: break-word
+
+.riders-names-list
+  display: flex
+  flex-wrap: wrap
+  gap: 0.5rem
+  margin-bottom: 1rem
+
+  .rider-name-item
+    padding: 0.4rem 1rem
+    border-radius: 20px
+    background: #2b2828
+    color: $white-smoke
+    font-size: 0.95rem
+    cursor: pointer
+    border: 2px solid transparent
+    transition: all 0.2s
+    user-select: none
+
+    &:hover
+      background: #333
+      border-color: #AB9899
+
+    &.selected
+      border-color: $fire-engine-red
+      background: rgba(217, 4, 43, 0.1)
+      color: $fire-engine-red
+
+.riders-search
+  width: 100%
+  padding: 0.5rem 1rem
+  border-radius: 20px
+  border: 2px solid #333
+  background: #232323
+  color: $white-smoke
+  font-size: 1rem
+  margin-bottom: 1rem
+  outline: none
+  transition: border-color 0.2s
+
+  &:focus
+    border-color: $fire-engine-red
+
+.riders-pagination
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 1rem
+  margin-top: 0.5rem
+
+  button
+    background: #2b2828
+    color: $white-smoke
+    border: none
+    border-radius: 50%
+    width: 32px
+    height: 32px
+    font-size: 1.1rem
+    cursor: pointer
+    transition: background 0.2s, color 0.2s
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &:disabled
+      background: #333
+      color: #666
+      cursor: not-allowed
+
+    &:not(:disabled):hover
+      background: $fire-engine-red
+      color: $white-smoke
+
+  span
+    color: #AB9899
+    font-size: 0.95rem
+
+.modal-actions
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-top: 2rem
+  padding-top: 1rem
+  border-top: 1px solid #333
+
+  .action-buttons
+    display: flex
+    gap: 1rem
+
+  .upload-btn
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 40px
+    height: 40px
+    background: #2b2828
+    border-radius: 50%
+    cursor: pointer
+    transition: all 0.2s ease
+    color: #AB9899
+
+    &:hover
+      background: #333
+      color: $white-smoke
+
+    i
+      font-size: 1.2rem
+
+  .post-btn
+    background: linear-gradient(135deg, $fire-engine-red, $madder)
+    color: $white-smoke
+    border: none
+    border-radius: 25px
+    padding: 0.75rem 2rem
+    font-size: 1rem
+    font-weight: 600
+    cursor: pointer
+    transition: all 0.2s ease
+
+    &:disabled
+      background: #333
+      color: #666
+      cursor: not-allowed
+
+    &:not(:disabled):hover
+      transform: translateY(-1px)
+      box-shadow: 0 4px 12px rgba(217, 4, 43, 0.4)
+
+.error-message
+  background: rgba(217, 4, 43, 0.1)
+  border: 1px solid $fire-engine-red
+  color: $fire-engine-red
+  padding: 1rem
+  border-radius: 10px
+  margin-top: 1rem
+  text-align: center
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes slideUp
+  from
+    opacity: 0
+    transform: translateY(30px)
+  to
+    opacity: 1
+    transform: translateY(0)
+// --- Fim dos estilos do modal de criação de post ---

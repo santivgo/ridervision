@@ -25,6 +25,12 @@
                 </ng-container>
 
                 <ng-template #sectionMiniPost>
+                    <div class="rv-container__card__perfil__content__create-post">
+                        <button class="create-post-btn" (click)="openCreatePostModal()">
+                            <i class="fa-solid fa-plus"></i>
+                            Criar novo post
+                        </button>
+                    </div>
                     <div class="rv-container__card__perfil__content__comments">
                       <div class="rv-container__comment-area__display">
                         <ng-container *ngFor="let comment of comments">
@@ -68,3 +74,11 @@
 
     </div>
 </div>
+
+<app-new-post 
+    *ngIf="showCreatePostModal" 
+    [user]="user"
+    [availableRiders]="availableRiders"
+    (closeModal)="closeCreatePostModal()"
+    (postCreated)="loadPosts()"
+></app-new-post>
