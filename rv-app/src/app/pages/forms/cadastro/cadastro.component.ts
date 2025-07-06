@@ -7,6 +7,7 @@ import { UsersService } from '../../../core/services/users.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,22 +20,33 @@ export class CadastroComponent implements OnInit{
   constructor(private readonly _userService: UsersService, private messageService: MessageService, private router: Router) {}
   cadastroForm!: FormGroup
   submit(){
+    if (this.cadastroForm.invalid){
+        this.cadastroForm.markAllAsTouched();
+        return
+
+    }
     const {username, password, re_password } = this.cadastroForm.value
     const user: IUserRegister = { username, password, re_password}
     this._userService.registerUser(user).subscribe({
         next: () => {
-          this.messageService.addAll([
-            { severity: 'success', summary: 'Message 1', detail: 'Message Content' },
-            { severity: 'info', summary: 'Message 2', detail: 'Message Content' },
-            { severity: 'warn', summary: 'Message 3', detail: 'Message Content' },
-            { severity: 'error', summary: 'Message 4', detail: 'Message Content' }
+       
 
-        ]);
-
-        this.router.navigate(['/login']);
+        this.messageService.add({ severity: 'success', summary: 'Cadastro efetuado com sucesso!', detail: '', life: 2000 });
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 2000);
 
         },
         error: (err) => {
+          for (const erroChave in err.error){
+            console.log(erroChave)
+            console.log(err.error[erroChave])
+
+            for (const erro of err.error[erroChave]){
+              this.messageService.add({ severity: 'error', summary: 'Erro!', detail: erro, life: 10000 });
+
+            }
+          }
         }
       });
     }
@@ -48,6 +60,7 @@ export class CadastroComponent implements OnInit{
   get rpassword() {
       return this.cadastroForm.get('rpassword')!;
   }
+
 
   ngOnInit(): void {
     this.cadastroForm = new FormGroup({

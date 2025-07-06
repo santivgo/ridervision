@@ -13,10 +13,12 @@ import { IUser } from '../../../../core/interfaces/models/user.interface';
 import { IReview } from '../../../../core/interfaces/models/review.interface';
 import { GreetingsComponent } from "./greetings/greetings.component";
 import { ReviewService } from '../../../../core/services/review.service';
+import { FavRiderBtnComponent } from "../../../../shared/components/fav-rider-btn/fav-rider-btn.component";
+import { DividerHorizontalComponent } from "../../../../shared/components/dividers/divider-horizontal/divider-horizontal.component";
 
 @Component({
   selector: 'app-mural',
-  imports: [FavShowBtnComponent, CommonModule, GreetingsComponent],
+  imports: [FavShowBtnComponent, CommonModule, GreetingsComponent, FavRiderBtnComponent, DividerHorizontalComponent],
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.sass'
 })

@@ -1,3 +1,4 @@
+<p-toast />
 <div class="rv-signup">
     <div class="rv-signup__container">
         <div class="rv-signup__container__left">
@@ -30,8 +31,12 @@
                                 class="f-bold">password</span></label>
                         <input type="password" class="form-control" id="retype" placeholder="password"
                             formControlName="rpassword" required>
+
                         <div class="form-error" *ngIf="rpassword.touched && cadastroForm.hasError('PasswordNoMatch')">
-                            <p>As senhas não conferem.</p>
+                            <p>As senhas não coincidem.</p>
+                        </div>
+                        <div class="form-error" *ngIf="password.touched && !rpassword.valid">
+                            <p>Redigite a senha.</p>
                         </div>
                     </div>
 
