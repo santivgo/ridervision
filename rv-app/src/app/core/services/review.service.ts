@@ -14,7 +14,9 @@ export class ReviewService {
 
   submitReview(re: IReview): Observable<any>{
     const { show, user, fav_riders, review } = re;
-    return this.http.post(`${this.apiUrl}`, {'review': review, 'user': user, 'show': show, 'fav_riders': fav_riders })
+    console.log(review)
+    const fav_riders_id = fav_riders.map((rider)=> rider.id)
+    return this.http.post(`${this.apiUrl}`, {'show_review': review, 'user': user.id, 'show': show.id, 'fav_riders': fav_riders_id })
   }
 
   getReviewsByUser(user: IUser): Observable<IReview[]>{

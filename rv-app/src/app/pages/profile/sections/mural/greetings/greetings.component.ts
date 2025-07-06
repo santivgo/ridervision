@@ -93,7 +93,6 @@ export class GreetingsComponent implements OnInit{
 
 
   submit(){
-    let user: IUser = {} as IUser
     const reviewText = this.reviewForm.value.review
 
     const review: IReview = {
@@ -102,6 +101,8 @@ export class GreetingsComponent implements OnInit{
       fav_riders: this.riderListSelected,
       review: reviewText
   }
+    console.log(review.review)
+
 
     this.reviewsList.push(review)    
     
