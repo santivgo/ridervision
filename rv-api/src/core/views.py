@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 import random
 from datetime import date, timedelta
 
@@ -40,6 +40,8 @@ class UserView(viewsets.ModelViewSet):
         return super().retrieve(request, *args, **kwargs)
 
 class ReviewView(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     @action(detail=False, methods=['get'], url_path='user/(?P<user_id>[^/.]+)')
@@ -63,8 +65,7 @@ class PostView(viewsets.ModelViewSet):
 
         return queryset.filter(**filters)
     
-    @action(detail=False, methods=['get'], url_path='daily')
-    @permission_classes([AllowAny])
+    @action(detail=False, methods=['get'], url_path='daily', permission_classes=[AllowAny])
     def daily_post(self, request):
         """
         Retorna o post do dia já criado pela task.

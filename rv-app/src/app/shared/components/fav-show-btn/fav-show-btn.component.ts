@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IShow } from '../../../core/interfaces/models/show.interface';
+import { IReview } from '../../../core/interfaces/models/review.interface';
 
 @Component({
   selector: 'app-fav-show-btn',
@@ -9,12 +10,12 @@ import { IShow } from '../../../core/interfaces/models/show.interface';
 })
 export class FavShowBtnComponent {
   @Input({required: true})
-  rider: IShow = {} as IShow;
+  review: IReview = {} as IReview;
 
-  @Output() riderEmitter: EventEmitter<IShow> = new EventEmitter<IShow>();
+  @Output() riderEmitter: EventEmitter<IReview> = new EventEmitter<IReview>();
 
   protected emitRider(): void{
-    this.riderEmitter.emit(this.rider)
+    this.riderEmitter.emit(this.review)
   }
 
 }

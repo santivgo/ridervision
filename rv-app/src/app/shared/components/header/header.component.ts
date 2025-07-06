@@ -32,7 +32,7 @@ export class HeaderComponent{
   
 
   selectedButton: string = this.btnList[0].title
-  getButton(title: string): ILinkMenu | undefined{
+  getButton(title: string): ILinkMenu | undefined {
     
     for (const btn of this.btnList){
       if (btn.title == title){
@@ -47,9 +47,7 @@ export class HeaderComponent{
     this.selectedButton = this.btnList[0].title
     this.router.navigate([this.btnList[0].route])
   }
-  isLogged(){
-  
-  }
+
 
   onButtonClicked(event: MouseEvent){
 

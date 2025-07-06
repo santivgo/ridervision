@@ -8,25 +8,33 @@ from core.models import Review, Rider, Show, User
 from djoser.serializers import UserSerializer as DjoserUserSerializer
 
 
-class RiderSerializer(serializers.ModelSerializer):
+class RiderSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Rider
         fields = "__all__"
 
 
-class ShowSerializer(serializers.ModelSerializer):
+class ShowSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.IntegerField(read_only=True)
     class Meta:
         model = Show
         fields = "__all__"
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = User
         fields = ["id", "username", "img"]
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    show = ShowSerializer()
+    fav_riders = RiderSerializer(many=True, read_only=True)
+
     class Meta:
         model = Review
         fields = "__all__"

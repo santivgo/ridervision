@@ -1,0 +1,62 @@
+services:
+  celery:
+    build: ./rv-api
+    command: celery -A rv worker -l info
+    working_dir: /app/src
+    volumes:
+      - ./rv-api:/app
+    depends_on:
+      - backend
+      - redis
+    networks:
+      - rv_network
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - rv_network
+
+  frontend:
+    build:
+      context: ./rv-app
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    networks:
+      - rv_network
+
+  backend:
+    build: ./rv-api
+    working_dir: /app/src
+    environment:
+      DJANGO_SUPERUSER_USERNAME: admin 
+      DJANGO_SUPERUSER_PASSWORD: admin 
+      DJANGO_SUPERUSER_EMAIL: "admin@admin.com" 
+    command: >
+      sh -c "
+             python3 manage.py makemigrations &&
+             python3 manage.py migrate &&
+             python manage.py createsuperuser --noinput &&
+             python3 manage.py loaddata fixtures/* &&
+             python3 manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./rv-api:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    networks:
+      - rv_network
+
+volumes:
+  redis_data:
+
+networks:
+  rv_network:
+    driver: bridge

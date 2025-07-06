@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IReview } from '../interfaces/models/review.interface';
+import { IUser } from '../interfaces/models/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,14 @@ export class ReviewService {
 
   submitReview(re: IReview): Observable<any>{
     const { show, user, fav_riders, review } = re;
-    const { id: showId } = show;
-    const { id: userId } = user;
-    const ridersId = fav_riders.map((value)=> value.id)
-    console.log(user)
-    return this.http.post(`${this.apiUrl}`, {'review': review, 'user': userId, 'show': showId, 'fav_riders': ridersId })
+    console.log(review)
+    const fav_riders_id = fav_riders.map((rider)=> rider.id)
+    return this.http.post(`${this.apiUrl}`, {'show_review': review, 'user': user.id, 'show': show.id, 'fav_riders': fav_riders_id })
   }
 
-  getAllReviews(): Observable<IReview> | void{}
+  getReviewsByUser(userID: string): Observable<IReview[]>{
+      return this.http.get<IReview[]>(`${this.apiUrl}user/${userID}/`)
+  }
 
 
 }
