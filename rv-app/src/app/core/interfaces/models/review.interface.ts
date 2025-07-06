@@ -6,5 +6,5 @@ export interface IReview{
     show: IShow,
     user: IUser,
     fav_riders: IRider[],
-    review: string
+    show_review: string
 }

@@ -100,9 +100,8 @@ export class GreetingsComponent implements OnInit{
       show: this.selectedShow!,
       user: this.currentUser,
       fav_riders: this.riderListSelected,
-      review: reviewText
+      show_review: reviewText
   }
-    console.log(review.review)
 
 
     this.reviewsList.push(review)    
@@ -136,7 +135,7 @@ export class GreetingsComponent implements OnInit{
       this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
       this.riderListSelected = [];
     }else{
-      this.reviewForm.patchValue({review: review.review}) 
+      this.reviewForm.patchValue({review: review.show_review}) 
       this.riderListSelected = review.fav_riders
     }
     

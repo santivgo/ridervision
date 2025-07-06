@@ -38,6 +38,7 @@ export class MuralComponent implements OnInit {
       this._reviewService.getReviewsByUser(user.id).pipe(take(1)).subscribe((reviewList) => {
       this.reviewList = reviewList
       this.actualReview = this.reviewList[0]
+  
       console.log(reviewList)
       })
     });
