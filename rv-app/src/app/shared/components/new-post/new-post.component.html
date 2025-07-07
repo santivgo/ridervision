@@ -1,0 +1,77 @@
+<div class="modal-overlay" (click)="close()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>Criar novo post</h2>
+            <button class="modal-close" (click)="close()">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="post-form">
+                <div class="user-info">
+                    <img [src]="user.img || 'assets/Default.png'" alt="Avatar" class="user-avatar">
+                    <span class="username">&#64;{{user.username}}</span>
+                </div>
+                
+                <textarea 
+                    class="post-content" 
+                    [(ngModel)]="newPost.content"
+                    placeholder=""
+                    maxlength="280"
+                    rows="4">
+                </textarea>
+                
+                <div class="char-count" [class.warning]="newPost.content.length > 250">
+                    {{newPost.content.length}}/280
+                </div>
+                
+                <div class="image-preview" *ngIf="imgPreview">
+                    <img [src]="imgPreview" alt="Preview">
+                    <button class="remove-image" (click)="imgPreview = null; newPost.img = null">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="riders-selection" *ngIf="availableRiders.length > 0">
+                    <h4>Marcar Riders:</h4>
+                    <input type="text" class="riders-search" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange($event)" placeholder="Buscar Rider..." />
+                    <div class="riders-names-list">
+                        <span 
+                            *ngFor="let rider of paginatedRiders" 
+                            class="rider-name-item"
+                            [class.selected]="isRiderSelected(rider)"
+                            (click)="toggleRiderSelection(rider)">
+                            {{rider.name}}
+                        </span>
+                    </div>
+                    <div class="riders-pagination" *ngIf="totalPages > 1">
+                        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
+                        <span>{{currentPage}} ~ {{totalPages}}</span>
+                        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">&gt;</button>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <div class="action-buttons">
+                        <label class="upload-btn">
+                            <i class="fa-solid fa-image"></i>
+                            <input type="file" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+                        </label>
+                    </div>
+                    
+                    <button 
+                        class="post-btn" 
+                        [disabled]="!newPost.content.trim() || !newPost.img || newPost.tagged_riders.length === 0"
+                        (click)="createPost()">
+                        Postar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="error-message" *ngIf="error">
+            {{error}}
+        </div>
+    </div>
+</div>

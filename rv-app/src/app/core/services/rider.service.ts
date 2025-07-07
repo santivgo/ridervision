@@ -20,4 +20,8 @@ export class RiderService {
     const url = `${this.apiUrl}show/${serieId}/`;
     return this.http.get<IRider[]>(url);
   }
+
+  getAllRiders(): Observable<IRider[]> {
+    return this.http.get<IRider[]>(this.apiUrl);
+  }
 }
