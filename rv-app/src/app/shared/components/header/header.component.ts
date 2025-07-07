@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ILinkMenu } from '../../../core/interfaces/components/link-menu';
 import { Router, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SecurityMenuPipe } from '../../../core/pipes/security-menu.pipe';
+import { UsersService } from '../../../core/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ import { SecurityMenuPipe } from '../../../core/pipes/security-menu.pipe';
 })
 export class HeaderComponent{
 
-  constructor(private router: Router){}
+  constructor(private router: Router, readonly _userService: UsersService){}
   btnList: ILinkMenu[] = [
     {title: 'Rider do Dia', route: "", security: false },
     {title: 'Riders', route: "riders", security: false },

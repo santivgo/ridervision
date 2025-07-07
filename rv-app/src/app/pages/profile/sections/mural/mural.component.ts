@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { IShow } from '../../../../core/interfaces/models/show.interface';
 import { ShowcaseCardImgDirective } from '../../../../core/directives/card-poster.directive';
 import { BaseChartDirective } from 'ng2-charts';
@@ -22,7 +22,7 @@ import { DividerHorizontalComponent } from "../../../../shared/components/divide
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.sass'
 })
-export class MuralComponent implements OnInit {
+export class MuralComponent implements AfterViewInit {
   actualReview: IReview = {} as IReview;
   reviewList: IReview[] = []
   
@@ -32,7 +32,7 @@ export class MuralComponent implements OnInit {
     private readonly _reviewService: ReviewService
   ) {}
     
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
 
     this._userService.getCurrentUser().subscribe((user: IUser)=> {
       this._reviewService.getReviewsByUser(user.id).pipe(take(1)).subscribe((reviewList) => {
