@@ -13,10 +13,12 @@ import { IUser } from '../../../../../core/interfaces/models/user.interface';
 import { UsersService } from '../../../../../core/services/users.service';
 import { IReview } from '../../../../../core/interfaces/models/review.interface';
 import { ReviewService } from '../../../../../core/services/review.service';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-greetings',
-  imports: [CarouselModule, ButtonModule, TagModule, CommonModule, ShortNamePipe, ReactiveFormsModule],
+  imports: [CarouselModule, ButtonModule, TagModule, CommonModule, ShortNamePipe, ReactiveFormsModule, ToastModule],
   templateUrl: './greetings.component.html',
   styleUrl: './greetings.component.sass'
 })
@@ -37,6 +39,7 @@ export class GreetingsComponent implements OnInit{
     private readonly _riderService: RiderService,
     private readonly _userService: UsersService,
     private readonly _reviewService: ReviewService,
+    private messageService: MessageService
   ){}
 
   ngOnInit(): void {
@@ -56,12 +59,17 @@ export class GreetingsComponent implements OnInit{
 
    
 
-    this._seriesService.getShows().subscribe((showList: IShow[])=>this.shows = showList)
-    this.responsiveOptions = [
+    this._seriesService.getShows().subscribe((showList: IShow[])=> {
+      this.shows = showList
+      console.log(showList)
+
+})
+   this.responsiveOptions = [
       { breakpoint: '1024px', numVisible: 3, numScroll: 1 },
       { breakpoint: '768px', numVisible: 2, numScroll: 1 },
       { breakpoint: '560px', numVisible: 1, numScroll: 1 }
     ]
+
     this.reviewForm = new FormGroup({
           review: new FormControl(''),
         },)
@@ -103,8 +111,17 @@ export class GreetingsComponent implements OnInit{
       show_review: reviewText
   }
 
+    if (this.reviewsList.some((reviewNaLista)=> reviewNaLista.show == review.show)){
+      this.messageService.add({ severity: 'error', summary: 'Série existente', detail: 'A série já foi adicionada!', life: 3000 });
 
-    this.reviewsList.push(review)    
+
+    }else{
+      this.reviewsList.push(review)    
+      this.messageService.add({ severity: 'success', summary: 'Série adicionada!', detail: 'Sua série favorita foi adicionada ao review', life: 3000 });
+  
+    }
+    this.reviewForm.reset()
+    this.riderListSelected = []
     
     }
 
@@ -116,10 +133,14 @@ export class GreetingsComponent implements OnInit{
       
       this._reviewService.submitReview(review).subscribe({
     next: (response) => {
-      console.log('✅ Review enviado com sucesso!', response);
+      this.messageService.add({ severity: 'success', summary: 'Review concluído!', detail: 'Seu review foi enviado com sucesso!', life: 3000 });
+      setTimeout(()=>{
+      window.location.reload();
+
+      }, 1000)
     },
     error: (error) => {
-      console.error('❌ Erro ao enviar review:', error);
+      this.messageService.add({ severity: 'error', summary: 'Erro!', detail: error, life: 3000 });
     }
   });
     }

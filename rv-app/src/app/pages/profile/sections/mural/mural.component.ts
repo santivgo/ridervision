@@ -25,6 +25,7 @@ import { DividerHorizontalComponent } from "../../../../shared/components/divide
 export class MuralComponent implements AfterViewInit {
   actualReview: IReview = {} as IReview;
   reviewList: IReview[] = []
+  isLoading: boolean = true
   
   constructor(
     private readonly _seriesService: SeriesService,
@@ -39,6 +40,7 @@ export class MuralComponent implements AfterViewInit {
       this._reviewService.getReviewsByUser(user.id).pipe(take(1)).subscribe((reviewList) => {
       this.reviewList = reviewList
       this.actualReview = this.reviewList[0]
+      this.isLoading = false;
   
       })
     });

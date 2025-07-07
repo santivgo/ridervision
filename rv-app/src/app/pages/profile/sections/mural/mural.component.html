@@ -1,6 +1,11 @@
-<ng-container *ngTemplateOutlet="reviewList && reviewList.length>0 ? ifTemp: elseTemp">
+<ng-container *ngIf="isLoading; else contentTemplate">
 </ng-container>
 
+
+<ng-template #contentTemplate>
+    <ng-container *ngTemplateOutlet="reviewList && reviewList.length > 0 ? ifTemp : elseTemp">
+    </ng-container>
+</ng-template>
 
 <ng-template #ifTemp>
     <div class="mural">

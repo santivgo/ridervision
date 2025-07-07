@@ -42,7 +42,7 @@ export class LoginComponent {
           this.router.navigate(['/perfil']).then(() => {
             window.location.reload(); // ← Força reload da página
           });
-        }, 2000);
+        }, 1000);
 
       },
       error: (err) => {
