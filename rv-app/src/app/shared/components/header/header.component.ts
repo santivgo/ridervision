@@ -22,9 +22,10 @@ export class HeaderComponent implements OnInit{
     {title: 'Riders', route: "/riders", security: false },
     {title: 'API', route: "/api", security: false},
     {title: 'Login', route: "/login", security: false},
-    {title: 'Logout', route: "/logout", security: true},
     {title: 'Perfil', route: "/perfil", security: true},
     {title: 'Feed', route: "/feed", security: true },
+    {title: 'Logout', route: "/logout", security: true},
+
   ];
 
 
