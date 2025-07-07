@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { IShow } from '../../../../core/interfaces/models/show.interface';
 import { ShowcaseCardImgDirective } from '../../../../core/directives/card-poster.directive';
 import { BaseChartDirective } from 'ng2-charts';
@@ -31,7 +31,8 @@ export class MuralComponent implements AfterViewInit {
     private readonly _userService: UsersService,
     private readonly _reviewService: ReviewService
   ) {}
-    
+  
+
   ngAfterViewInit(): void {
 
     this._userService.getCurrentUser().subscribe((user: IUser)=> {
@@ -39,19 +40,13 @@ export class MuralComponent implements AfterViewInit {
       this.reviewList = reviewList
       this.actualReview = this.reviewList[0]
   
-      console.log(reviewList)
       })
     });
 
-    this.setPrimaryReview(); 
   }
 
 
-  private setPrimaryReview(): void{
 
-    console.log(this.reviewList)
-
-  }
 
 
 

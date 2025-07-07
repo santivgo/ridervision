@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IReview } from '../interfaces/models/review.interface';
 import { IUser } from '../interfaces/models/user.interface';
+import { IMedia } from '../interfaces/models/media.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class ReviewService {
 
   getReviewsByUser(userID: string): Observable<IReview[]>{
       return this.http.get<IReview[]>(`${this.apiUrl}user/${userID}/`)
+  }
+
+  getReviewsMediaByUser(userID: string): Observable<IMedia>{
+      return this.http.get<IMedia>(`${this.apiUrl}user/${userID}/media/`)
   }
 
 
