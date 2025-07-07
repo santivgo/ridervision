@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { IShow } from '../../../../core/interfaces/models/show.interface';
 import { ShowcaseCardImgDirective } from '../../../../core/directives/card-poster.directive';
 import { BaseChartDirective } from 'ng2-charts';
@@ -22,35 +22,33 @@ import { DividerHorizontalComponent } from "../../../../shared/components/divide
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.sass'
 })
-export class MuralComponent implements OnInit {
+export class MuralComponent implements AfterViewInit {
   actualReview: IReview = {} as IReview;
   reviewList: IReview[] = []
+  isLoading: boolean = true
   
   constructor(
     private readonly _seriesService: SeriesService,
     private readonly _userService: UsersService,
     private readonly _reviewService: ReviewService
   ) {}
-    
-  ngOnInit(): void {
+  
+
+  ngAfterViewInit(): void {
 
     this._userService.getCurrentUser().subscribe((user: IUser)=> {
       this._reviewService.getReviewsByUser(user.id).pipe(take(1)).subscribe((reviewList) => {
       this.reviewList = reviewList
       this.actualReview = this.reviewList[0]
-      console.log(reviewList)
+      this.isLoading = false;
+  
       })
     });
 
-    this.setPrimaryReview(); 
   }
 
 
-  private setPrimaryReview(): void{
 
-    console.log(this.reviewList)
-
-  }
 
 
 

@@ -49,6 +49,23 @@ class ReviewView(viewsets.ModelViewSet):
         reviews = Review.objects.filter(user_id=user_id)
         serializer = self.get_serializer(reviews, many=True)
         return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'], url_path='user/(?P<user_id>[^/.]+)/media')
+    def media_assistida(self, request, user_id=None):
+        anos = Review.objects.filter(user_id=user_id).values_list('show__year', flat=True)
+        dic_eras = {'showa': 0, 'heisei': 0, 'neo-heisei':0, 'reiwa': 0}
+
+        for ano in list(anos):
+            if (ano >= 1926 and ano <= 1989):
+                dic_eras['showa']+=1
+            elif (ano >= 1999 and ano < 2009):
+                dic_eras['heisei']+=1
+            elif (ano >= 2009 and ano < 2019):
+                dic_eras['neo-heisei']+=1
+            elif (ano >= 2019):
+                dic_eras['reiwa']+=1
+        
+        return Response(dic_eras)
 
 
 class PostView(viewsets.ModelViewSet):

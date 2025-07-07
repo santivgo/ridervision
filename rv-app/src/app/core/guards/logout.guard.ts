@@ -11,8 +11,10 @@ export class LogoutGuard implements CanActivate {
   ) { }
 
   canActivate(): boolean {
-    this._userService.unlogged();
+    this._userService.removeToken();
     this.router.navigate(['/login']);
+    window.location.reload(); 
+
     return false;
   }
   };

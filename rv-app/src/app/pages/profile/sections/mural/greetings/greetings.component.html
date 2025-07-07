@@ -1,3 +1,5 @@
+<p-toast />
+
 <div class="rv-greetings__container">
     <div class="btn-submit">
         <p-button (click)="saveReviews()" class="btn-c-submit" [disabled]="reviewsList.length <= 0" [raised]="true"
@@ -9,8 +11,8 @@
     </div>
 
     <div class="rv-greetings__caroussel">
-        <p-carousel class="carousel" [value]="shows" [numVisible]="4" [numScroll]="4" [circular]="true"
-            [responsiveOptions]="responsiveOptions" showIndicators="false">
+        <p-carousel class="carousel" class="carousel" [value]="shows" [numVisible]="3" [numScroll]="2" [circular]="true"
+            [responsiveOptions]="responsiveOptions" [showIndicators]="false" [showNavigators]="true">
             <ng-template let-show #item>
                 <div (click)="changeSelectedShow(show)" [ngClass]="{'b-active': selectedShow === show}"
                     class="btn b-show m-1 p-4">
@@ -18,7 +20,7 @@
                         <div class="relative mx-auto">
                             <img [src]="show.show_img_sm" [alt]="show.name" class="card rounded-border" />
                             <p-tag *ngIf="containsShow(show).show" [value]="'Selecionado'" class="absolute"
-                                [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+                                [ngStyle]="{ 'background': 'black', 'color': '#E34260', 'left.px': 5, 'top.px': 5 }" />
                         </div>
                     </div>
                     <div class="mb-4 font-medium text-center">{{ show.name | shortName }}</div>

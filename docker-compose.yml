@@ -26,6 +26,9 @@ services:
       context: ./rv-app
     ports:
       - "4200:4200"
+    volumes:
+      - ./rv-app:/app
+      - /app/node_module
     depends_on:
       - backend
     networks:
@@ -42,7 +45,6 @@ services:
       sh -c "
              python3 manage.py makemigrations &&
              python3 manage.py migrate &&
-             python manage.py createsuperuser --noinput &&
              python3 manage.py loaddata fixtures/* &&
              python3 manage.py runserver 0.0.0.0:8000"
     volumes:

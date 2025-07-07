@@ -39,19 +39,24 @@ export class LoginComponent {
         this.messageService.add({ severity: 'success', summary: 'Login efetuado com sucesso!', detail: '', life: 2000 });
          setTimeout(() => {
           this._usersService.saveTokens(response);
-          this.router.navigate(['/perfil']);
-        }, 2000);
+          this.router.navigate(['/perfil']).then(() => {
+            window.location.reload(); // ← Força reload da página
+          });
+        }, 1000);
 
       },
       error: (err) => {
           for (const erroChave in err.error){
-            console.log(erroChave)
-            console.log(err.error[erroChave])
+            if(!Array.isArray(erroChave)){
+              this.messageService.add({ severity: 'error', summary: 'Erro!', detail: err.error[erroChave], life: 10000 });
 
-            for (const erro of err.error[erroChave]){
-              this.messageService.add({ severity: 'error', summary: 'Erro!', detail: erro, life: 10000 });
-
+            }else{
+              for (const erro of err.error[erroChave]){
+                this.messageService.add({ severity: 'error', summary: 'Erro!', detail: erro, life: 10000 });
+              }
             }
+
+           
           }
       },})
 

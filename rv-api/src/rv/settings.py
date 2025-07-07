@@ -155,10 +155,14 @@ REST_FRAMEWORK = {
 
 }
 
+from datetime import timedelta
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("JWT","Bearer"),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15), 
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': True,
 }
 
 

@@ -34,18 +34,19 @@ export class CadastroComponent implements OnInit{
         this.messageService.add({ severity: 'success', summary: 'Cadastro efetuado com sucesso!', detail: '', life: 2000 });
         setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 2000);
+        }, 1000);
 
         },
         error: (err) => {
           for (const erroChave in err.error){
-            console.log(erroChave)
-            console.log(err.error[erroChave])
+            if(!Array.isArray(erroChave)){
+              this.messageService.add({ severity: 'error', summary: 'Erro!', detail: err.error[erroChave], life: 10000 });
 
-            for (const erro of err.error[erroChave]){
-              this.messageService.add({ severity: 'error', summary: 'Erro!', detail: erro, life: 10000 });
-
-            }
+            }else{
+              for (const erro of err.error[erroChave]){
+                this.messageService.add({ severity: 'error', summary: 'Erro!', detail: erro, life: 10000 });
+              }
+          }
           }
         }
       });

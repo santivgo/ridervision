@@ -1,6 +1,11 @@
-<ng-container *ngTemplateOutlet="reviewList && reviewList.length>0 ? ifTemp: elseTemp">
+<ng-container *ngIf="isLoading; else contentTemplate">
 </ng-container>
 
+
+<ng-template #contentTemplate>
+    <ng-container *ngTemplateOutlet="reviewList && reviewList.length > 0 ? ifTemp : elseTemp">
+    </ng-container>
+</ng-template>
 
 <ng-template #ifTemp>
     <div class="mural">
@@ -12,7 +17,7 @@
 
                 <h3 style="text-align: center; margin: 3%">{{actualReview.show.name}}
                 </h3>
-                <p>{{actualReview.review}}</p>
+                <p>{{actualReview.show_review}}</p>
             </div>
         </div>
 

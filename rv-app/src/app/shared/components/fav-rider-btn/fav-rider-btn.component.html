@@ -3,6 +3,6 @@
         <img [src]="rider.rider_img_body" [alt]="rider.name" class="fav-rider-btn__img">
     </div>
     <div class="fav-rider-btn__overlay">
-        <span class="fav-rider-btn__name">{{ rider.name }}</span>
+        <span class="fav-rider-btn__name">{{ rider.name | shortName}}</span>
     </div>
 </div>

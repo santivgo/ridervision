@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, switchMap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, switchMap, tap } from 'rxjs';
 import { IUser } from '../interfaces/models/user.interface';
 import { IUserRegister } from '../interfaces/auth/auth.interface';
 import { Router } from '@angular/router';
@@ -13,12 +13,37 @@ export class UsersService {
   constructor(private http: HttpClient, private router: Router) {}
 
   private apiUrl = 'http://localhost:8000/auth/users'; 
-  
+  private isLoggedSubject = new BehaviorSubject<boolean>(this.checkToken());
+  public logged$ = this.isLoggedSubject.asObservable();
+
+  private checkToken(): boolean {
+    return !!localStorage.getItem('token');
+  }
+    
   get isLogged(): boolean{
     return !!localStorage.getItem('token') 
   }
 
-  unlogged(){
+
+
+  revokeToken(): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Token ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(`${this.apiUrl}/token/logout/`, {}, { headers })
+      .pipe(
+        tap(() => {
+          this.removeToken();
+        })
+      );
+  }
+
+
+  removeToken(): void{
+    
     localStorage.removeItem('token');
     localStorage.removeItem('refresh_token');
   }
@@ -43,6 +68,15 @@ export class UsersService {
     return this.http.post(`${this.apiUrl}/`, user)
 
   }
+
+  refreshToken(): Observable<any> {
+    const refreshToken = localStorage.getItem('refresh_token');
+    
+    return this.http.post(`${this.apiUrl}/jwt/refresh/`, {
+      refresh: refreshToken
+    });
+  }
+
   
   loginUser(user: {username: string, password: string}): Observable<{ access: string; refresh: string }>{
       return this.http

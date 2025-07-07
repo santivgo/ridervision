@@ -3,13 +3,19 @@ import { ILinkMenu } from '../interfaces/components/link-menu';
 import { UsersService } from '../services/users.service';
 
 @Pipe({
-  name: 'securityMenu'
+  name: 'securityMenu',
 })
 export class SecurityMenuPipe implements PipeTransform {
   constructor(private readonly _us: UsersService){}
 
-  transform(lista: ILinkMenu[]): ILinkMenu[] {
-    return lista.filter(btn => {return btn.security===false || btn.security===true && this._us.isLogged})
+  transform(lista: ILinkMenu[], isLoggedIn: boolean): ILinkMenu[] {
+    return lista.filter(item => {
+      if (isLoggedIn) {
+        return item.security === true || (item.security === false && item.title !== 'Login');
+      } else {
+        return item.security === false;
+      }
+    });
   }
 
 }
