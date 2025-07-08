@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { PostService } from '../../../core/services/post.service';
 import { IRider } from '../../../core/interfaces/models/rider.interface';
 import { IPost } from '../../../core/interfaces/models/post.interface';
+import { Toast } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-new-post',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Toast],
   templateUrl: './new-post.component.html',
   styleUrl: './new-post.component.sass'
 })
@@ -45,7 +47,7 @@ export class NewPostComponent implements OnInit {
       this.selectedRiders = this.newPost.tagged_riders
     }
   }
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private messageService: MessageService) {}
 
   get filteredRiders(): any[] {
     if (!this.searchTerm.trim()) return this.availableRiders;
@@ -115,7 +117,7 @@ export class NewPostComponent implements OnInit {
 
   createPost(): void {
     if (!!!this.editPost && (!this.newPost.content.trim() || !this.newPost.img || this.newPost.tagged_riders.length === 0)) {
-      console.log("falhou!")
+      this.messageService.add({ severity: 'error', summary: 'error', detail: 'Preencha o texto, selecione pelo menos um Rider e uma imagem.', life: 3000 });
       this.error = 'Preencha o texto, selecione pelo menos um Rider e uma imagem.';
       return;
     }
@@ -140,6 +142,7 @@ export class NewPostComponent implements OnInit {
           this.close();
         },
         error: (err) => {
+          this.messageService.add({ severity: 'error', summary: 'error', detail: 'Erro ao criar o post. Tente novamente.', life: 3000 });
           this.error = 'Erro ao criar o post. Tente novamente.';
         }
       });

@@ -8,7 +8,7 @@ import { IUser } from '../../../core/interfaces/models/user.interface';
 import { CommentService } from '../../../core/services/comment.service';
 import { IComment } from '../../../core/interfaces/models/comment.interface';
 import { ButtonModule } from "primeng/button";
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { ContextMenu } from 'primeng/contextmenu';
 import { PostService } from '../../../core/services/post.service';
 
@@ -60,7 +60,8 @@ export class PostComponent implements OnInit{
   constructor(
     private userService: UsersService,
     private commentsService: CommentService,
-    private postService: PostService
+    private postService: PostService,
+    private messageService: MessageService
   ) {}
 
   toggleComments(): void {
@@ -80,7 +81,7 @@ export class PostComponent implements OnInit{
     this.postService.deletePost(this.post.id).subscribe( {
       next: (response) => {
         this.reloadEmitter.emit()
-        console.log('beleza apagou')
+        this.messageService.add({ severity: 'info', summary: 'Post deletado', detail: 'Post deletado.', life: 3000 });
       },
       error: (error) => {
         console.log(error)

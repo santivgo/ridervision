@@ -1,4 +1,7 @@
+<p-toast />
+
 <div class="rv-container">
+
     <div class="rv-container__card">
         <div class="rv-container__card__perfil">
             <div class="rv-container__card__perfil__content">
@@ -60,6 +63,7 @@
         <app-divider-horizontal></app-divider-horizontal>
 
         <div class="rv-container__card__side">
+
             <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionPost : sectionFav">
             </ng-container>
         </div>
@@ -78,4 +82,4 @@
 </div>
 
 <app-new-post *ngIf="showCreatePostModal" [editPost]="actualEditPost" [user]="user" [availableRiders]="availableRiders"
-    (closeModal)="closeCreatePostModal()" (postCreated)="loadPosts()"></app-new-post>
+    (closeModal)="closeCreatePostModal()" (postCreated)="newPost()"></app-new-post>

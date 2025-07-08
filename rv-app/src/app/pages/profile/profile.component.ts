@@ -18,13 +18,15 @@ import { RiderService } from '../../core/services/rider.service';
 import { IRider } from '../../core/interfaces/models/rider.interface';
 import { FormsModule } from '@angular/forms';
 import { NewPostComponent } from '../../shared/components/new-post/new-post.component';
+import { Toast } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.sass',
-  imports: [CommonModule, NgbCollapseModule, DividerHorizontalComponent, CommentComponent, StatsComponent, PostComponent, MuralComponent, FormsModule, NewPostComponent]
+  imports: [CommonModule, NgbCollapseModule, DividerHorizontalComponent, CommentComponent, StatsComponent, PostComponent, MuralComponent, FormsModule, NewPostComponent, Toast]
 })
 export class ProfileComponent implements OnInit {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
@@ -48,7 +50,8 @@ export class ProfileComponent implements OnInit {
     private commentsService: CommentService,
     private postService: PostService,
     private userService: UsersService,
-    private riderService: RiderService
+    private riderService: RiderService,
+    private messageService: MessageService
   ) {}
   
   protected changeSection(section: string): void {
@@ -85,7 +88,8 @@ export class ProfileComponent implements OnInit {
       next: (data) => {
         this.user = data;
         this.userId = Number(data.id); 
-        this.reloadPosts();
+        this.loadComments();
+        this.loadPosts();
       },
     });
   }
@@ -104,9 +108,13 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  reloadPosts(): void {
+  
+  newPost(): void {
+
+    
     this.loadComments()
     this.loadPosts()
+    this.messageService.add({ severity: 'success', summary: 'Post enviado', detail: 'Post enviado com sucesso!', life: 3000 });
   }
   receiveEditPost(event: IPost){
     this.actualEditPost = event
