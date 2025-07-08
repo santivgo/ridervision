@@ -4,7 +4,7 @@
     <div *ngIf="!error && posts.length === 0" class="feed-empty">Nenhum post encontrado.</div>
     <div class="feed-list feed-list--grid">
       <div *ngFor="let post of posts" class="feed-list__item">
-        <app-post [post]="post"></app-post>
+        <app-post [post]="post" [canComment]="true"></app-post>
       </div>
     </div>
   </div>
