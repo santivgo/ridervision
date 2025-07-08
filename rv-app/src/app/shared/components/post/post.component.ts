@@ -10,6 +10,7 @@ import { IComment } from '../../../core/interfaces/models/comment.interface';
 import { ButtonModule } from "primeng/button";
 import { MenuItem } from 'primeng/api';
 import { ContextMenu } from 'primeng/contextmenu';
+import { PostService } from '../../../core/services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -21,10 +22,11 @@ export class PostComponent implements OnInit{
   @Input({required: true}) post = {} as IPost;
   @ViewChild('cm') cm!: ContextMenu;
   @Output() editEmitter: EventEmitter<IPost> = new EventEmitter<IPost>() 
+  @Output() reloadEmitter: EventEmitter<void> = new EventEmitter<void>() 
+
 
   items: MenuItem[] | undefined;
   
-
   user: IUser = {} as IUser;
   comments: IComment[] = [];
 
@@ -44,7 +46,7 @@ export class PostComponent implements OnInit{
           label: 'Deletar',
           icon: 'pi pi-trash',
           command: ()=> {
-
+            this.deletePost()
           }
       }           
     ]
@@ -58,6 +60,7 @@ export class PostComponent implements OnInit{
   constructor(
     private userService: UsersService,
     private commentsService: CommentService,
+    private postService: PostService
   ) {}
 
   toggleComments(): void {
@@ -73,12 +76,25 @@ export class PostComponent implements OnInit{
       });
   }
 
+  deletePost(): void {
+    this.postService.deletePost(this.post.id).subscribe( {
+      next: (response) => {
+        this.reloadEmitter.emit()
+        console.log('beleza apagou')
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
   loadComments(): void {
     this.commentsService.getCommentsByPost(Number(this.post.id))
       .subscribe((data) => {
         this.comments = data;
       });
   }
+  
 
   expandImg(imgUrl: string) {
     this.expandedImg = imgUrl;

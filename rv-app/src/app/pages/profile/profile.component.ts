@@ -85,8 +85,7 @@ export class ProfileComponent implements OnInit {
       next: (data) => {
         this.user = data;
         this.userId = Number(data.id); 
-        this.loadComments();
-        this.loadPosts();
+        this.reloadPosts();
       },
     });
   }
@@ -103,6 +102,11 @@ export class ProfileComponent implements OnInit {
       .subscribe((data) => {
         this.posts = data;
       });
+  }
+
+  reloadPosts(): void {
+    this.loadComments()
+    this.loadPosts()
   }
   receiveEditPost(event: IPost){
     this.actualEditPost = event

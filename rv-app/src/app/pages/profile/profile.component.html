@@ -66,7 +66,8 @@
 
         <ng-template #sectionPost>
             <ng-container *ngFor="let post of posts.slice().reverse()">
-                <app-post (editEmitter)="receiveEditPost($event)" [post]="post"></app-post>
+                <app-post (reloadEmitter)="loadPosts()" (editEmitter)="receiveEditPost($event)"
+                    [post]="post"></app-post>
             </ng-container>
         </ng-template>
         <ng-template #sectionFav>
