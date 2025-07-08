@@ -11,10 +11,11 @@ import { ButtonModule } from "primeng/button";
 import { MenuItem, MessageService } from 'primeng/api';
 import { ContextMenu } from 'primeng/contextmenu';
 import { PostService } from '../../../core/services/post.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-post',
-  imports: [TagComponent, CommonModule, PostCommentComponent, ButtonModule, ContextMenu],
+  imports: [TagComponent, CommonModule, PostCommentComponent, ButtonModule, FormsModule, ContextMenu],
 
   templateUrl: './post.component.html',
   styleUrl: './post.component.sass'
