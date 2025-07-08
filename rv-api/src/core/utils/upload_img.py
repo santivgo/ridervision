@@ -2,4 +2,7 @@ from core.utils.get_meta_name import getModelName
 
 def uploadImg(instance, filename):
     modelName = getModelName(instance)
-    return f"{modelName}/{instance.id}/{filename}"
+    if(instance):
+        return f"{modelName}/{instance.id}/{filename}"
+    else:
+        return f"{modelName}/{filename}"
