@@ -51,13 +51,16 @@ export class LoginComponent {
               this.messageService.add({ severity: 'error', summary: 'Erro!', detail: err.error[erroChave], life: 10000 });
 
             }else{
-              for (const erro of err.error[erroChave]){
+              for (const erro of err.error){
                 this.messageService.add({ severity: 'error', summary: 'Erro!', detail: erro, life: 10000 });
               }
             }
 
-           
-          }
+            }
+
+        
+       
+      
       },})
 
   }

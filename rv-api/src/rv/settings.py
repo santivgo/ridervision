@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 from pathlib import Path
+
 from celery.schedules import crontab
 from dotenv import load_dotenv
 
@@ -60,9 +61,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200'
-]
+CORS_ALLOWED_ORIGINS = ["http://localhost:4200"]
 
 
 ROOT_URLCONF = "rv.urls"
@@ -152,43 +151,42 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-
 }
 
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "AUTH_HEADER_TYPES": ("JWT","Bearer"),
+    "AUTH_HEADER_TYPES": ("JWT", "Bearer"),
     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15), 
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'ROTATE_REFRESH_TOKENS': True,
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
 }
 
 
 DJOSER = {
-    'SERIALIZERS': {
-        'user_create': 'djoser.serializers.UserCreateSerializer',
-        'user': 'core.serializers.DjoserUserSerializer',
-        'current_user': 'core.serializers.DjoserUserSerializer',
+    "SERIALIZERS": {
+        "user_create": "djoser.serializers.UserCreateSerializer",
+        "user": "core.serializers.DjoserUserSerializer",
+        "current_user": "core.serializers.DjoserUserSerializer",
     },
     "PERMISSIONS": {
         "user": ["rest_framework.permissions.AllowAny"],
         "user_list": ["rest_framework.permissions.AllowAny"],
     },
-    'LOGIN_FIELD': 'username',
-    'USER_CREATE_PASSWORD_RETYPE': False,  
-    'SEND_ACTIVATION_EMAIL': False,
+    "LOGIN_FIELD": "username",
+    "USER_CREATE_PASSWORD_RETYPE": False,
+    "SEND_ACTIVATION_EMAIL": False,
 }
 
-AUTH_USER_MODEL = 'core.User'
-LOGIN_FIELD = 'username'
+AUTH_USER_MODEL = "core.User"
+LOGIN_FIELD = "username"
 
-CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_BROKER_URL = "redis://redis:6379/0"
 
 CELERY_BEAT_SCHEDULE = {
-    'create-daily-post-every-midnight': {
-        'task': 'core.tasks.create_daily_post',
-        'schedule': crontab(hour=0, minute=0),
+    "create-daily-post-every-midnight": {
+        "task": "core.tasks.create_daily_post",
+        "schedule": crontab(hour=0, minute=0),
     },
 }
