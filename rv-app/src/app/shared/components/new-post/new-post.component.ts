@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PostService } from '../../../core/services/post.service';
+import { IRider } from '../../../core/interfaces/models/rider.interface';
+import { IPost } from '../../../core/interfaces/models/post.interface';
 
 @Component({
   selector: 'app-new-post',
@@ -10,17 +12,20 @@ import { PostService } from '../../../core/services/post.service';
   templateUrl: './new-post.component.html',
   styleUrl: './new-post.component.sass'
 })
-export class NewPostComponent {
+export class NewPostComponent implements OnInit {
   @Input() user: any;
-  @Input() availableRiders: any[] = [];
+  @Input() availableRiders: IRider[] = [];
+  @Input() editPost: any | undefined
   @Output() closeModal = new EventEmitter<void>();
   @Output() postCreated = new EventEmitter<any>();
+
 
   newPost = {
     content: '',
     img: null as File | null,
     tagged_riders: [] as number[]
   };
+
   selectedRiders: any[] = [];
   imgPreview: string | null = null;
   error = '';
@@ -28,7 +33,18 @@ export class NewPostComponent {
   searchTerm: string = '';
   currentPage: number = 1;
   pageSize: number = 6;
-
+  
+  ngOnInit(): void {
+    if (this.editPost){
+      this.newPost = {
+        content: this.editPost.content,
+        img: null, // lembrar que isso pode bugar ***ponto de bug talvez***
+        tagged_riders: this.editPost.tagged_riders
+      }
+      this.imgPreview = this.editPost.img
+      this.selectedRiders = this.newPost.tagged_riders
+    }
+  }
   constructor(private postService: PostService) {}
 
   get filteredRiders(): any[] {
@@ -69,17 +85,17 @@ export class NewPostComponent {
   }
 
   toggleRiderSelection(rider: any): void {
-    const index = this.selectedRiders.findIndex(r => r.id === rider.id);
+    const index = this.selectedRiders.findIndex(r => r === rider.id);
     if (index > -1) {
       this.selectedRiders.splice(index, 1);
     } else {
-      this.selectedRiders.push(rider);
+      this.selectedRiders.push(rider.id);
     }
-    this.newPost.tagged_riders = this.selectedRiders.map(r => r.id);
+    this.newPost.tagged_riders = this.selectedRiders;
   }
 
   isRiderSelected(rider: any): boolean {
-    return this.selectedRiders.some(r => r.id === rider.id);
+    return this.selectedRiders.some(r => r === rider.id);
   }
 
   resetForm(): void {
@@ -98,7 +114,8 @@ export class NewPostComponent {
   }
 
   createPost(): void {
-    if (!this.newPost.content.trim() || !this.newPost.img || this.newPost.tagged_riders.length === 0) {
+    if (!!!this.editPost && (!this.newPost.content.trim() || !this.newPost.img || this.newPost.tagged_riders.length === 0)) {
+      console.log("falhou!")
       this.error = 'Preencha o texto, selecione pelo menos um Rider e uma imagem.';
       return;
     }
@@ -113,14 +130,32 @@ export class NewPostComponent {
     this.newPost.tagged_riders.forEach((riderId: number) => {
       formData.append('tagged_riders', riderId.toString());
     });
-    this.postService.createPost(formData).subscribe({
-      next: (response) => {
-        this.postCreated.emit(response);
-        this.close();
-      },
-      error: (err) => {
-        this.error = 'Erro ao criar o post. Tente novamente.';
-      }
-    });
+
+    if (!!this.editPost){
+      this.postService.updatePost(this.editPost.id, formData).subscribe({
+
+        next: (response) => {
+          
+          this.postCreated.emit(response);
+          this.close();
+        },
+        error: (err) => {
+          this.error = 'Erro ao criar o post. Tente novamente.';
+        }
+      });
+    }else{
+      this.postService.createPost(formData).subscribe({
+
+        next: (response) => {
+          
+          this.postCreated.emit(response);
+          this.close();
+        },
+        error: (err) => {
+          this.error = 'Erro ao criar o post. Tente novamente.';
+        }
+      });
+    }
   }
+   
 }

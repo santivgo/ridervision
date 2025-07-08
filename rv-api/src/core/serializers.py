@@ -104,6 +104,12 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = "__all__"
+    
+    def update(self, instance, validated_data):
+        if 'img' in validated_data and validated_data['img'] is None:
+            validated_data.pop('img')
+        
+        return super().update(instance, validated_data)
         
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:

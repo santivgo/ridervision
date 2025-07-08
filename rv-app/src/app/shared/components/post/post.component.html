@@ -4,12 +4,21 @@
         <div class="post-section__header__text">
             <h1>&#64;{{ user.username }}</h1>
             <p>{{ post.content }}</p>
+
+        </div>
+        <div class="post-options" *ngIf="user.id === post.author">
+
+            <p-button (click)="onContextMenu($event)" #options severity="secondary" icon="pi pi-ellipsis-h"
+                variant="text" [raised]="true" />
+            <p-contextmenu #cm [model]="items" />
+
         </div>
     </div>
     <div class="post-section__body" *ngIf="post.img">
-        <img [src]="post.img || 'assets/default-image.png'" (click)="expandImg(post.img || 'assets/default-image.png')" class="expandable-img" style="cursor: pointer;" alt="Imagem do post">
+        <img [src]="post.img || 'assets/default-image.png'" (click)="expandImg(post.img || 'assets/default-image.png')"
+            class="expandable-img" style="cursor: pointer;" alt="Imagem do post">
     </div>
-    <div class="post-section__bottom"> 
+    <div class="post-section__bottom">
         <ng-container *ngFor="let riderId of post.tagged_riders">
             <app-tag [tagged_rider]="riderId"></app-tag>
         </ng-container>
@@ -23,8 +32,8 @@
         </ng-container>
     </div>
     <div class="modal-backdrop" *ngIf="expandedImg" (click)="closeModal()">
-      <div class="modal-img-wrapper" (click)="$event.stopPropagation()">
-        <img [src]="expandedImg" alt="Imagem expandida" />
-      </div>
+        <div class="modal-img-wrapper" (click)="$event.stopPropagation()">
+            <img [src]="expandedImg" alt="Imagem expandida" />
+        </div>
     </div>
 </div>

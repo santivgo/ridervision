@@ -30,6 +30,8 @@ export class ProfileComponent implements OnInit {
   @Input({'alias': 'collapseRef', required: true}) collapse!: NgbCollapse;
   @Input() riders: IShow[] = [];
 
+  actualEditPost: IPost | undefined = undefined
+
   selectedSection: string = 'posts'; 
   user: IUser = {} as IUser;
   favRiders: IShow[] = [];
@@ -75,6 +77,7 @@ export class ProfileComponent implements OnInit {
 
   closeCreatePostModal(): void {
     this.showCreatePostModal = false;
+    this.actualEditPost = undefined
   }
 
   loadData(): void {
@@ -100,5 +103,9 @@ export class ProfileComponent implements OnInit {
       .subscribe((data) => {
         this.posts = data;
       });
+  }
+  receiveEditPost(event: IPost){
+    this.actualEditPost = event
+    this.openCreatePostModal()
   }
 }
