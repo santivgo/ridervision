@@ -27,6 +27,10 @@
         </button>
     </div>
     <div class="post-section__comments" *ngIf="exibirComments">
+        <div *ngIf="canComment" class="add-comment-form">
+          <input [(ngModel)]="newComment" placeholder="Adicionar comentário..." />
+          <button (click)="addComment()" [disabled]="!newComment.trim()">Enviar</button>
+        </div>
         <ng-container *ngFor="let comment of comments">
             <app-post-comment [comment]="comment"></app-post-comment>
         </ng-container>

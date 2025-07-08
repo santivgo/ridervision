@@ -100,6 +100,44 @@
     &::-webkit-scrollbar-track
       background: transparent
 
+    .add-comment-form
+      display: flex
+      align-items: center
+      gap: 0.7rem
+      margin-top: 0.5rem
+      background: #191919
+      border-radius: 0.7rem
+      padding: 0.7rem 1rem
+      box-shadow: 0 1px 6px 0 rgba(0,0,0,0.10)
+      input
+        flex: 1
+        background: transparent
+        border: none
+        color: #e0e0e0
+        font-size: 1rem
+        padding: 0.5rem 0.7rem
+        border-radius: 0.5rem
+        outline: none
+        transition: background 0.2s
+        &::placeholder
+          color: #AB9899
+      button
+        background: #AB9899
+        color: #232323
+        border: none
+        border-radius: 0.5rem
+        padding: 0.5rem 1.2rem
+        font-weight: bold
+        font-size: 1rem
+        cursor: pointer
+        transition: background 0.2s, color 0.2s
+        &:hover:enabled
+          background: #fff
+          color: #AB9899
+        &:disabled
+          opacity: 0.5
+          cursor: not-allowed
+
 .modal-backdrop
   position: fixed
   top: 0

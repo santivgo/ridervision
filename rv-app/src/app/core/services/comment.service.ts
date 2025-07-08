@@ -29,4 +29,10 @@ export class CommentService {
   createComment(comment: { post: number; content: string; date: string; author: number }): Observable<IComment> {
     return this.http.post<IComment>(this.apiUrl, comment);
   }
+
+  addCommentToPost(postId: number, content: string): Observable<IComment> {
+    // Aqui, o author e date deveriam ser preenchidos corretamente no backend ou frontend
+    // Para exemplo, vamos enviar apenas post e content
+    return this.http.post<IComment>(this.apiUrl, { post: postId, content });
+  }
 }

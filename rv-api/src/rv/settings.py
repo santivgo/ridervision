@@ -182,7 +182,8 @@ DJOSER = {
 AUTH_USER_MODEL = "core.User"
 LOGIN_FIELD = "username"
 
-CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+#CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 CELERY_BEAT_SCHEDULE = {
     "create-daily-post-every-midnight": {

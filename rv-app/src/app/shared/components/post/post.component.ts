@@ -15,6 +15,7 @@ import { PostService } from '../../../core/services/post.service';
 @Component({
   selector: 'app-post',
   imports: [TagComponent, CommonModule, PostCommentComponent, ButtonModule, ContextMenu],
+
   templateUrl: './post.component.html',
   styleUrl: './post.component.sass'
 })
@@ -56,6 +57,11 @@ export class PostComponent implements OnInit{
   }
 
   @Output() expandImage = new EventEmitter<string>();
+
+  @Input()
+  canComment: boolean = false;
+
+  newComment: string = '';
 
   constructor(
     private userService: UsersService,
@@ -109,4 +115,21 @@ export class PostComponent implements OnInit{
       this.cm.show(event);
   }
 
+
+  addComment() {
+    if (!this.newComment.trim()) return;
+    this.userService.getCurrentUser().subscribe((currentUser) => {
+      const now = new Date();
+      const date = now.toISOString().slice(0, 10);
+      this.commentsService.createComment({
+        post: Number(this.post.id),
+        content: this.newComment,
+        date,
+        author: Number(currentUser.id)
+      }).subscribe((comment) => {
+        this.comments.push(comment);
+        this.newComment = '';
+      });
+    });
+  }
 }
