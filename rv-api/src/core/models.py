@@ -64,8 +64,17 @@ class User(AbstractUser):
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     show = models.ForeignKey(Show, on_delete=models.CASCADE)
+    
     fav_riders = models.ManyToManyField(Rider, related_name="fav_shows")
     show_review = models.CharField(max_length=250, blank=True, null=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['show', 'user'],  # assumindo que há um campo user
+                name='unique_review_per_show_per_user'
+            )
+        ]
     
     def clean(self):
         super().clean()

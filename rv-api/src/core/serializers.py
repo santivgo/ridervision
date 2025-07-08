@@ -73,42 +73,32 @@ class ReviewSerializer(serializers.ModelSerializer):
         
         return data
     
+    
     def create(self, validated_data):
         show_id = validated_data.pop('show_id')
         riders_ids = validated_data.pop('fav_riders_ids')
         
         show = Show.objects.get(id=show_id)
+        user = self.context['request'].user
         
-        # Cria o review
-        review = Review.objects.create(show=show, **validated_data)
+        review, created = Review.objects.get_or_create(
+            show=show,
+            user=user,
+            defaults=validated_data
+        )
         
-        # Adiciona os riders favoritos
+        # Se não foi criada (já existia), atualiza os campos
+        if not created:
+            for attr, value in validated_data.items():
+                setattr(review, attr, value)
+            review.save()
+        
+        # Atualiza os riders favoritos
         riders = Rider.objects.filter(id__in=riders_ids)
         review.fav_riders.set(riders)
         
         return review
-    
-    def update(self, instance, validated_data):
-        show_id = validated_data.pop('show_id', None)
-        riders_ids = validated_data.pop('fav_riders_ids', None)
-        
-        # Atualiza o show se fornecido
-        if show_id:
-            show = Show.objects.get(id=show_id)
-            instance.show = show
-        
-        # Atualiza os outros campos
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        
-        instance.save()
-        
-        # Atualiza os riders favoritos se fornecido
-        if riders_ids is not None:
-            riders = Rider.objects.filter(id__in=riders_ids)
-            instance.fav_riders.set(riders)
-        
-        return instance
+
         
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
