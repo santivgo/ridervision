@@ -15,16 +15,21 @@ import { GreetingsComponent } from "./greetings/greetings.component";
 import { ReviewService } from '../../../../core/services/review.service';
 import { FavRiderBtnComponent } from "../../../../shared/components/fav-rider-btn/fav-rider-btn.component";
 import { DividerHorizontalComponent } from "../../../../shared/components/dividers/divider-horizontal/divider-horizontal.component";
+import { ButtonModule } from 'primeng/button';
+
 
 @Component({
   selector: 'app-mural',
-  imports: [FavShowBtnComponent, CommonModule, GreetingsComponent, FavRiderBtnComponent, DividerHorizontalComponent],
+  imports: [FavShowBtnComponent, CommonModule, 
+  GreetingsComponent, FavRiderBtnComponent,
+  ButtonModule],
   templateUrl: './mural.component.html',
   styleUrl: './mural.component.sass'
 })
 export class MuralComponent implements AfterViewInit {
   actualReview: IReview = {} as IReview;
   reviewList: IReview[] = []
+  actualTemplate: string = 'mural'
   isLoading: boolean = true
   
   constructor(
@@ -54,6 +59,10 @@ export class MuralComponent implements AfterViewInit {
 
   protected changeShow(event: IReview): void{
     this.actualReview = event 
+  }
+
+  editReviews(){
+    this.actualTemplate = 'reviews'
   }
 
 

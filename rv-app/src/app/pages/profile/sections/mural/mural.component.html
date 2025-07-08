@@ -3,7 +3,8 @@
 
 
 <ng-template #contentTemplate>
-    <ng-container *ngTemplateOutlet="reviewList && reviewList.length > 0 ? ifTemp : elseTemp">
+    <ng-container
+        *ngTemplateOutlet="reviewList && reviewList.length > 0 && actualTemplate === 'mural' ? ifTemp : elseTemp">
     </ng-container>
 </ng-template>
 
@@ -28,7 +29,10 @@
                 </app-fav-show-btn>
                 <div class="mural__right-side__fav-riders">
                     <app-fav-rider-btn [rider]=rider *ngFor="let rider of actualReview.fav_riders"></app-fav-rider-btn>
-
+                </div>
+                <div class="edit-btn">
+                    <p-button (click)="editReviews()" label="Editar" badge="{{reviewList.length}}"
+                        icon="pi pi-pencil" />
                 </div>
             </div>
 

@@ -48,7 +48,7 @@
             <p>Quais são seus riders favoritos?</p>
             <div class="rv-greetings-form__riders__container">
                 <div *ngFor="let rider of riderListFromShow" (click)="addRider(rider)"
-                    [ngClass]="{'active': riderListSelected.includes(rider)}"
+                    [ngClass]="{'active': containsRider(rider).id}"
                     class="btn rv-greetings-form__riders__container__rider">
                     <p>{{rider.name}}</p>
                 </div>

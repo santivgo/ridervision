@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Carousel, CarouselModule } from 'primeng/carousel';
 import { IShow } from '../../../../../core/interfaces/models/show.interface';
 import { ButtonModule } from 'primeng/button';
@@ -61,9 +61,8 @@ export class GreetingsComponent implements OnInit{
 
     this._seriesService.getShows().subscribe((showList: IShow[])=> {
       this.shows = showList
-      console.log(showList)
+  })
 
-})
    this.responsiveOptions = [
       { breakpoint: '1024px', numVisible: 3, numScroll: 1 },
       { breakpoint: '768px', numVisible: 2, numScroll: 1 },
@@ -76,17 +75,29 @@ export class GreetingsComponent implements OnInit{
     }
   
   containsShow(show: IShow): IReview {
-      for (const review of this.reviewsList){
-        if (review.show === show){
-          return review
-        }
+    for (const review of this.reviewsList){
+
+      if (review.show.id === show.id){
+        return review
       }
+
+    }
       return {} as IReview
+
+    }
+
+  containsRider(rider: IRider): IRider {
+
+    for (const riderSelected of this.riderListSelected){
+        if (riderSelected.id === rider.id){
+          return riderSelected
+        }
+    }
+    return {} as IRider
 
     }
   
   addRider(rider: IRider){
-    console.log(this.riderListSelected)
 
     if (this.riderListSelected.includes(rider)){
       this.riderListSelected = this.riderListSelected.filter(item => item !== rider)
@@ -111,16 +122,19 @@ export class GreetingsComponent implements OnInit{
       show_review: reviewText
   }
 
-    if (this.reviewsList.some((reviewNaLista)=> reviewNaLista.show == review.show)){
-      this.messageService.add({ severity: 'error', summary: 'Série existente', detail: 'A série já foi adicionada!', life: 3000 });
+    if (this.reviewsList.some((reviewNaLista)=> reviewNaLista.show.id == review.show.id)){
+      const index = this.reviewsList.findIndex(reviewNaLista => reviewNaLista.show.id == review.show.id)
+      this.reviewsList[index] = review
+      this.messageService.add({ severity: 'info', summary: 'Série existente', detail: 'Review Atualizada!', life: 3000 });
 
 
     }else{
       this.reviewsList.push(review)    
       this.messageService.add({ severity: 'success', summary: 'Série adicionada!', detail: 'Sua série favorita foi adicionada ao review', life: 3000 });
+      this.reviewForm.reset()
+
   
     }
-    this.reviewForm.reset()
     this.riderListSelected = []
     
     }
@@ -128,18 +142,22 @@ export class GreetingsComponent implements OnInit{
   
     
   saveReviews(){
-    console.log(this.reviewsList)
     for (const review of this.reviewsList){
-      
+      review.user = this.currentUser
       this._reviewService.submitReview(review).subscribe({
     next: (response) => {
-      this.messageService.add({ severity: 'success', summary: 'Review concluído!', detail: 'Seu review foi enviado com sucesso!', life: 3000 });
+      console.log('enviada com sucesso')
+      console.log(review)
+      this.messageService.add({ severity: 'success', summary: `Review: ${review.show.name} `, detail: 'Seu review foi enviado com sucesso!', life: 3000 });
       setTimeout(()=>{
       window.location.reload();
 
-      }, 1000)
+      }, 2000000000)
     },
     error: (error) => {
+      console.log('bugada com sucesso')
+      console.log(review)
+
       this.messageService.add({ severity: 'error', summary: 'Erro!', detail: error, life: 3000 });
     }
   });
@@ -148,16 +166,17 @@ export class GreetingsComponent implements OnInit{
 
   changeSelectedShow(show: IShow){
     const review: IReview = this.containsShow(show)
-
     this.selectedShow = show;
 
-
+    this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
     if(!(this.containsShow(show).show)){ 
-      this._riderService.getRidersByShow(this.selectedShow.id).subscribe((riderList) => this.riderListFromShow = riderList)
       this.riderListSelected = [];
+      this.reviewForm.patchValue({review: review.show_review}) 
+
     }else{
       this.reviewForm.patchValue({review: review.show_review}) 
       this.riderListSelected = review.fav_riders
+    
     }
     
 
