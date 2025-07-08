@@ -7,10 +7,11 @@ import { UsersService } from '../../../core/services/users.service';
 import { IUser } from '../../../core/interfaces/models/user.interface';
 import { CommentService } from '../../../core/services/comment.service';
 import { IComment } from '../../../core/interfaces/models/comment.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-post',
-  imports: [TagComponent, CommonModule, PostCommentComponent],
+  imports: [TagComponent, CommonModule, PostCommentComponent, FormsModule],
   templateUrl: './post.component.html',
   styleUrl: './post.component.sass'
 })
@@ -24,6 +25,11 @@ export class PostComponent implements OnInit{
   expandedImg: string | null = null;
 
   @Output() expandImage = new EventEmitter<string>();
+
+  @Input()
+  canComment: boolean = false;
+
+  newComment: string = '';
 
   constructor(
     private userService: UsersService,
@@ -59,5 +65,22 @@ export class PostComponent implements OnInit{
 
   closeModal() {
     this.expandedImg = null;
+  }
+
+  addComment() {
+    if (!this.newComment.trim()) return;
+    this.userService.getCurrentUser().subscribe((currentUser) => {
+      const now = new Date();
+      const date = now.toISOString().slice(0, 10);
+      this.commentsService.createComment({
+        post: Number(this.post.id),
+        content: this.newComment,
+        date,
+        author: Number(currentUser.id)
+      }).subscribe((comment) => {
+        this.comments.push(comment);
+        this.newComment = '';
+      });
+    });
   }
 }
