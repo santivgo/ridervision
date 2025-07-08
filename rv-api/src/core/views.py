@@ -72,6 +72,8 @@ class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
+    permission_classes = [IsAuthenticated]
+
     def get_queryset(self):
         queryset = super().get_queryset()
         filters = {}
@@ -111,6 +113,8 @@ class PostView(viewsets.ModelViewSet):
 class CommentView(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         queryset = super().get_queryset()

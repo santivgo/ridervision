@@ -152,7 +152,7 @@ export class GreetingsComponent implements OnInit{
       setTimeout(()=>{
       window.location.reload();
 
-      }, 2000000000)
+      }, 1000)
     },
     error: (error) => {
       console.log('bugada com sucesso')
