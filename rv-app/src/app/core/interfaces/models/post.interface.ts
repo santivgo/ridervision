@@ -6,6 +6,12 @@ export interface IPost {
     content: string,
     date: Date,
     img: string,
-    author: IUser[],
+    author: string,
+    tagged_riders: IRider[]
+}
+
+export interface IRawPost {
+    content: string,
+    img: string | null,
     tagged_riders: IRider[]
 }

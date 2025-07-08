@@ -15,17 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path, include
-from core.views import RiderView, ShowView, UserView, ReviewView, PostView, CommentView
-from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path, re_path
 from rest_framework.routers import DefaultRouter
 
-from core.views import ReviewView, RiderView, ShowView, UserView
+from core.views import CommentView, PostView, ReviewView, RiderView, ShowView, UserView
 
 router = DefaultRouter()
 router.register(r"riders", RiderView, basename="rider")
@@ -38,10 +34,7 @@ router.register(r"comments", CommentView, basename="comment")
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include(router.urls)),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
-    path('auth/', include('djoser.urls.jwt')),
-
-
-
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.authtoken")),
+    path("auth/", include("djoser.urls.jwt")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

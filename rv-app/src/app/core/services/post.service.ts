@@ -36,6 +36,29 @@ export class PostService {
     if (token) {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
+
     return this.http.post<IPost>(this.apiUrl, postData, { headers });
+  }
+
+  updatePost(idPost: number, postData: FormData): Observable<IPost> {
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const url = `${this.apiUrl}${idPost}/`; // <- Adiciona o ID na URL
+
+    return this.http.patch<IPost>(url, postData, { headers });
+  }
+
+  deletePost(idPost: number): Observable<IPost> {
+    const token = localStorage.getItem('token');
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    const url = `${this.apiUrl}${idPost}/`; // <- Adiciona o ID na URL
+
+    return this.http.delete<IPost>(url, { headers });
   }
 }

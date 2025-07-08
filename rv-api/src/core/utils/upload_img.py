@@ -1,4 +1,5 @@
-from core.utils.get_meta_name import getModelName
+from core.utils.get_meta_name import get_model_name
+
 
 def uploadImg(instance, filename):
     modelName = getModelName(instance)

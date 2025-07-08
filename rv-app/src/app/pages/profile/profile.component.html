@@ -1,11 +1,15 @@
+<p-toast />
+
 <div class="rv-container">
+
     <div class="rv-container__card">
         <div class="rv-container__card__perfil">
             <div class="rv-container__card__perfil__content">
                 <div class="rv-container__card__perfil__top">
                     <img class="rv-container__card__perfil__content__banner" src="/assets/mock-banner.png">
                     <div class="rv-container__card__perfil__content__dados">
-                        <img class="rv-container__card__perfil__content__dados__icon" [src]="user.img || 'assets/Default.png'">
+                        <img class="rv-container__card__perfil__content__dados__icon"
+                            [src]="user.img || 'assets/Default.png'">
                         <p>{{user.username}}</p>
                     </div>
                 </div>
@@ -32,11 +36,11 @@
                         </button>
                     </div>
                     <div class="rv-container__card__perfil__content__comments">
-                      <div class="rv-container__comment-area__display">
-                        <ng-container *ngFor="let comment of comments">
-                          <app-comment [comment]="comment"></app-comment>
-                        </ng-container>
-                      </div>
+                        <div class="rv-container__comment-area__display">
+                            <ng-container *ngFor="let comment of comments">
+                                <app-comment [comment]="comment"></app-comment>
+                            </ng-container>
+                        </div>
                     </div>
                 </ng-template>
                 <ng-template #sectionMiniFav>
@@ -59,13 +63,15 @@
         <app-divider-horizontal></app-divider-horizontal>
 
         <div class="rv-container__card__side">
+
             <ng-container *ngTemplateOutlet="selectedSection === 'posts' ? sectionPost : sectionFav">
             </ng-container>
         </div>
 
         <ng-template #sectionPost>
             <ng-container *ngFor="let post of posts.slice().reverse()">
-                <app-post [post]="post"></app-post>
+                <app-post (reloadEmitter)="loadPosts()" (editEmitter)="receiveEditPost($event)"
+                    [post]="post"></app-post>
             </ng-container>
         </ng-template>
         <ng-template #sectionFav>
@@ -75,10 +81,5 @@
     </div>
 </div>
 
-<app-new-post 
-    *ngIf="showCreatePostModal" 
-    [user]="user"
-    [availableRiders]="availableRiders"
-    (closeModal)="closeCreatePostModal()"
-    (postCreated)="loadPosts()"
-></app-new-post>
+<app-new-post *ngIf="showCreatePostModal" [editPost]="actualEditPost" [user]="user" [availableRiders]="availableRiders"
+    (closeModal)="closeCreatePostModal()" (postCreated)="newPost()"></app-new-post>
